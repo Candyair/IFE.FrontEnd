@@ -1,0 +1,81 @@
+html {
+  font-size: 20px;
+}
+body {
+  font-size: 14px;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #888;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.container {
+  transform: translate(-30px,-15px);
+  -ms-transform: translate(-30px,-15px);
+  -moz-transform: translate(-30px,-15px);
+  -webkit-transform: translate(-30px,-15px);
+  -o-transform: translate(-30px,-15px);
+
+  opacity: .1;
+}
+.slide {
+  transition: all 1.3s;
+  -moz-transition: all 1.3s;
+  -webkit-transition: all 1.3s;
+  -o-transition: all 1.3s;
+
+  transform: translate(0,0);
+  -ms-transform: translate(0,0);
+  -moz-transform: translate(0,0);
+  -webkit-transform: translate(0,0);
+  -o-transform: translate(0,0);
+
+  opacity: 1;
+}
+
+/* index */
+.index-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  width: 300px;
+  height: 300px;
+  margin: auto;
+}
+@media (max-width: 768px) {
+  .index-container {
+    padding-left: 40px;
+  }
+}
+
+.index-teamlist li {
+  margin-bottom: 5px;
+}
+.index-teamlist a {
+  text-shadow: 1px 1px 1px #8e8e8e;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: color .3s;
+  -moz-transition: color .3s;
+  -webkit-transition: color .3s;
+  -o-transition: color .3s;
+}
+.index-teamlist a:visited,
+.index-teamlist a:hover {
+  color: #e8e8e8;
+}
+.index-ico {
+  float: right;
+  margin-right: 40px;
+
+  font-size: 3rem;
+  font-weight: 600;
+  cursor: default;
+}

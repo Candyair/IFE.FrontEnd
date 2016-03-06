@@ -7,7 +7,7 @@ module.exports = function(app) {
     res.render('index', { title: 'IFE.FrontEnd' });
   });
   app.get('/SU', function (req, res) {
-  	res.sendfile('su.html');
+    res.render('index', { title: 'SU' });
   });
   // app.get('/Fido', function (req, res) {
   // 	res.render('index', { title: 'Fido' });
