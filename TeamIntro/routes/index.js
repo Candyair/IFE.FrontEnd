@@ -7,18 +7,18 @@ module.exports = function(app) {
     res.render('index', { title: 'IFE.FrontEnd' });
   });
   app.get('/SU', function (req, res) {
-  	res.sendfile('su.html');
+    res.render('index', { title: 'SU' });
   });
-  // app.get('/Fido', function (req, res) {
-  // 	res.render('index', { title: 'Fido' });
-  // });
+  app.get('/Fido', function (req, res) {
+  	res.sendfile('Fido.html')
+  });
   // app.get('/Cat', function (req, res) {
-  // 	res.render('index', { title: 'Cat' });
   // });
   // app.get('/WeiYu', function (req, res) {
-  // 	res.render('index', { title: 'WeiYu' });
   // });
-  app.get('/chuan', function (req, res) {
-  	res.sendfile('chuan.html');
+	app.get('/chuan', function (req, res) {
+	  	res.sendfile('chuan.html');
   });
+ 
 };
+ 
