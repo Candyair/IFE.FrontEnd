@@ -2,8 +2,87 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   list-style: none;
+  /*background-image: url('../images/bg.jpg');*/
 }
 
 a {
   color: #00B7FF;
 }
+#teamTitle{
+	font-size: 36px;
+	min-height: 100px;
+	margin:auto;
+	padding: auto;
+	text-align: center;
+	font-family: "MicroSoft YaHei"
+}
+.description{
+	margin-left:auto;
+	margin-right: auto;
+	margin-top: 30px;
+	width:600px;
+	height: 50px;
+	text-align: center;
+	padding: auto;
+	font-size: 14px;
+	font-family: "MicroSoft YaHei"
+}
+.search{
+	margin-top:40px;
+}
+#teamIntro{
+	max-width: 800px;
+	/*text-indent: 2em;*/
+	font-size: 18px;
+	margin:auto;
+	padding:auto;
+	text-align: center;
+	font-family: "MicroSoft YaHei"
+}
+#team{
+	max-width: 800px;
+	height: 255px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:100px;
+	padding: auto;
+}
+#member1,#member2,#member3,#member4,#member5{
+	max-width: 253px;
+	height: 253px;
+	float: left;
+	display: block;
+}
+.img1, .img2, .img3, .img4, .img5{
+	margin-right:10px;
+	width: 150px;
+	height: 150px;
+	 -webkit-transition: 0.5s; 
+	 -moz-transition: 0.5s; 
+	 transition: 0.5s; 
+	 -webkit-border-radius: 49%; 
+	 -moz-border-radius: 49%; 
+	 border-radius: 49%; 
+} 
+.img1:hover,.img2:hover,.img3:hover,.img4:hover,.img5:hover { 
+	-webkit-box-shadow: 0 0 20px rgba(255,255,255,.3), inset 0 0 20px rgba(255,255,255,1); 
+	-moz-box-shadow: 0 0 20px rgba(255,255,255,.3), inset 0 0 20px rgba(255,255,255,1); 
+	box-shadow: 0 0 20px rgba(255,255,255,.3), inset 0 0 20px rgba(255,255,255,1); 
+	-webkit-border-radius: 60em; 
+	-moz-border-radius: 60em; 
+	border-radius: 60em;
+}
+.descri1,.descri2,.descri3,.descri4,.descri5{
+	/*text-indent: 2em;*/
+	text-align: center;
+	color:#000033;
+	font-weight:bold;
+}
+
+/*.main-footer {
+  background: #fff;
+  padding: 15px;
+  color: #111;
+  border-top: 1px solid #d2d6de;
+}
+*/

@@ -18,7 +18,7 @@ module.exports = function(app) {
   // app.get('/WeiYu', function (req, res) {
   // 	res.render('index', { title: 'WeiYu' });
   // });
-  // app.get('/chuan', function (req, res) {
-  // 	res.render('index', { title: 'chuan' });
-  // });
+  app.get('/chuan', function (req, res) {
+  	res.sendfile('chuan.html');
+  });
 };
