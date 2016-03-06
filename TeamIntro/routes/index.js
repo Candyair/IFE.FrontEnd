@@ -6,8 +6,8 @@ module.exports = function(app) {
   app.get('/', function (req, res) {
     res.render('index', { title: 'IFE.FrontEnd' });
   });
-  app.get('/SU', function (req, res) {
-    res.render('index', { title: 'SU' });
+  app.get('/su', function (req, res) {
+    res.render('index');
   });
   app.get('/Fido', function (req, res) {
   	res.sendfile('Fido.html')
@@ -19,6 +19,6 @@ module.exports = function(app) {
 	app.get('/chuan', function (req, res) {
 	  	res.sendfile('chuan.html');
   });
- 
+
 };
- 
+
