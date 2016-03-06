@@ -2,9 +2,34 @@
 	var i=1;
 	for(;i<=5;i++){
 		var tar = document.getElementById('member'+i)
-		addListener(tar,'click',function(){
-			window.location.href = '/'
-		})
+		switch(i){
+			case 1: 
+				addListener(tar,'click',function(){
+					window.location.href = '/SU';
+				})
+				break;
+			case 2: 
+				addListener(tar,'click',function(){
+					window.location.href = '/WeiYu';
+				})
+				break;
+			case 3: 
+				addListener(tar,'click',function(){
+					window.location.href = '/Cat';
+				})
+				break;
+			case 4: 
+				addListener(tar,'click',function(){
+					window.location.href = '/Fido';
+				})
+				break;
+			case 5: 
+				addListener(tar,'click',function(){
+					window.location.href = '/chuan';
+				})
+				break;
+		}
+			
 	}
 	function addListener(element, eventName, handler) {
 	    if (element.addEventListener) {
