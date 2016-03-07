@@ -12,8 +12,9 @@ module.exports = function(app) {
   app.get('/Fido', function (req, res) {
   	res.sendfile('Fido.html')
   });
-  // app.get('/Cat', function (req, res) {
-  // });
+  app.get('/NightCat', function (req, res) {
+    res.sendfile('public/NightCat/index.html')
+  });
   // app.get('/WeiYu', function (req, res) {
   // });
 	app.get('/chuan', function (req, res) {
