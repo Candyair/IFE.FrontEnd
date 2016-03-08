@@ -1,0 +1,248 @@
+
+body{
+	color:#48D1CC;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+body,div,h2 {
+	margin: 0;
+	padding: 0;
+}
+a{
+	list-style:none;
+    text-decoration: none;
+}
+.left {
+	float:left;
+}
+.right {
+	float: right;
+}
+#main {
+	width: 98%;
+	max-width: 1024px;
+	padding: 1%;
+	margin: 0 auto;
+	background:#F4A460;
+	filter:Alpha(opacity=80);
+    opacity:0.8;
+	zoom:1;
+}
+#main:after {
+	clear: both;
+	content: " ";
+	display: block;
+	width: 0;
+	height: 0;
+	visibility:hidden;
+}
+
+#main_left {
+	width: 28%;
+	margin-top:8%;
+	margin-left:4%;
+	position:relative;
+}
+#main_left  .main-left-info {
+    width: 100%;
+    height: 200px;
+    position:relative;
+    margin-bottom: 34px;
+    background-color:white;
+    filter:Alpha(opacity=70);
+    opacity:0.7;
+    border-radius:10px;
+    text-align: center;
+    line-height: 120px;
+    font-size: 1.5rem;
+}
+#main_left .lean-1 {
+    -ms-transform: rotate(-15deg);
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+    animation:move1 0.2s;
+    -webkit-animation:move1 0.2s;
+    box-shadow: -3px -3px 4px #48D1CC;
+}
+#main_left .lean-2 {
+	-ms-transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+     animation:move1 0.2s;
+    -webkit-animation:move1 0.2s;
+    box-shadow: 3px -3px 4px #48D1CC;
+}
+#main_left .lean-3 {
+	-ms-transform: rotate(-8deg);
+    -webkit-transform: rotate(-8deg);
+    transform: rotate(-8deg);
+     animation:move1 0.2s;
+    -webkit-animation:move1 0.2s;
+    box-shadow: -3px -3px 4px #48D1CC;
+}
+
+@keyframes move1{
+ 0% {top:-50px;}
+ 100% {top:0px;}
+}
+@-webkit-keyframes move1{
+ 0% {top:-50px;}
+ 100% {top:0px;}
+}
+@keyframes move2{
+ 0% {top:-50px;}
+ 100% {top:220px;}
+}
+@-webkit-keyframes move2{
+ 0% {top:-50px;}
+ 100% {top:220px;}
+}
+@keyframes move3{
+ 0% {top:-50px;}
+ 100% {top:440px;}
+}
+@-webkit-keyframes move3{
+ 0% {top:-50px;}
+ 100% {top:440px;}
+}
+
+#main_right {
+    width: 62%;
+	margin-top: 8%;
+	margin-left: 6%;
+	position: relative;
+	overflow: hidden;
+}
+#main_right .name {
+    font-size: 4rem;
+    position:relative;
+    left:36%;
+    top:-24px;
+     animation: moveName 1s;
+    -webkit-animation: moveName 1s;
+}
+@keyframes moveName{
+ 0% {left:120%;}
+ 100% {left:36%;}
+}
+@-webkit-keyframes Name{
+ 0% {left:120%;}
+ 100% {left:36%;}
+}
+#main_right .main_right_profile {
+	width:90%;
+    height:500px;
+    background:white;
+    filter:Alpha(opacity=70);
+    opacity:0.7;
+    border-radius: 10px;
+    box-shadow: 3px 3px 8px #48D1CC;
+    animation: alphaProfile 5s;
+    -webkit-animation: alphaProfile 5s;
+}
+@keyframes alphaProfile
+{
+from {
+	filter:Alpha(opacity=10);
+    opacity:0.1;
+    }
+to {
+	filter:Alpha(opacity=80);
+    opacity:0.8;
+    }
+}
+
+@-webkit-keyframes alphaProfile
+{
+from {
+	filter:Alpha(opacity=10);
+    opacity:0.1;
+    }
+to {
+	filter:Alpha(opacity=80);
+    opacity:0.8;
+    }
+}
+.linkedFriends{
+    position:relative;
+    height:100px;
+    overflow:hidden;
+    left:-4%;
+}
+.linkedFriends a{
+	 display:inline-block;
+	 position:absolute;
+	 margin-right:20px;
+	 font-size: 1.5rem;
+	 text-align: center;
+	 line-height: 60px;
+	 border:4px solid white; 
+	 border-bottom: none;
+}
+.linkedFriends .friends-1{
+	margin-left: 20px;
+	bottom:15px;
+	right:60%;
+	width:14%;
+	height:60px;
+	box-shadow: -2px -2px  5px #48D1CC;
+	-webkit-transform:rotate(3deg);
+	transform:rotate(3deg);
+}
+.linkedFriends .friends-1:hover {
+	bottom:0px;
+	width:16%;
+	height:60px;
+	right:60%;
+	-webkit-transform:rotate(20deg);
+	transform:rotate(20deg);
+}
+.linkedFriends .friends-2{
+	bottom:20px;
+	right:40%;
+	width:14%;
+	height:70px;
+	box-shadow: 2px -2px  5px #48D1CC;
+	-webkit-transform:rotate(7deg);
+	transform:rotate(7deg);
+}
+.linkedFriends .friends-2:hover{
+	bottom:16px;
+	width:16%;
+	height:76px;
+	-webkit-transform:rotate(-10deg);
+	transform:rotate(-10deg);
+}
+
+.linkedFriends .friends-3{
+	bottom:6px;
+	right:20%;
+	width:14%;
+	height:50px;
+	box-shadow: -2px -2px  5px #48D1CC;
+	-webkit-transform:rotate(-8deg);
+	transform:rotate(-8deg);
+}
+.linkedFriends .friends-3:hover{
+	bottom:10px;
+	right:20%;
+	width:14%;
+	height:60px;
+}
+.linkedFriends .friends-4{
+	bottom:10px;
+	right:0%;
+	width:14%;
+	height:60px;
+	box-shadow: 2px -2px  5px #48D1CC;
+	-webkit-transform:rotate(8deg);
+	transform:rotate(8deg);
+}
+.linkedFriends .friends-4:hover{
+	bottom:16px;
+	right:0%;
+	width:16%;
+	height:66px;
+	-webkit-transform:rotate(-2deg);
+	transform:rotate(-2deg);
+}
+
