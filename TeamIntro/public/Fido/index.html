@@ -2,74 +2,40 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 	<title>Fido's Profile</title>
-	<script>
-		window.onload=function(){
-
-		}
-	</script>
-	<style>
-		@font-face {
-			font-family: DeliciousRoman;
-			src: url('http://www.font-face.com/fonts/delicious/Delicious-Roman.otf');
-		}
-		body{
-			margin: 0;
-			background: linear-gradient(#ffffff 50%, rgba(255,255,255,0) 0) 0 0,
-			radial-gradient(circle closest-side, #FFFFFF 53%, rgba(255,255,255,0) 0) 0 0,
-			radial-gradient(circle closest-side, #FFFFFF 50%, rgba(255,255,255,0) 0) 55px 0 #48B;
-			background-size:110px 200px;
-			background-repeat:repeat-x;
-			
-		}
-		#main{
-			width: 70%;
-			height: 900px;
-			top:80px;
-			background-color: #fff; 
-			background-image: 
-			linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-			linear-gradient(#eee .1em, transparent .1em);
-			background-size: 100% 1.2em;
-			margin: 0 auto;
-			position: relative;
-			-moz-box-shadow: 0 0px 20px rgba(0,0,0,0.9) ;
-			-o-box-shadow: 0 0px 20px rgba(0,0,0,0.9) ;
-			-ms-box-shadow: 0 0px 20px rgba(0,0,0,0.9) ;
-			box-shadow: 0 0px 20px rgba(0,0,0,0.9) ;
-		}
-
-		#main:after{
-			content:"";
-			position: absolute;
-			width:100%;
-			height:900px;
-			margin:0 0 0 0 auto;
-			z-index:-1;
-			background-color: #fff; 
-			background-image: 
-			linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-			linear-gradient(#eee .1em, transparent .1em);
-			background-size: 100% 1.2em;	
-			-moz-box-shadow: 0 0px 20px rgba(0,0,0,0.9) ;
-			-o-box-shadow: 0 0px 20px rgba(0,0,0,0.9) ;
-			-ms-box-shadow: 0 0px 20px rgba(0,0,0,0.9) ;
-			box-shadow: 0 0px 20px rgba(0,0,0,0.9) ;
-			-moz-transform: translate(80px,80px);
-			-o-transform: translate(80px,80px);
-			-ms-transform: translate(80px,80px);
-			transform: translate(80px,80px);
-		}
-
-	</style>
+	<script type="text/javascript" src="js/Chow.js"></script>
+	<link rel="stylesheet" href="../stylesheets/bootstrap.css">
+	<link rel="stylesheet" href="../stylesheets/font-awesome.min.css">
+	<link rel="stylesheet" href="../stylesheets/style.css">
+	<link rel="stylesheet" href="css/Chow.css">
 
 </head>
 <body>
 	<div id="main">
-		<div class="nav">Fido</div>
-
-
+		<div class="nav">
+			<h1 class="nickname">Fido</h1>
+			<div class="intro">
+				关于我：喜欢新鲜刺激，注重眼前和实际，喜欢计划却不循规蹈矩，享受一个人生活的群居动物。
+			</div>
+			<ul class="friend-bar">
+				<li class="friend-item"><a href="">SU</a></li>
+				<li class="friend-item"><a href="">Wei.Yu</a></li>
+				<li class="friend-item"><a href="">Ye.Mao</a></li>
+				<li class="friend-item"><a href="">Chuan</a></li>
+			</ul>
+		</div>
+		
 	</div>
+
+	
+	<div class="musicbox ">
+		<i class="iconfont musicion">&#xe603;</i>
+		<i class="iconfont fa-spin" id="status"font-size="20" style="color:white" status="true">&#xe7fa;</i>		
+		<audio src="music/SunshineGirl.mp3" controls="controls" loop="loop"autoplay="autoplay" id="my-fav-music">你的浏览器不支持音乐播放，建议使用chrome查看</audio>
+		
+	</div>
+
 
 </body>
 </html>
