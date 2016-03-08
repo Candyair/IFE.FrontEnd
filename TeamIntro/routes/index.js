@@ -10,7 +10,7 @@ module.exports = function(app) {
     res.render('index');
   });
   app.get('/Fido', function (req, res) {
-  	res.sendfile('Fido.html')
+  	res.sendfile('index',{title:'Fido'})
   });
   app.get('/NightCat', function (req, res) {
     res.sendfile('public/NightCat/index.html')
