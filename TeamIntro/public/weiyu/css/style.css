@@ -59,51 +59,21 @@ a{
     -ms-transform: rotate(-15deg);
     -webkit-transform: rotate(-15deg);
     transform: rotate(-15deg);
-    animation:move1 0.2s;
-    -webkit-animation:move1 0.2s;
     box-shadow: -3px -3px 4px #48D1CC;
 }
 #main_left .lean-2 {
 	-ms-transform: rotate(10deg);
     -webkit-transform: rotate(10deg);
     transform: rotate(10deg);
-     animation:move1 0.2s;
-    -webkit-animation:move1 0.2s;
     box-shadow: 3px -3px 4px #48D1CC;
 }
 #main_left .lean-3 {
 	-ms-transform: rotate(-8deg);
     -webkit-transform: rotate(-8deg);
     transform: rotate(-8deg);
-     animation:move1 0.2s;
-    -webkit-animation:move1 0.2s;
     box-shadow: -3px -3px 4px #48D1CC;
 }
 
-@keyframes move1{
- 0% {top:-50px;}
- 100% {top:0px;}
-}
-@-webkit-keyframes move1{
- 0% {top:-50px;}
- 100% {top:0px;}
-}
-@keyframes move2{
- 0% {top:-50px;}
- 100% {top:220px;}
-}
-@-webkit-keyframes move2{
- 0% {top:-50px;}
- 100% {top:220px;}
-}
-@keyframes move3{
- 0% {top:-50px;}
- 100% {top:440px;}
-}
-@-webkit-keyframes move3{
- 0% {top:-50px;}
- 100% {top:440px;}
-}
 
 #main_right {
     width: 62%;
@@ -136,8 +106,8 @@ a{
     opacity:0.7;
     border-radius: 10px;
     box-shadow: 3px 3px 8px #48D1CC;
-    animation: alphaProfile 5s;
-    -webkit-animation: alphaProfile 5s;
+    animation: alphaProfile 3s;
+    -webkit-animation: alphaProfile 3s;
 }
 @keyframes alphaProfile
 {
@@ -162,13 +132,13 @@ to {
     opacity:0.8;
     }
 }
-.linkedFriends{
+.linked{
     position:relative;
     height:100px;
     overflow:hidden;
     left:-4%;
 }
-.linkedFriends a{
+.linked a{
 	 display:inline-block;
 	 position:absolute;
 	 margin-right:20px;
@@ -178,9 +148,9 @@ to {
 	 border:4px solid white; 
 	 border-bottom: none;
 }
-.linkedFriends .friends-1{
+.linked .linked-1{
 	margin-left: 20px;
-	bottom:15px;
+    bottom:15px;
 	right:60%;
 	width:14%;
 	height:60px;
@@ -188,7 +158,7 @@ to {
 	-webkit-transform:rotate(3deg);
 	transform:rotate(3deg);
 }
-.linkedFriends .friends-1:hover {
+.linked  .linked-1:hover {
 	bottom:0px;
 	width:16%;
 	height:60px;
@@ -196,7 +166,7 @@ to {
 	-webkit-transform:rotate(20deg);
 	transform:rotate(20deg);
 }
-.linkedFriends .friends-2{
+.linked  .linked-2{
 	bottom:20px;
 	right:40%;
 	width:14%;
@@ -205,7 +175,7 @@ to {
 	-webkit-transform:rotate(7deg);
 	transform:rotate(7deg);
 }
-.linkedFriends .friends-2:hover{
+.linked  .linked-2:hover{
 	bottom:16px;
 	width:16%;
 	height:76px;
@@ -213,7 +183,7 @@ to {
 	transform:rotate(-10deg);
 }
 
-.linkedFriends .friends-3{
+.linked  .linked-3{
 	bottom:6px;
 	right:20%;
 	width:14%;
@@ -222,13 +192,13 @@ to {
 	-webkit-transform:rotate(-8deg);
 	transform:rotate(-8deg);
 }
-.linkedFriends .friends-3:hover{
+.linked  .linked-3:hover{
 	bottom:10px;
 	right:20%;
 	width:14%;
 	height:60px;
 }
-.linkedFriends .friends-4{
+.linked  .linked-4{
 	bottom:10px;
 	right:0%;
 	width:14%;
@@ -237,7 +207,7 @@ to {
 	-webkit-transform:rotate(8deg);
 	transform:rotate(8deg);
 }
-.linkedFriends .friends-4:hover{
+.linked .linked-4:hover{
 	bottom:16px;
 	right:0%;
 	width:16%;
