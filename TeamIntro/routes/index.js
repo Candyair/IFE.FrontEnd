@@ -21,6 +21,9 @@ module.exports = function(app) {
 	  	res.sendfile('chuan.html');
       // res.render('chuan.html')
   });
+  app.get('/task', function (req, res) {
+    res.render('index')
+  })
 
 };
 
