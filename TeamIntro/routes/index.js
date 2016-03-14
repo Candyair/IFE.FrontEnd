@@ -19,6 +19,7 @@ module.exports = function(app) {
   // });
 	app.get('/chuan', function (req, res) {
 	  	res.sendfile('chuan.html');
+      // res.render('chuan.html')
   });
 
 };
