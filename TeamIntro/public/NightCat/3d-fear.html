@@ -125,12 +125,6 @@ html,body {
   transform: rotateX(-1deg);
   transform-origin: bottom;
 }
-img {
-  position: absolute;
-  right:0;
-  bottom: 0;
-  transform:translateZ(3.5em) rotateY(40deg);;
-}
 .haipa {
   color:#FFF;
   display: block;
@@ -139,8 +133,27 @@ img {
 }
 .chongzhi {
   color:#FFF;
-  font-size: 25px;
+  font-size: 22px;
   text-align: left
+}
+
+.member {
+  position: absolute;
+  display: inline-block;
+  right:0;
+  bottom: 0;
+  transform:translateZ(3.5em) rotateY(40deg);
+}
+.member .name {
+  position: absolute;
+  top:40px;
+  left:0;
+  font-size: 13px;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 0 5px #FFF;
+  transform: rotateY(180deg);
 }
 	</style>
 </head>
@@ -149,24 +162,44 @@ img {
   <div class="scene" id="scene" style="transform:rotateX(-45deg) rotateY(0) scale3d(1,1,1);">
     <div class="shape cuboid-1 cub-1">
       <div class="face ft" >
-        <div class="photon-shader"id="front"style="background-color: rgba(33, 33, 33, .95); outline:5px blue solid"><span class="haipa">害怕</span><span class="chongzhi">3D重置<br>By 夜猫</span></div>
+        <div class="photon-shader"id="front"style="background-color: rgba(33, 33, 33, .95); outline:5px blue solid"><span class="haipa">害怕</span><span class="chongzhi">3D重置<br>By ife-frontend</span></div>
       </div>
       <div class="face bk" >
-        <div class="photon-shader" id="after" style="background-color: rgba(33, 33, 33, .95); outline:5px blue solid"><span class="haipa">害怕</span><span class="chongzhi">3D重置<br>By 夜猫</span></div>
+        <div class="photon-shader" id="after" style="background-color: rgba(33, 33, 33, .95); outline:5px blue solid"><span class="haipa">害怕</span><span class="chongzhi">3D重置<br>By ife-frontend</span></div>
       </div>
       <div class="face rt" >
-        <div class="photon-shader" id="left" style="background-color: rgba(33, 33, 33, .95); outline:5px blue solid"><span class="haipa">害怕</span><span class="chongzhi">3D重置<br>By 夜猫</span></div>
+        <div class="photon-shader" id="left" style="background-color: rgba(33, 33, 33, .95); outline:5px blue solid"><span class="haipa">害怕</span><span class="chongzhi">3D重置<br>By ife-frontend</span></div>
       </div>
       <div class="face lt" >
-        <div class="photon-shader" id="right" style="background-color: rgba(33, 33, 33, .95); outline:5px blue solid"><span class="haipa">害怕</span><span class="chongzhi">3D重置<br>By 夜猫</span></div>
+        <div class="photon-shader" id="right" style="background-color: rgba(33, 33, 33, .95); outline:5px blue solid"><span class="haipa">害怕</span><span class="chongzhi">3D重置<br>By ife-frontend</span></div>
       </div>
       <div class="face bm">
-        <div class="photon-shader" id="bottom" style="background-color: rgba(33, 33, 33, .95); outline:5px blue solid"><span class="haipa">害怕</span><span class="chongzhi">3D重置<br>By 夜猫</span></div>
+        <div class="photon-shader" id="bottom" style="background-color: rgba(33, 33, 33, .95); outline:5px blue solid"><span class="haipa">害怕</span><span class="chongzhi">3D重置<br>By ife-frontend</span></div>
       </div>
       <div class="face tp">
-        <div class="photon-shader" id="top" style="background-color: rgba(33, 33, 33, .95); outline:5px blue solid"><span class="haipa">害怕</span><span class="chongzhi">3D重置<br>By 夜猫</span></div>
+        <div class="photon-shader" id="top" style="background-color: rgba(33, 33, 33, .95); outline:5px blue solid"><span class="haipa">害怕</span><span class="chongzhi">3D重置<br>By ife-frontend</span></div>
       </div>
-      <img src="haipa.png" alt="" width="50"/>
+      <div class="member" style="right:0">
+          <img src="haipa.png" alt="" width="50"/>
+          <span class="name">chuan</span>
+      </div>
+      <div class="member" style="right:45px">
+        <img src="haipa.png" alt="" width="50"/>
+        <span class="name">nightcat</span>
+      </div>
+      <div class="member" style="right:90px">
+      <a href="/fido">
+        <img src="haipa.png" alt="" width="50"/>
+        <span class="name">fido</span>
+      </div>
+      <div class="member" style="right:0; transform:translateZ(0em) rotateY(40deg);">
+        <img src="haipa.png" alt="" width="50"/>
+        <span class="name">su</span>
+      </div>
+      <div class="member" style="right:0; transform:translateZ(-2.5em) rotateY(40deg);">
+        <img src="haipa.png" alt="" width="50"/>
+        <span class="name">weiyu</span>
+      </div>
     </div>
   </div>
 </div>
@@ -180,7 +213,6 @@ var l = document.getElementById('left');
 var r = document.getElementById('right');
 var t = document.getElementById('top');
 var b = document.getElementById('bottom');
-
 
 
 window.onload = function(){

@@ -1,5 +1,6 @@
 *{
 	margin: 0;
+	padding: 0;
 	list-style: none;
 	text-decoration: none;
 }
@@ -13,14 +14,14 @@ body{
 
 }
 #main{
-	width: 70%;
+	width: 75%;
 	height: 900px;
 	top:80px;
 	background-color: #fff; 
 	background-image: 
 	linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
 	linear-gradient(#eee .1em, transparent .1em);
-	background-size: 100% 1.2em;
+	background-size: 100% 1.3em;
 	margin: 0 auto;
 	position: relative;
 	-moz-box-shadow: 0 0px 20px rgba(0,0,0,0.9) ;
@@ -85,15 +86,13 @@ h1.nickname{
 	-webkit-transition: background-color 0.5s; /* Safari 和 Chrome */
 	-o-transition: background-color 0.5s; /* Opera */
 }
-a:nth-child(1){
-	background:rgb(250,98.103);
-}
 .friend-item a:hover{
 	display: block;
 	background-color:rgb(255,98,103);
 	height: 30px;
 	line-height: 30px;
 	border-radius: 10px;
+	list-style: none;
 }
 
 .musicbox{
@@ -123,44 +122,38 @@ a:nth-child(1){
 	color:white;
 	margin-left: -30px;
 }
-.Stroyboard{
-	-webkit-perspective: 200px;
-	-webkit-perspective-origin: 50% 50%;
+#Stroyboard{
+	width :80%;
+	height:auto;
+	margin:auto 20px;
+	position:absolute;
+	/*-webkit-perspective: 1800px;
+	-webkit-perspective-origin: 50% 30%;*/
+}
+.items{
+	/*-webkit-perspective: 800px;*/
+	/*-webkit-perspective-origin: 50% 30%;*/
 
 	transform-style: preserve-3d;
 	-moz-transform-style: preserve-3d;
 	-webkit-transform-style: preserve-3d;	
 	-ms-transform-style: preserve-3d;			   
 	-o-transform-style: preserve-3d;
-	
-	position: relative;
-	margin:0 auto;
-}
-
-.items{
-	width:400px;
-	height:400px;
-	margin:0 auto;
 
 	-webkit-transform-style:preserve-3d;
-
-	position: absolute;
+	/*position: absolute;*/
 
 	
 }
 .items .item{
-	width:50px;
-	height:50px;
+	-webkit-perspective: 800px;
+	-webkit-perspective-origin: 50% 50%;
+	border-size:border-boxing;
 	float:left;
+	margin: 0;
+	padding: 0;
 	
 }
-
-
-
-
-
-
-
 audio{
 	display:none;
 }
