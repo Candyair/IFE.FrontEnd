@@ -515,7 +515,7 @@ header button {
   width: 83px;
   height: 24px;
   padding-top: 4px;
-  border-radius: 3px;
+  border-radius: 3px 3px 0 0;
 
   background-color: #ededf0;
   text-align: center;
@@ -565,6 +565,7 @@ header button {
 }
 .main-r-b-l-block3 {
   width: 350px;
+  min-height: 356px !important;
 }
 .main-r-b-l-block4 {
   width: 530px;
