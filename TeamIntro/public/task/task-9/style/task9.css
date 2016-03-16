@@ -719,6 +719,27 @@ header button {
 .main-r-b-l-block3 td:hover {
   border: 1px solid #f4c21d !important;
 }
+.block3-wrap select {
+  width: 70px;
+  height: 20px;
+  padding-left: 5px;
+  border: 1px solid #cfcfd0;
+
+  background: url('../img/date-select.png') no-repeat 95%;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+.block3-wrap button {
+  width: 80px;
+  height: 20px;
+  margin-left: 6px;
+  border: 1px solid #cfcfd0;
+
+  background-color: #fff;
+  cursor: pointer;
+}
 
 .font-cgrey2 {
   color: #c3c2c2;
