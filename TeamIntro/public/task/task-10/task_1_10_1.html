@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task_1_10_1</title>
+	<style type="text/css">
+	body,
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+	li {
+		list-style: none;
+	}
+    .flex-item {
+       		width: 150px;  
+       		border: 1px solid #f00;    		
+       		padding: 20px;
+       		margin: 20px;
+       		box-sizing: border-box;
+       		-moz-box-sizing: box-sizing;
+       }
+	.h1 {
+	   	   height: 120px;
+	   }
+	.h2 {
+	   	   height: 100px;
+	   }
+	.h3 {
+	   	   height: 40px;
+	   }
+	.h4 {
+	   	   height: 200px;
+	   	   border-color: #00f;
+	   }
+    @media screen and (min-width:640px ){
+	   .flex-container {
+          display: flex;
+          flex-flow: row  nowrap;
+          align-items: center;
+          justify-content: space-between;   
+	     }
+	 }
+	@media screen and (max-width:640px ){
+	    .flex-container {
+          display: flex;
+          flex-flow: row  wrap;
+          align-items: flex-start;
+          justify-content: space-between;   
+	     }
+        .order1 {
+            order: 1;
+         }
+         .order2 {
+            order: 2;
+         }
+         .order3 {
+            order: 3;
+         }
+          .order4 {
+            order: 4;
+         }
+
+	   }     
+	</style>
+</head>
+<body>
+    <ul class="flex-container">
+    	<li class="flex-item h1 order2">one</li>
+    	<li class="flex-item h2 order3">two</li>
+    	<li class="flex-item h3 order4">three</li>
+    	<li class="flex-item h4 order1">four</li>
+    </ul>
+</body>
+</html>
