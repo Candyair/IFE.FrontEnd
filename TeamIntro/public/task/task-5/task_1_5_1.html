@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>task_1_5_1</title>
+	<link rel="stylesheet" type="text/css" href="css/task_1_5_1.css">
+</head>
+<body>
+   <div id="head">
+   		<div id="head_baidu" class="head-baidu left">
+   			<span id="head_baiEn" class="head-baiEn" >Bai</span>
+   			<span id="head_baiCn" class="head-baiCn" >百度</span>  			
+   		</div>
+   		<ul id="head_ul" class="head-ul right">
+   				<li class="navLink">导航链接一</li>
+   				<li class="navLink">导航链接二</li>
+   				<li class="navLink">导航链接三</li>
+   				<li class="navLink">导航链接四</li>
+   		</ul>
+   </div>
+
+   <div id="main"> 
+   		<div id="main_side" class="main-side right">
+   			<p id="side_title" class="side-title">
+   				这里以后是一个侧栏
+   			</p>
+   			<form id="side_form" method="" action="">
+   				<span class="formatPre">请输入邮箱地址</span>
+   				<input id="email" class="email" type="text" value="这是一个文本框">
+   				<p id="mailTip" class="mailTip">邮箱地址请按要求格式输入</p>
+   				<span class="formatPre">请输入密码</span>
+   				<input id="pwd1" class="pwd" type="password" value="********"><br>
+   				<span class="formatPre">请重复输入密码</span>
+   				<input id="pwd2" class="pwd" type="password" value="********">
+   				<p id="pwdTip" class="pwdTip">密码请为6-16位英文数字</p>
+   				<span class="formatPre">性别</span>
+   				<input type="radio" name="sex" id="man" checked="checked"> 
+   				<label for="man">男</label>
+   				<input type="radio" name="sex" id="woman"> 
+   				<label for="woman">女</label><br>
+   				<span class="formatPre">城市</span>
+   				<select id="city" class="city">
+   					<option value="北京" selected="selected">北京</option>
+   					<option value="上海">上海</option>
+   					<option value="广州">广州</option>
+   				</select><br>
+   				<span class="formatPre">爱好</span>  				
+   				<input type="checkbox" name="love1" id="exercise">
+   				<label for="exercise">运动</label> 
+   				<input type="checkbox" name="love2" id="art"> 
+   				<label for="art">艺术</label>
+   				<input type="checkbox" name="love3" id="science">
+   				<label for="science">科学</label> <br>
+   				<span class="formatPre personalIntro">个人描述</span>
+   				<textarea cols="20" rows="6">这是一个多行输入框，输入您的个人描述
+   					
+   				</textarea>
+   				<input type="submit" id="btnSubmit" class="btnSubmit" value="确认提交" ></input>
+   			</form>
+   		</div>
+   		<div id="main_content" class="main-content">
+   			<div id="article1" class="article">
+   				<h2>文章一级标题</h2>
+   				<h3>文章二级标题</h3>
+   				<span id="articleAuthor1" class="articleAuthor">文章作者</span>
+   				<span id="publishTime1" class="publishTime">文章发表时间</span>
+   				<div id="paragraph1" class="paragraph">
+   				     <p>课程多数题目的解决方案都不是唯一的，这和我们在实际工作中的情况也是一致的。因此，我们的要求不仅仅是实现设  计稿的效果，更是要多去思考不同的解决方案，评估不同方案的优劣，然后使用在该场景下最优雅的方式去实现。那些最终没有被我们采纳的方案，同样也可以帮助我们学到很多知识。所以，我们列出的参考资料未必是
+   				     <a href="http://ife.baidu.com" target="_self" id="ifeLink" class="ifeLink">这里有一个链接http://ife.baidu.com</a>
+   				     实现需求所必须的。有的时候，实现题目的要求很简单，甚至参考资料里就有，但是背后</p>
+   				<img src="images/articleFigure.gif" alt="articleFigure" id="articleFigure1" class="articleFigure">
+   				    <p>的思考和亲手去实践却是任务最关键的一部分。在学习这些资，要多思考，多提问，多质疑。相信通过和小伙伴们的交流，能让你的学习事半功倍.
+   				       没有被我们采纳的方案，同样也可以帮助我们学到很多知识。所以，我们列出的参考资料未必是
+   				        <a href="http://ife.baidu.com" target="_blank"  id="ifeLink1" class="ifeLink">这里有一个链接http://ife.baidu.com</a>
+   				      实现需求所必须的。有的时候，实现题目的要求很简单，甚至参考资料里就有，但是背后
+   				   </p>
+   				</div>
+   			</div>
+   			<div id="article2" class="article">
+   				<h2>文章一级标题</h2>
+   				<h3>文章二级标题</h3>
+   				<span id="articleAuthor2" class="articleAuthor">文章作者</span>
+   				<span id="publishTime2" class="publishTime">文章发表时间</span>
+   				<div id="paragraph2" class="paragraph">
+   				    <p> 课程多数题目的解决方案都不是唯一的，这和我们在实际工作中的情况也是一致的。因此，我们的要求不仅仅是实现设计稿的效果，更是要多去思考不同的解决  方案，评估不同方案的优劣，然后使用在该场景下最优雅的方式去实现。那些最终没有被我们采纳的方案，同样也可以帮助我们学到很多知识。所以，我们列出的   参考资料未必是
+   				       <a href="http://ife.baidu.com" target="_self" id="ifeLink2" class="ifeLink">这里有一个链接http://ife.baidu.com</a>
+   				       实现需求所必须的。有的时候，实现题目的要求很简单，甚至参考资料里就有，但是背后
+   				    </p>
+   				    <img src="images/articleFigure.gif" alt="articleFigure" id="articleFigure2" class="articleFigure">
+   				    <ul id="article_linkModule2" class="article-linkModule">
+   				 		<li class="articleLink">列表项目一</li>
+   				 		<li class="articleLink">列表项目二</li>
+   				 	    <li class="articleLink">列表项目三</li>
+   				    </ul>
+   				</div>
+   			</div>   
+   			<div id="imagesModule" class="imagesModule">
+        		<h2>图片</h2>
+        		<ul id="imagesModule_Ul" class="imagesModule-Ul">
+        			<li class="imagesModule-imageLink">
+        				<p class="imagesModule-imagesName">好看的图片</p>
+        				<img src="images/articleFigure.gif" class="imagesModuleImage" alt="image1">
+        			</li>
+        			<li class="imagesModule-imageLink">
+        				<p class="imagesModule-imagesName">好看的图片</p>
+        				<img src="images/articleFigure.gif"  class="imagesModuleImage" alt="image1">
+        			</li>
+        			<li class="imagesModule-imageLink">
+        				<p class="imagesModule-imagesName">好看的图片</p>
+        				<img src="images/articleFigure.gif"  class="imagesModuleImage" alt="image1">
+        			</li>
+        			<li class="imagesModule-imageLink">
+        				<p class="imagesModule-imagesName">好看的图片</p>
+        				<img src="images/articleFigure.gif"  class="imagesModuleImage" alt="image1">
+        			</li>
+        			<li class="imagesModule-imageLink">
+        				<p class="imagesModule-imagesName">好看的图片</p>
+        				<img src="images/articleFigure.gif"  class="imagesModuleImage" alt="image1">
+        			</li>
+        			<li class="imagesModule-imageLink">
+        				<p class="imagesModule-imagesName">好看的图片</p>
+        				<img src="images/articleFigure.gif"  class="imagesModuleImage" alt="image1">
+        			</li>
+        			<li class="imagesModule-imageLink">
+        				<p class="imagesModule-imagesName">好看的图片</p>
+        				<img src="images/articleFigure.gif"  class="imagesModuleImage" alt="image1">
+        			</li>
+        			<li class="imagesModule-imageLink">
+        				<p class="imagesModule-imagesName">好看的图片</p>
+        				<img src="images/articleFigure.gif"  class="imagesModuleImage" alt="image1">
+        			</li>
+        			<li class="imagesModule-imageLink">
+        				<p class="imagesModule-imagesName">好看的图片</p>
+        				<img src="images/articleFigure.gif"  class="imagesModuleImage" alt="image1">
+        			</li>
+        			<li class="imagesModule-imageLink">
+        				<p class="imagesModule-imagesName">好看的图片</p>
+        				<img src="images/articleFigure.gif"  class="imagesModuleImage" alt="image1">
+        			</li>
+        		</ul>
+        	</div>	
+        	<div id="lastArticle" class="article">
+   				<h2>最后一篇文章一级标题</h2>
+   				<h3>文章二级标题</h3>
+   				<span id="articleAuthor1" class="articleAuthor">文章作者</span>
+   				<span id="publishTime1" class="publishTime">文章发表时间</span>
+   				<ol id="rank" class="rank">
+   					<li >排名1</li>
+   					<li >排名2</li>
+   					<li >排名3</li>
+   				</ol>
+   				<p>下面是一个表格，我这里给表格加了一个border="1'</p>
+   				<ul id="table" class="table">
+   					<li class="tableLi first">
+   					    <ul>
+   						   <li class="tableLi-li">表头</li>
+   						   <li class="tableLi-li">表头</li>
+   						   <li class="tableLi-li">表头</li>
+   						</ul>
+   					</li>
+   					<li class="tableLi">
+   					    <ul>
+   						   <li class="tableLi-li">表头内容单元格</li>
+   						   <li class="tableLi-li">表头内容单元格</li>
+   						   <li class="tableLi-li">表头内容单元格</li>
+   						</ul>
+   					</li>
+   					<li class="tableLi">
+   					   <ul>
+   						  <li class="tableLi-li">表头内容单元格</li>
+   						  <li class="tableLi-li">表头内容单元格</li>
+   						  <li class="tableLi-li">表头内容单元格</li>				
+   						</ul>
+   					</li>
+   					<li class="tableLi">
+   						<ul>
+   							<li class="tableLi-li">表头内容单元格</li>
+   						    <li class="tableLi-li">表头内容单元格</li>
+   						    <li class="tableLi-li">表头内容单元格</li>
+   						    
+   						 </ul>						
+   					</li>
+   					<li class="tableLi lastLi">
+   					   <ul>   						
+   					   	  <li class="tableLi-li">总计</li>
+   				 		  <li class="tableLi-li numLi">1000</li>  
+   						</ul>						 	
+   					</li>
+   				</ul>
+   			</div>	
+   		</div>
+   </div>
+
+   <div id="footer">
+   	  版权所有
+   </div>
+</body>
+</html>
