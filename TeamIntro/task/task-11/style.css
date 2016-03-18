@@ -162,11 +162,11 @@ nav ul li.nav_active::after {
   width: 60%;
   height: auto;
 }
-#sub ul li h5,
-#sub ul li h6 {
+#sub ul li h2,
+#sub ul li h3 {
   font-size: 1.2rem;
 }
-#sub ul li h6 {
+#sub ul li h3 {
   color: #5B5B5B;
 }
 .module {
@@ -174,11 +174,14 @@ nav ul li.nav_active::after {
   overflow: hidden;
   margin-bottom: 2.5rem;
 }
-.module h1 {
+.module h2 {
   padding: 0.5rem 1rem;
   color: #666666;
   font-weight: bold;
   font-size: 1.5rem;
+}
+.module hr {
+  color: #ECECEC;
 }
 .module .module_content {
   margin: 1rem 0;
