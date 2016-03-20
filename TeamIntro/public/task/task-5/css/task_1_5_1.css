@@ -118,6 +118,9 @@ ul li {
     position: relative;
 	top: -84px;
 }
+.main-side .textPro {
+	overflow:hidden;
+}
 .main-side .btnSubmit {
    width: 280px;
    height: 40px;
