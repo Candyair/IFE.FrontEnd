@@ -24,7 +24,7 @@
    			<p id="side_title" class="side-title">
    				这里以后是一个侧栏
    			</p>
-   			<form id="side_form" method="" action="">
+   			<form id="side_form" class="side_form" method="" action="">
    				<span class="formatPre">请输入邮箱地址</span>
    				<input id="email" class="email" type="text" value="这是一个文本框">
    				<p id="mailTip" class="mailTip">邮箱地址请按要求格式输入</p>
@@ -35,15 +35,18 @@
    				<p id="pwdTip" class="pwdTip">密码请为6-16位英文数字</p>
    				<span class="formatPre">性别</span>
    				<input type="radio" name="sex" id="man" checked="checked"> 
+          <span class="radio-bg"></span>
    				<label for="man">男</label>
    				<input type="radio" name="sex" id="woman"> 
-   				<label for="woman">女</label><br>
+   				<label for="woman">女</label><br>          
    				<span class="formatPre">城市</span>
-   				<select id="city" class="city">
+   				<select id="city" class="city">            
    					<option value="北京" selected="selected">北京</option>
    					<option value="上海">上海</option>
    					<option value="广州">广州</option>
-   				</select><br>
+   				</select>
+          <span class="city-bg"></span>
+          <br>
    				<span class="formatPre">爱好</span>  				
    				<input type="checkbox" name="love1" id="exercise">
    				<label for="exercise">运动</label> 

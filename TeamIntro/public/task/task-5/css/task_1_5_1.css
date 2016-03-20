@@ -1,6 +1,8 @@
 
 body {
-	background-color: #dedede;
+	background-color: #5f625b;
+	width: 100%;
+	min-width: 600px;
 }
 body,
 ul,
@@ -8,6 +10,9 @@ p,
 textarea {
 	margin: 0;
 	padding: 0;
+}
+h3 {
+	color: #7D7D8C;
 }
 ul li {
 	list-style: none;
@@ -62,6 +67,27 @@ ul li {
  	background-color: white;
  	position:relative;
 }
+.main-side .side_form {
+	position: relative;	
+}
+.main-side .city-bg {
+	display: inline-block;
+    position: relative;
+    width: 14px;
+    height: 18px;
+    left: -21px;
+    top: 4px;
+    background: url("../images/arrow.gif") no-repeat 0 0;
+}
+.main-side .radio-bg {
+	display: inline-block;
+    position: relative;
+    width: 14px;
+    height: 13px;
+    left: -24px;
+    top: 0px;
+    background: url("../images/sex.gif") no-repeat 0 0;
+}
 .main-side .side-title {
 	height:30px;
 	padding-left: 6px;
@@ -69,7 +95,7 @@ ul li {
 	font-size: 1.2rem;
 	color: #000;
 	line-height: 30px;
-	border-left: 3px solid #8e8c8c;
+	border-left: 3px solid #cdcdcd;
 }
 .main-side .email,
 .main-side .pwd {
@@ -87,6 +113,7 @@ ul li {
 	display: inline-block;
     text-align: right;
 }
+
 .main-side .personalIntro {
     position: relative;
 	top: -84px;
@@ -114,12 +141,19 @@ ul li {
  	border-bottom: 1px solid  #8e8c8c;
  	background-color: white;
 }
+.main-content .articleAuthor,
+ .main-content .publishTime {
+	color: #b0b6c4;
+	font-size: 0.8rem;
+}
 .main-content .paragraph {
 	text-indent: 2em;
 	margin-top: 10px;
 }
 .main-content .articleFigure {
 	margin: 10px 0;
+	max-width: 290px;
+	width: 100%;
 }
 .main-content .articleLink {
 	margin-bottom: 4px;
@@ -146,21 +180,18 @@ ul li {
 }
 .table .tableLi {
 	overflow: hidden;
-	border-right: 1px solid #8e8c8c;
-	border-bottom: 1px solid #8e8c8c;
 }
 .table .tableLi-li {
 	width: 30%;
 	padding-right: 3%;
 	padding-top: 4px;
 	padding-bottom: 4px;
-    border-left: 1px solid #8e8c8c;
     font-size: 0.9rem;
 	float: left;
 }
 .table .first {
-     border-top: 1px solid #8e8c8c;
      background-color: #333333;
+     color: white;
 }
 .table .first .tableLi-li {
 	font-size: 1rem;
