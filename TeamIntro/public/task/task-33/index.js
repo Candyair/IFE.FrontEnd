@@ -1,66 +1,55 @@
 window.onload = init;
 var container = document.getElementById('container');
+var block = document.getElementById('block');
 var status = 0;
+var curStatus = 0;
+var deg = 0;
 
 //  命令对象
 var command = {
 	exportGo: function(){
-		var curDiv = container.getElementsByClassName('cur')[0];
-		var allDiv = container.getElementsByTagName('div');
-		if(status===0){status += 4;}
-		var curStatus = status%4;
-		var index = getIndex();
-		switch(curStatus) {
-			case 0: {
-				if(index-10<0){return false;}
-				allDiv[(index-10)].classList.add('cur');
+		var d = parseInt((block.style.transform).match(/[-]*\d+/g)[0])
+		switch(d%360) {
+			case 0:
+			case -0: {
+				if(block.style.top==='30px'){return false} 
+				block.style.top = (parseInt(block.style.top) - 30) +'px';
 				break;
 			}
 
-			case 1: {
-				if(index%10===9){return false;}
-				allDiv[(index+1)].classList.add('cur');
+			case 90:
+			case -270: {
+				if(block.style.left==='270px'){return false} 
+				block.style.left = (parseInt(block.style.left) + 30) +'px';
 				break;
 			}
 
-			case 2: {
-				if(index+10>100){return false;}
-				allDiv[(index+10)].classList.add('cur');
+			case 180:
+			case -180: {
+				if(block.style.top==='300px'){return false} 
+				block.style.top = (parseInt(block.style.top) + 30) +'px';
 				break;
 			}
 
-			case 3: {
-				if(index%10===0){return false;}
-				allDiv[(index-1)].classList.add('cur');
+			case 270:
+			case -90: {
+				if(block.style.left==='0px'){return false} 
+				block.style.left = (parseInt(block.style.left) - 30) +'px';
 				break;
 			}
 		}
-		curDiv.classList.remove('cur');
-
-		var newDiv = container.getElementsByClassName('cur')[0];
-		setDirection(curStatus,newDiv);
 	},
 
 	exportLeft: function(){
-		var curDiv = container.getElementsByClassName('cur')[0];
-		if(status<=0){ status += 4;}
-		var curStatus = (--status)%4;
-		setDirection(curStatus,curDiv);
+		setDirection(-90);
 	},
 
 	exportRight: function(){
-		var curDiv = container.getElementsByClassName('cur')[0];
-		if(status<=0){ status += 4;}
-		var curStatus = (++status)%4;
-		setDirection(curStatus,curDiv);
+		setDirection(90);
 	},
 
 	exportBack: function(){
-		var curDiv = container.getElementsByClassName('cur')[0];
-		if(status<=0){ status += 4;}
-		status = parseInt(status) + 2;
-		var curStatus = (status)%4;
-		setDirection(curStatus,curDiv);
+		setDirection(180);
 	},
 }
 
@@ -68,7 +57,6 @@ var command = {
 // 初始化
 function init(){
 	var row = container.getElementsByTagName('li');
-
 	//  行循环
 	for(var i=0;i<10;i++){
 		//  行内循环
@@ -78,9 +66,9 @@ function init(){
 		}
 	}
 
-	var random = Math.ceil(Math.random()*100);
-
-	container.getElementsByTagName('div')[random].classList.add('cur');
+	block.style.left = Math.ceil(Math.random()*9)*30+"px";
+	block.style.top = Math.ceil(Math.random()*9)*30+"px";
+	block.style.transform = "rotateZ(0deg)";
 }
 
 //  执行命令
@@ -96,43 +84,10 @@ var exportCommand = function(){
 	alert("你输入的命令有误!");
 }
 
-//  得到当前方块位置
-function getIndex(){
-	for(var i=0;i<100;i++){
-		if(container.getElementsByTagName('div')[i].classList.contains('cur')){
-			return i;
-		}
-	}
-}
-
 //  设置方向
-function setDirection(curStatus,curDiv){
-	switch(curStatus){
-    	case 0: 
-    		curDiv.style.borderBottomWidth = '0px';
-    		curDiv.style.borderRightWidth = '0px';
-    		curDiv.style.borderLeftWidth = "0px";
-    		curDiv.style.borderTopWidth = "5px";
-    		break;
-		case 1: 
-		    curDiv.style.borderTopWidth = '0px';
-    		curDiv.style.borderLeftWidth = "0px";
-			curDiv.style.borderBottomWidth = '0px';
-			curDiv.style.borderRightWidth = "5px";
-			break;
-		case 2: 
-    		curDiv.style.borderLeftWidth = "0px";
-			curDiv.style.borderTopWidth = '0px';
-			curDiv.style.borderRightWidth = "0px";
-			curDiv.style.borderBottomWidth = "5px";
-			break;
-		case 3: 
-			curDiv.style.borderRightWidth = '0px';
-			curDiv.style.borderBottomWidth = "0px";
-			curDiv.style.borderTopWidth = '0px';
-			curDiv.style.borderLeftWidth = "5px";
-		break;
-    }
+function setDirection(deg){
+	var oldDeg = parseInt((block.style.transform).match(/[-]*\d+/g)[0])
+    block.style.transform = 'rotateZ('+(oldDeg+deg)+'deg)';
 }
 
 //  键盘控制方向

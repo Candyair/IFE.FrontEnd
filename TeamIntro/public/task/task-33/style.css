@@ -43,13 +43,23 @@ ol {
   border: 1px #000 solid;
   background-color: #ccc;
 }
+.column-ol #block {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-top: 8px solid blue;
+  box-sizing: border-box;
+  background-color: red;
+  z-index: 2;
+  transition: all .5s;
+}
 .column-ol li {
   display: flex;
   flex-flow: row wrap;
   height: 30px;
   line-height: 30px;
   width: 300px;
-  background-color: #123456;
+  background-color: #FFF;
   box-sizing: border-box;
   position: relative;
   counter-increment: testname;
@@ -67,12 +77,4 @@ ol {
   box-sizing: border-box;
   outline: 1px #CCC solid;
   background-color: #FFF;
-}
-.column-ol li div.cur {
-  background-color: red;
-  box-sizing: border-box;
-  border-top: 5px solid blue;
-  border-bottom: 0 solid blue;
-  border-left: 0 solid blue;
-  border-right: 0 solid blue;
 }
