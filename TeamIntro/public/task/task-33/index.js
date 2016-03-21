@@ -10,7 +10,6 @@ var command = {
 		if(status===0){status += 4;}
 		var curStatus = status%4;
 		var index = getIndex();
-		console.log(index + '>>' +curStatus)
 		switch(curStatus) {
 			case 0: {
 				if(index-10<0){return false;}
@@ -19,7 +18,7 @@ var command = {
 			}
 
 			case 1: {
-				if(index%10===0){return false;}
+				if(index%10===9){return false;}
 				allDiv[(index+1)].classList.add('cur');
 				break;
 			}
@@ -31,7 +30,7 @@ var command = {
 			}
 
 			case 3: {
-				if(index%10===1){return false;}
+				if(index%10===0){return false;}
 				allDiv[(index-1)].classList.add('cur');
 				break;
 			}
