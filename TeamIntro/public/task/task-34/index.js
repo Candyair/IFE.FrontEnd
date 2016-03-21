@@ -7,9 +7,15 @@ var deg = 0;
 
 //  命令对象
 var command = {
-	exportGo: function(){
-		var d = parseInt((block.style.transform).match(/[-]*\d+/g)[0])
-		switch(d%360) {
+	exportGo: function(num){
+		var d = parseInt((block.style.transform).match(/[-]*\d+/g)[0]);
+		if(num || num===0){
+			a = num;
+		}
+		else {
+			a = (d%360);
+		}
+		switch(a) {
 			case 0:
 			case -0: {
 				if(block.style.top==='30px'){return false} 
@@ -41,15 +47,19 @@ var command = {
 	},
 
 	exportLeft: function(){
-		setDirection(-90);
+		command.exportGo(270);
 	},
 
 	exportRight: function(){
-		setDirection(90);
+		command.exportGo(90);
 	},
 
-	exportBack: function(){
-		setDirection(180);
+	exportTop: function(){
+		command.exportGo(0);
+	},
+
+	exportBottom: function(){
+		command.exportGo(180);
 	},
 
 	exportMovLeft: function(){
@@ -104,9 +114,10 @@ var exportCommand = function(){
 	var value = document.getElementById('command').value;
 	switch(value){
 		case "GO": return command.exportGo();
-		case "TUN LEF": return command.exportLeft();
-		case "TUN RIG": return command.exportRight();
-		case "TUN BAC": return command.exportBack();
+		case "TRA LEF": return command.exportLeft();
+		case "TRA RIG": return command.exportRight();
+		case "TRA TOP": return command.exportTop();
+		case "TRA BOT": return command.exportBottom();
 		case "MOV LEF": return command.exportMovLeft();
 		case "MOV TOP": return command.exportMovTop();
 		case "MOV RIG": return command.exportMovRight();
@@ -130,13 +141,13 @@ document.onkeydown = function(event){
 			return command.exportLeft();
 			break;
 		case 38:
-			return command.exportGo();
+			return command.exportTop();
 			break;
 		case 39:
 			return command.exportRight();
 			break;
 		case 40:
-			return command.exportBack();
+			return command.exportBottom();
 			break;
 		case 87:
 			return command.exportMovTop();
