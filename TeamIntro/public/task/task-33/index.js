@@ -136,7 +136,7 @@ function setDirection(curStatus,curDiv){
 }
 
 //  键盘控制方向
-window.onkeypress = function(event){
+document.onkeypress = function(event){
 	var e = event || window.event;
 	switch(e.keyCode){
 		case 37:
