@@ -91,7 +91,7 @@ function setDirection(deg){
 }
 
 //  键盘控制方向
-document.onkeypress = function(event){
+document.onkeydown = function(event){
 	var e = event || window.event;
 	switch(e.keyCode){
 		case 37:
