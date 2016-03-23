@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: "微软雅黑";
+}
+ol {
+  list-style: none;
+}
+.content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 300px;
+  width: 300px;
+}
+.content #command {
+  padding: 2px;
+}
+.content button {
+  padding: 0 5px;
+}
+.row-ol {
+  height: 30px;
+  width: 300px;
+  letter-spacing: -0.5em;
+  line-height: 30px;
+}
+.row-ol li {
+  display: inline-block;
+  letter-spacing: 0;
+  width: 30px;
+  height: 10px;
+  text-align: center;
+}
+.column-ol {
+  height: 300px;
+  width: 300px;
+  border: 1px #000 solid;
+  background-color: #ccc;
+}
+.column-ol #block {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-top: 8px solid blue;
+  box-sizing: border-box;
+  background-color: red;
+  z-index: 2;
+  transition: all .5s;
+}
+.column-ol li {
+  display: flex;
+  flex-flow: row wrap;
+  height: 30px;
+  line-height: 30px;
+  width: 300px;
+  background-color: #FFF;
+  box-sizing: border-box;
+  position: relative;
+  counter-increment: testname;
+}
+.column-ol li::before {
+  content: counter(testname);
+  position: absolute;
+  left: -30px;
+  width: 30px;
+  text-align: center;
+}
+.column-ol li div {
+  width: 30px;
+  height: 100%;
+  box-sizing: border-box;
+  outline: 1px #CCC solid;
+  background-color: #FFF;
+}

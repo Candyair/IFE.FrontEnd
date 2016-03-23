@@ -127,8 +127,8 @@ h1.nickname{
 	height:auto;
 	margin:auto 20px;
 	position:absolute;
-	/*-webkit-perspective: 1800px;
-	-webkit-perspective-origin: 50% 30%;*/
+	-webkit-perspective: 1800px;
+	-webkit-perspective-origin: 50% 30%;
 }
 .items{
 	/*-webkit-perspective: 800px;*/

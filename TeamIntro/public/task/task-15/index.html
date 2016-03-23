@@ -14,7 +14,12 @@
     <li>深圳空气质量：<b>40</b></li>
     <li>福州空气质量：<b>32</b></li>
     <li>成都空气质量：<b>90</b></li>
+<<<<<<< HEAD
     </ul>
+=======
+  </ul>
+
+>>>>>>> a31d3e7eedf9dcf409cb07c4c239b63b91e718c4
   <ul id="resort">
     <!-- 
     <li>第一名：北京空气质量：<b>90</b></li>
@@ -33,6 +38,7 @@
  * 读取id为source的列表，获取其中城市名字及城市对应的空气质量
  * 返回一个数组，格式见函数中示例
  */
+<<<<<<< HEAD
 function getData() {
    var  data=[],children,len=0;
    var oSource=document.getElementById('source');
@@ -47,6 +53,12 @@ function getData() {
           }
    }
 
+=======
+function g(id){
+  return document.getElementById(id);
+}
+function getData() {
+>>>>>>> a31d3e7eedf9dcf409cb07c4c239b63b91e718c4
   /*
   data = [
     ["北京", 90],
@@ -54,16 +66,38 @@ function getData() {
     ……
   ]
   */
+<<<<<<< HEAD
   return data;
 
 }
 
+=======
+  var tar = g('source').childNodes,
+    len = tar.length,
+    i=0,
+    data = [];
+  for(; i<len; i+=1){
+    if('LI' == tar[i].tagName){
+      //获取每个li的内容
+      var arr = [],
+        str = tar[i].textContent,
+        temp = [];
+      //innerTextFireFox不支持。 （DOM标准？）
+      //这里不太好，如果是英文的分号就分不出来，
+      arr = str.split("：")
+      data.push(arr)
+    }
+  }
+  return data;
+}
+>>>>>>> a31d3e7eedf9dcf409cb07c4c239b63b91e718c4
 /**
  * sortAqiData
  * 按空气质量对data进行从小到大的排序
  * 返回一个排序后的数组
  */
 function sortAqiData(data) {
+<<<<<<< HEAD
      data.sort(function(dataArr1,dataArr2){
           if(dataArr1[1]-dataArr2[1]>0){
             return 1;
@@ -74,6 +108,13 @@ function sortAqiData(data) {
           }
      });
      return data;
+=======
+  data.sort( function (a,b){
+    var a = a[1], b = b[1]
+    return a-b
+  })
+  return data;
+>>>>>>> a31d3e7eedf9dcf409cb07c4c239b63b91e718c4
 }
 /**
  * render
@@ -81,6 +122,7 @@ function sortAqiData(data) {
  * 格式见ul中的注释的部分
  */
 function render(data) {
+<<<<<<< HEAD
     var num=['一','二','三','四','五','六','七','八','九','十'];
     var oResort=document.getElementById('resort');
     var str='';
@@ -90,6 +132,17 @@ function render(data) {
     oResort.innerHTML=str;
 }   
 
+=======
+  var tar = g('resort'),
+    i = 0,
+    len = data.length;
+  for(;i<len;i+=1){
+    var li = document.createElement('li')
+    li.innerHTML = data[i];
+    tar.appendChild(li)
+  }
+}
+>>>>>>> a31d3e7eedf9dcf409cb07c4c239b63b91e718c4
 function btnHandle() {
   var aqiData = getData();
   aqiData = sortAqiData(aqiData);
@@ -98,10 +151,16 @@ function btnHandle() {
 
 
 function init() {
+<<<<<<< HEAD
  
   // 在这下面给sort-btn绑定一个点击事件，点击时触发btnHandle函数
   var oSortBtn=document.getElementById('sort-btn');
   oSortBtn.onclick=btnHandle;
+=======
+  var btn = g('sort-btn')
+  // 在这下面给sort-btn绑定一个点击事件，点击时触发btnHandle函数
+  btn.addEventListener('click',btnHandle,false)
+>>>>>>> a31d3e7eedf9dcf409cb07c4c239b63b91e718c4
 }
 
 init();
