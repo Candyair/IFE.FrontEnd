@@ -22,8 +22,6 @@ var command = {
 		else {
 			dir = (deg%360);
 		}
-		// console.log(walls)
-		// console.log(coord)
 		switch(dir) {
 			case 0:
 			case -0: {
@@ -297,7 +295,6 @@ var resetCommand = function(){
 
 //  进入执行队列
 function exportIt(value){
-	// console.log(value)
 	if(value){
 		queue.push(value);
 	}
@@ -317,8 +314,6 @@ function exportIt(value){
 				var key = val.match(/\d+/g);
 				val = "MOV TO";
 			}
-
-			// console.log(val + "    <<");
 			switch(val){
 				case "GO": command.exportGo(); break;
 				case "TRA LEF": command.exportLeft(); break;
@@ -420,8 +415,6 @@ var errorCM = function(val){
 	var vArray = value.split('\n');
 
 	for(var i=0;i<vArray.length;i++){
-		console.log(val)
-		console.log(vArray[i])
 		if(vArray[i].indexOf(val)>=0){
 			lineNumber[i].style.backgroundColor = "red";
 		}
