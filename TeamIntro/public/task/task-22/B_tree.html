@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	var traversed = [];
+	var index = 0 ; 
+	window.onload=function(){
+		alert("::><::定时器就是清除不了")
+		var orders = {
+			pre:function(node){
+				traversed.push(node);
+				change(node,index);
+				if(node.firstElementChild){
+					arguments.callee(node.firstElementChild);
+				}
+				if(node.lastElementChild){
+					arguments.callee(node.lastElementChild);
+				}
+			},
+
+			In:function(node){
+				if(node.firstElementChild){
+					arguments.callee(node.firstElementChild);
+				}
+				traversed.push(node);
+				change(node);
+				if(node.lastElementChild){
+					arguments.callee(node.lastElementChild)
+				}
+			},
+			Pos:function(node){
+				if(node.firstElementChild){
+					arguments.callee(node.lastElementChild)
+				}
+				if(node.lastElementChild){
+					arguments.callee(node.firstElementChild)
+				}
+				traversed.push(node);
+				change(node);
+			}	
+		};
+		function change(node,index){
+			index=0;
+			traversed[index].style.backgroundColor = "blue";
+			clearInterval(timer);
+			var timer = setInterval(function(){	
+				index++;
+				if(index<traversed.length){
+					traversed[index-1].style.backgroundColor = "white";
+					traversed[index].style.backgroundColor = "blue";
+				}
+				else {
+					traversed[index-1].style.backgroundColor = "white";
+				}
+			},1000);
+		}
+
+		var root = document.getElementById('root');
+		var Pre =  document.getElementById('Pre');
+		var In =  document.getElementById('In');
+		var Pos =  document.getElementById('Pos');
+		Pre.onclick = function(){
+			traversed = [];
+			orders.pre(root);
+		}
+		In.onclick = function(){
+			traversed = [];
+			orders.In(root);
+		}
+		Pos.onclick = function(){
+			traversed = [];
+			orders.Pos(root);
+		}
+	}
+	</script>
+
+</head>
+<body>
+	<div class="a" id="root">
+		<div class="b">
+			<div class="c">
+				<div class="d"></div>
+				<div class="d"></div>
+			</div>
+			<div class="c">
+				<div class="d"></div>
+				<div class="d"></div>
+
+			</div>
+		</div>
+		<div class="b">
+			<div class="c">
+				<div class="d"></div>
+				<div class="d"></div>
+			</div>
+			<div class="c">
+				<div class="d"></div>
+				<div class="d"></div>
+			</div>
+		</div>
+	</div>
+	<input type="button"value="先序遍历" id = "Pre">
+	<input type="button"value="中序遍历" id = "In">
+	<input type="button"value="后序遍历" id = "Pos">
+
+
+
+</body>
+<style>
+.a,.b,.c,.d{
+	border: 1px solid black;
+}
+.a{
+	width:800px;
+	height: 300px;
+	margin: 0 auto;
+	display: flex;
+	align-items:center;
+	
+}
+.b{
+	width:360px;
+	height: 200px;
+	margin:0 auto;
+	display:flex;
+	align-items:center;
+	
+}
+.c{
+	width:160px;
+	height: 100px;
+	display: flex;
+	margin:0 auto;
+	justify-content: center;
+	align-items:center;
+}
+.d{
+	width:70px;
+	height: 50px;
+	display: flex;
+	margin:0 auto;
+	justify-content: center;
+	align-items:center;
+	
+}
+
+
+</style>
+</html>
