@@ -46,6 +46,18 @@ var command = {
 		}
 	},
 
+	exportTunLeft: function(){
+		setDirection(-90);
+	},
+
+	exportTunRight: function(){
+		setDirection(90);
+	},
+
+	exportTunBack: function(){
+		setDirection(180);
+	},
+
 	exportLeft: function(){
 		command.exportGo(270);
 	},
@@ -122,6 +134,9 @@ var exportCommand = function(){
 		case "MOV TOP": return command.exportMovTop();
 		case "MOV RIG": return command.exportMovRight();
 		case "MOV BOT": return command.exportMovBottom();
+		case "TUN LEF": return command.exportTunLeft();
+		case "TUN RIG": return command.exportTunRight();
+		case "TUN BAC": return command.exportTunBack();
 	}
 
 	alert("你输入的命令有误!");

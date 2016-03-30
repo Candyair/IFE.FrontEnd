@@ -106,6 +106,18 @@ var command = {
 		
 	},
 
+	exportTunLeft: function(){
+		setDirection(-90);
+	},
+
+	exportTunRight: function(){
+		setDirection(90);
+	},
+
+	exportTunBack: function(){
+		setDirection(180);
+	},
+	
 	exportLeft: function(){
 		command.exportGo(270);
 	},
@@ -316,6 +328,9 @@ function exportIt(value){
 			}
 			switch(val){
 				case "GO": command.exportGo(); break;
+				case "TUN LEF": command.exportTunLeft(); break;
+				case "TUN RIG": command.exportTunRight(); break;
+				case "TUN BAC": command.exportTunBack(); break;
 				case "TRA LEF": command.exportLeft(); break;
 				case "TRA RIG": command.exportRight(); break;
 				case "TRA TOP": command.exportTop(); break;
@@ -333,6 +348,12 @@ function exportIt(value){
 			}
 		},200);
 	}
+}
+
+//  设置方向
+function setDirection(deg){
+	var oldDeg = parseInt((block.style.transform).match(/[-]*\d+/g)[0])
+    block.style.transform = 'rotateZ('+(oldDeg+deg)+'deg)';
 }
 
 //  得到方块位置索引
