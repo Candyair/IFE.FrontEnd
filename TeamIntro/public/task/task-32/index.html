@@ -34,10 +34,9 @@
 	</form>
 	<script src="Valid.js"></script>
 	<script>
-var formCtrl =	valConfig("form-control",[{
+var formAll =	valConfig("form-control",[{
 					label: '用户名：',
 			        elem: 'input',
-			        name: 'name',
 			        type: 'text',
 			        validator:  {                     // 表单验证规则
 			        	required: true,
@@ -49,22 +48,20 @@ var formCtrl =	valConfig("form-control",[{
 			        	required : "请输入名称",
 			        	minHeight : "不能少于4个字符",
 			        	maxHeight : "不能超过16个字符",
-			        	default: "不合法"         //默认提示 (可省略，默认为输入不合法)
+			        	default: "用户名只能由字母数字下划线组成"         //默认提示 (可省略，默认为输入不合法)
 			        },
 			        diy: {
-			        	username: /^[a-z0-9_-]{3,16}$///DIY验证
+			        	username: /^[a-z0-9_-]{4,16}$/  //DIY验证
 			        }
 				},{
 					label: '密码：',
 			        elem: 'input',
-			        name: 'password',
 			        type: 'password',
 			        validator:  {
 			        	required: true,
 			        	maxHeight: 16,
 			        	minHeight: 6
-			        },    
-			        // 表单验证规责
+			        },
 			        messages: {
 			        	required : "请输入密码",
 			        	minHeight : "不能少于6个字符",
@@ -74,11 +71,9 @@ var formCtrl =	valConfig("form-control",[{
 					label: "邮箱：",
 			        elem: 'input',
 			        type: 'text',
-			        name: 'email',
 			        validator:  {
 			        	email: true
-			        },    
-			        // 表单验证规责
+			        },
 			        messages: {
 			        	email: "请正确书写邮箱格式"
 			        }
@@ -90,8 +85,7 @@ var formCtrl =	valConfig("form-control",[{
 			        selects : ['男','女','双性人'],
 			        validator:  {
 			        	required: true,
-			        },    
-			        // 表单验证规责
+			        },
 			        messages: {
 			        	required : "必选"
 			        }
@@ -124,7 +118,7 @@ var formCtrl =	valConfig("form-control",[{
 		function saveIt(event){
 			event.preventDefault();
 
-			if(!submitVal(formCtrl)){       //submitVal(formCtrl) 表单验证事件
+			if(!submitVal(formAll)){       //submitVal(formCtrl) 表单验证事件
 				alert("请正确填写后提交!");
 				return false;
 			}

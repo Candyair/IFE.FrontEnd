@@ -40,7 +40,9 @@
 				that.elem.setAttribute("type",config.type);
 				that.label = d.createElement("LABEL");
 				that.label.innerHTML = config.label;
-				that.elem.setAttribute("name",config.name);
+				if(config.name){
+					that.elem.setAttribute("name",config.name);
+				}
 				that.group.appendChild(that.label);
 				that.group.appendChild(that.elem);
 
@@ -63,7 +65,7 @@
 			var isPass = true;
 			for(var i in rules){
 				switch(i){
-					case "required": {
+					case "required": {                       //验证是否输入
 						if(rules[i]){
 							if(that.config.type === 'radio' || that.config.type === 'checkbox'){
 								var selects = document.getElementsByName(that.config.name);
@@ -81,7 +83,7 @@
 						}
 						break;
 					}
-					case "minHeight": {
+					case "minHeight": {                     //验证输入长度
 						var minLen = rules[i];
 						var len = getLength(value);
 						if(len < minLen){
@@ -98,13 +100,56 @@
 						break;
 					}
 					case "email": {
-						var reg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
+						var reg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;   //匹配Email地址是否合法
 						if(!reg.test(value)){
 							isPass = false;
 						}
+						break;
+					}
+					case "account": {
+						var reg = /^[a-zA-Z][a-zA-Z0-9_]{4,15}$/;   //匹配帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)
+						if(!reg.test(value)){
+							isPass = false;
+						}
+						break;
+					}
+					case "phone": {
+						var reg = /d{3}-d{8}|d{4}-d{7}/;   //匹配国内电话号码 PS 0511-4405222 或 021-87888822
+						if(!reg.test(value)){
+							isPass = false;
+						}
+						break;
+					}
+					case "qq": {
+						var reg = /[1-9][0-9]{4,}/;   //匹配QQ帐号是否合法 
+						if(!reg.test(value)){
+							isPass = false;
+						}
+						break;
+					}
+					case "postcode": {
+						var reg = /[1-9]d{5}(?!d)/;   //匹配中国邮政编码是否合法 
+						if(!reg.test(value)){
+							isPass = false;
+						}
+						break;
+					}
+					case "idCard": {
+						var reg = /(^\d{15}$)|(^\d{17}([0-9]|X)$)/;   //匹配身份证是否合法 
+						if(!reg.test(value)){
+							isPass = false;
+						}
+						break;
+					}
+					case "ip": {
+						var reg = /^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[0-9]{1,2})(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[0-9]{1,2})){3}$/;   //匹配IP地址是否合法 
+						if(!reg.test(value)){
+							isPass = false;
+						}
+						break;
 					}
 				}
-				if(that.config.diy){
+				if(that.config.diy){                 //自定义DIY验证规则
 					var diyRules = that.config.diy;
 					if(diyRules[i]){
 						var reg = diyRules[i];
