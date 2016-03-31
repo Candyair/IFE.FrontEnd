@@ -21,6 +21,7 @@
 			that.group = d.createElement('DIV');
 			that.group.className = "Valid-" + config.type;
 
+			//生成单选多选控件
 			if(config.type === 'radio' || config.type === 'checkbox'){
 				that.label = d.createElement("LABEL");
 				that.label.innerHTML = config.label;
@@ -35,6 +36,7 @@
 					that.group.appendChild(that.elem);
 				}
 			}
+			//生成下拉框控件
 			else if(config.elem === 'select'){
 				that.elem = d.createElement(config.elem);
 				for(var i=0;i<config.selects.length;i++){					
@@ -49,6 +51,7 @@
 				that.group.appendChild(that.elem);
 				that.group.className = "Valid-" + config.elem;
 			}
+			//生成输入控件
 			else {
 				that.elem = d.createElement(config.elem);
 				that.elem.setAttribute("type",config.type);
@@ -63,11 +66,22 @@
 				that.group.appendChild(that.label);
 				that.group.appendChild(that.elem);
 
-				this.elem.addEventListener("blur",function(){
-					that.validator(that)
-				});	
+				//onblur触发验证事件
+				if(this.elem.addEventListener){
+					this.elem.addEventListener("blur",function(){
+						that.validator(that)
+					},false);
+				} else if(this.elem.attachEvent){
+					this.elem.attachEvent("onblur",function(){
+						that.validator(that)
+					});
+				} else{
+              		this.elem['onblur']=function(){
+						that.validator(that)
+					};
+            	}
 			}		
-		
+			
 			that.error = d.createElement('SPAN');
 			that.group.appendChild(that.error);
 			that.container.appendChild(that.group);	
