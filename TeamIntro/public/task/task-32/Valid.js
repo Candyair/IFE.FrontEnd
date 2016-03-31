@@ -57,6 +57,9 @@
 				if(config.name){
 					that.elem.setAttribute("name",config.name);
 				}
+				if(config.placeholder){
+					that.elem.setAttribute("placeholder",config.placeholder);
+				}
 				that.group.appendChild(that.label);
 				that.group.appendChild(that.elem);
 
