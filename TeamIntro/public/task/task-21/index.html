@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>task21</title>
+  <style type="text/css">
+  #tags{
+    margin: 10px;
+  }
+  .tag,
+  .hob{
+      display: inline-block;
+      margin-right: 10px;
+      padding: 2px 6px;
+      background-color: green;
+      color:white;
+    }
+  </style>
+</head>
+<body>
+    <label>tag:</label>
+    <input type="text" id="tagInput">
+    <div id="tags">
+      <!-- <span class="tag">HTML5</span> -->
+    </div>
+    <textarea id="areaInput" cols="30" rows="10">
+      
+    </textarea>
+    <br>
+    <button id="btnHobby">确认兴趣爱好</button>
+    <div id="hobby">
+      
+    </div>
+    <script type="text/javascript">
+        var oTagInput=document.getElementById('tagInput');
+        var oTags=document.getElementById('tags');
+        var oAreaInput=document.getElementById('areaInput');
+        var oBtnHobby=document.getElementById('btnHobby');
+        var oHobby=document.getElementById('hobby');
+        var aTagSpan=oTags.getElementsByTagName('span');
+        var tagArr=[],areaArr=[];
+
+        var EventUtil={
+           addHandle:function(element,type,handler){
+              console.log(element+'-----');
+            if(element.addEventListener){
+              element.addEventListener(type,handler,false);
+            }else if(element.attachEvent){
+              element.attachEvent('on'+type,handler);
+            }else{
+              element['on'+type]=handler;
+            }
+           },
+          removeHandle:function(element,type,handler){
+              if(element.removeEventListener){
+                element.removeEventListener(type,handler,false);
+              }else if(element.detachEvent){
+                element.detachEvent('on'+type,handler);
+              }else{
+                element['on'+type]=null;
+              }
+           },
+          getTarget:function(event){
+             var event=event||window.event;
+             return event.target||event.srcElement;
+          },
+          getKeyCode:function(event){
+             var event=event||window.event;
+             return event.keyCode;           
+          },
+          stopPropagation:function(event){
+              var event=event||window.event;
+             if(event.stopPropagation){
+               event.stopPropagation();
+             }else {
+               event.cancelBubble=true;
+             }
+          }
+        };
+
+        //判重
+        function  isRepeat(tag,arr){
+          var flag=arr.some(function(item,index,arr){
+                 //console.log(arr[index],tag);
+                return arr[index]===tag;
+          });
+          //console.log(flag);
+          return flag;
+        }
+        //console.log(isRepeat("hello",[3,"hello","你好"]));
+        //对每个tag或爱好做trim处理
+        function trim(tagOrHobby){
+            return tagOrHobby.replace(/\s+/g,'');
+        }
+        function trimLeftRight(tagOrHobby){
+            return tagOrHobby.replace(/(^\s+|\s+$)/,'');
+        }
+        //console.log(trim("hell   o  你好  "));
+        //添加进输入中,多余十个的，把最前面的删掉
+        function  add(tagOrHobby,arr){
+          if(arr.length>=10) arr.shift();
+          arr.push(tagOrHobby);
+        }
+    
+        function clickE(event){
+          var target=EventUtil.getTarget(event);
+           if(target.nodeName.toLowerCase()=='span'){
+            var i=target.id.split('_')[1];
+            var oDel=tagArr.splice(i,1);
+            EventUtil.stopPropagation(event);
+            render(tagArr,'tag',oTags);
+           }
+           //console.log(EventUtil.getTarget(event).id);
+        }//clickE
+
+        function mouseOverE(event){
+            var target=EventUtil.getTarget(event);
+          if(target.nodeName.toLowerCase()=='span'){
+            var i=target.id.split('_')[1];
+              aTagSpan[i].innerHTML='点击删除'+aTagSpan[i].innerHTML;
+              aTagSpan[i].style.backgroundColor='red';          
+              EventUtil.addHandle(aTagSpan[i],'click',clickE);
+              EventUtil.addHandle(aTagSpan[i],'mouseout',function(event){
+              this.style.backgroundColor="green";
+              this.innerHTML=this.innerHTML.replace("点击删除",'');
+              EventUtil.stopPropagation(event);
+              EventUtil.removeHandle(oTags,'mouseover',null);
+               });
+            }//if
+        }//mouseOverE
+        function render(arr,classN,oWrap){
+           var str='';
+           for(var i=0;i<arr.length;i++){
+              str+="<span class="+classN+" id='s_"+i+"'>"+arr[i]+"</span>";
+           }//for
+           oWrap.innerHTML=str;
+        }//render
+
+        function getTag(event){
+          switch(EventUtil.getKeyCode(event)){
+              case 32:;
+              case 188:;
+              case 13:{
+                   var val=trim(this.value);
+                   this.value='';
+                 if(val!=''&&!isRepeat(val,tagArr)){//----判断为空，先用trim，再用==''比较重要
+                    add(val,tagArr);
+                    render(tagArr,'tag',oTags);
+                 }//if
+              }//case
+            }//switch
+         }//getTag
+       function getHobby(){
+            var areaArrTemp=[],len;
+            var areaArrTemp=trimLeftRight(oAreaInput.value).split(/[  ,，\n\t]+/);
+            len=areaArrTemp.length;
+            for(i=0;i<len;i++){
+              var trimVal=trim(areaArrTemp[i]);
+                if(!isRepeat(trimVal,areaArr)){
+                       add(trimVal,areaArr);
+                 }            
+            }
+            render(areaArr,'hob',oHobby);
+         }//getHobby
+        EventUtil.addHandle(oTagInput,'keydown',getTag);
+        EventUtil.addHandle(oTags,'mouseover',mouseOverE);
+        EventUtil.addHandle(oBtnHobby,'click',getHobby);
+    </script>
+</body>
+</html>
