@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-32</title>
+	<link rel="stylesheet" href="Valid.css">
+	<style>
+		#form1 {
+			padding: 30px;
+		}
+		#form1>input {
+			padding: 10px 80px;
+			color: #FFF;
+			margin: 0;
+			border:none;
+			border-radius: 20px;
+			margin: 20px 0 0 80px;
+			outline: none;
+		}
+		#form1>input[type=submit] {
+			background-color: #2ECC71;
+		}
+		#form1>input[type=submit]:hover {
+			background-color: #27AE60;
+		}
+	</style>
+</head>
+<body>
+	<form id="form1" onsubmit="saveIt(event);">
+		<div id="form-control">
+			
+		</div>
+		<input type="submit" id="submit-btn" value="提交"/>
+	</form>
+	<script src="Valid.js"></script>
+	<script>
+var formCtrl =	valConfig("form-control",[{
+					label: '用户名：',
+			        elem: 'input',
+			        name: 'name',
+			        type: 'text',
+			        validator:  {                     // 表单验证规则
+			        	required: true,
+			        	username: true,
+			        	maxHeight: 16,
+			        	minHeight: 4
+			        },    
+			        messages: {						  //验证失败对应提示
+			        	required : "请输入名称",
+			        	minHeight : "不能少于4个字符",
+			        	maxHeight : "不能超过16个字符",
+			        	default: "不合法"         //默认提示 (可省略，默认为输入不合法)
+			        },
+			        diy: {
+			        	username: /^[a-z0-9_-]{3,16}$///DIY验证
+			        }
+				},{
+					label: '密码：',
+			        elem: 'input',
+			        name: 'password',
+			        type: 'password',
+			        validator:  {
+			        	required: true,
+			        	maxHeight: 16,
+			        	minHeight: 6
+			        },    
+			        // 表单验证规责
+			        messages: {
+			        	required : "请输入密码",
+			        	minHeight : "不能少于6个字符",
+			        	maxHeight : "不能超过16个字符"
+			        }    // 填写规则提示
+				},{
+					label: "邮箱：",
+			        elem: 'input',
+			        type: 'text',
+			        name: 'email',
+			        validator:  {
+			        	email: true
+			        },    
+			        // 表单验证规责
+			        messages: {
+			        	email: "请正确书写邮箱格式"
+			        }
+				},{
+					label: "性别：",
+			        elem: 'input',
+			        type: 'radio',
+			        name: 'sex',
+			        selects : ['男','女','双性人'],
+			        validator:  {
+			        	required: true,
+			        },    
+			        // 表单验证规责
+			        messages: {
+			        	required : "必选"
+			        }
+				},{
+					label: "爱好：",
+			        elem: 'input',
+			        type: 'checkbox',
+			        name: 'hobby',
+			        selects : ['睡觉','泡妞','打豆豆']
+				},{
+					label: "喜欢我吗?：",
+			        elem: 'input',
+			        type: 'text',
+			        name: 'diy',
+			        validator:  {
+			        	count: true,
+			        	suki: true
+			        },    
+			        messages: {
+			        	count : "请输入两个中文",
+			        	suki: "请输入正确文字",
+			        	default: "输入不合法"
+			        },
+			        diy: {
+			        	count: /^[\u4e00-\u9fa5]{2}$/,
+			        	suki: /^喜欢$/
+			        }
+				}]);
+
+		function saveIt(event){
+			event.preventDefault();
+
+			if(!submitVal(formCtrl)){       //submitVal(formCtrl) 表单验证事件
+				alert("请正确填写后提交!");
+				return false;
+			}
+			//ajax
+			alert("提交成功");
+		}
+	</script>
+</body>
+</html>

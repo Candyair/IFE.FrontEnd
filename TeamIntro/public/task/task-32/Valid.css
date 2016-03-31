@@ -1,0 +1,63 @@
+		.Valid-text,.Valid-password,.Valid-radio,.Valid-checkbox {
+			margin:0;
+			width: 500px;
+			position: relative;
+			font-family: "微软雅黑";
+		}
+		.Valid-text input,.Valid-password input {
+			margin: 10px 0;
+			padding: 8px 10px;
+			border-radius: 5px;
+			outline: none;
+			box-shadow: none;
+			border: 2px solid #555;
+			color: #333;
+			width:170px;
+		}
+		.Valid-text input:focus,.Valid-password input:focus {
+			border: 2px solid #3498DB;
+		}
+		.Valid-text label,.Valid-password label {
+			margin: 0;
+			padding: 5px;
+			display: inline-block;
+			width: 100px;
+			text-align: right;
+			color: #333;
+			font-weight: bold;
+		}
+		.Valid-text span,.Valid-password span,.Valid-radio span,.Valid-checkbox span {
+			height:100%;
+			width: 500px;
+			color: #A94442;
+			font-weight: bold;
+			font-size: 12px;
+			border-radius: 5px;
+			position: absolute;
+			margin-left: 5px;
+		}
+		.Valid-text span::before,.Valid-password span::before,.Valid-radio span::before,.Valid-checkbox span::before {
+			content: '';
+			display: inline-block;
+			width: 0;
+			height: 100%;
+			vertical-align: middle;
+		}
+		.Valid-radio,.Valid-checkbox {
+			margin:10px 0;
+		}
+		.Valid-radio label,.Valid-checkbox label {
+			margin: 0;
+			padding: 5px;
+			display: inline-block;
+			text-align: right;
+			color: #333;
+			font-weight: bold;
+		}
+		.Valid-radio input,.Valid-checkbox input {
+			margin: 0 20px 0 0;
+		}
+		.Valid-radio label:first-child,.Valid-checkbox label:first-child {
+			width:100px;
+		}
+		
