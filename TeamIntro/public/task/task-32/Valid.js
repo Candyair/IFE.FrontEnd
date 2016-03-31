@@ -35,6 +35,20 @@
 					that.group.appendChild(that.elem);
 				}
 			}
+			else if(config.elem === 'select'){
+				that.elem = d.createElement(config.elem);
+				for(var i=0;i<config.selects.length;i++){					
+					that.label = d.createElement("option");
+					that.label.innerHTML = config.selects[i];
+					that.elem.setAttribute("name",config.name);
+					that.elem.appendChild(that.label);		
+				}
+				that.label = d.createElement("LABEL");
+				that.label.innerHTML = config.label;
+				that.group.appendChild(that.label);
+				that.group.appendChild(that.elem);
+				that.group.className = "Valid-" + config.elem;
+			}
 			else {
 				that.elem = d.createElement(config.elem);
 				that.elem.setAttribute("type",config.type);
