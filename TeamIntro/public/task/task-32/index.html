@@ -5,10 +5,13 @@
 	<title>task-32</title>
 	<link rel="stylesheet" href="Valid.css">
 	<style>
-		#form1 {
+		form {
 			padding: 30px;
+			margin: 30px;
+			display: inline-block;
+			border:3px #666 solid;
 		}
-		#form1>input {
+		form>input {
 			padding: 10px 80px;
 			color: #FFF;
 			margin: 0;
@@ -17,24 +20,27 @@
 			margin: 20px 0 0 80px;
 			outline: none;
 		}
-		#form1>input[type=submit] {
+		form>input[type=submit] {
 			background-color: #2ECC71;
 		}
-		#form1>input[type=submit]:hover {
+		form>input[type=submit]:hover {
 			background-color: #27AE60;
 		}
 	</style>
 </head>
 <body>
-	<form id="form1" onsubmit="saveIt(event);">
-		<div id="form-control">
-			
-		</div>
-		<input type="submit" id="submit-btn" value="提交"/>
+	<form id="form1" onsubmit="saveIt1(event);">
+		<div id="form1-control"></div>
+		<input type="submit" value="提交"/>
+	</form>
+
+	<form id="form2" onsubmit="saveIt2(event);">
+		<div id="form2-control"></div>
+		<input type="submit" value="提交"/>
 	</form>
 	<script src="Valid.js"></script>
 	<script>
-var formAll =	valConfig("form-control",[{
+var formAll1 = valConfig("form1-control",[{
 					label: '用户名：',
 			        elem: 'input',
 			        type: 'text',
@@ -123,10 +129,88 @@ var formAll =	valConfig("form-control",[{
 			        }
 				}]);
 
-		function saveIt(event){
+var formAll2 = valConfig("form2-control",[{
+					label: '账号：',
+			        elem: 'input',
+			        type: 'text',
+			        placeholder: "输入账号..",
+			        validator:  {                     // 表单验证规则
+			        	required: true,
+			        	account: true,
+			        	maxHeight: 16,
+			        	minHeight: 4
+			        },    
+			        messages: {						  //验证失败对应提示
+			        	required : "请输入名称",
+			        	minHeight : "不能少于4个字符",
+			        	maxHeight : "不能超过16个字符",
+			        	default: "只能由字母开头，由字母数字下划线组成"         //默认提示 (可省略，默认为输入不合法)
+			        }
+				},{
+					label: '密码：',
+			        elem: 'input',
+			        type: 'password',
+			        placeholder: "输入密码..",
+			        validator:  {
+			        	required: true,
+			        	maxHeight: 16,
+			        	minHeight: 6
+			        },
+			        messages: {
+			        	required : "请输入密码",
+			        	minHeight : "不能少于6个字符",
+			        	maxHeight : "不能超过16个字符"
+			        }    // 填写规则提示
+				},{
+					label: "邮箱：",
+			        elem: 'input',
+			        type: 'text',
+			        placeholder: "输入邮箱..",
+			        validator:  {
+			        	email: true
+			        },
+			        messages: {
+			        	email: "请正确输入邮箱格式"
+			        }
+				},{
+					label: "QQ：",
+			        elem: 'input',
+			        type: 'text',
+			        placeholder: "输入QQ..",
+			        validator:  {
+			        	qq: true
+			        },
+			        messages: {
+			        	qq: "请正确输入QQ格式"
+			        }
+				},{
+					label: "手机：",
+			        elem: 'input',
+			        type: 'text',
+			        placeholder: "输入手机号码..",
+			        validator:  {
+			        	mobliephone: true
+			        },
+			        messages: {
+			        	mobliephone: "请正确输入手机号码"
+			        }
+				}]);
+
+		function saveIt1(event){
 			event.preventDefault();
 
-			if(!submitVal(formAll)){       //submitVal(formCtrl) 表单验证事件
+			if(!submitVal(formAll1)){       //submitVal(formCtrl) 表单验证事件
+				alert("请正确填写后提交!");
+				return false;
+			}
+			//ajax
+			alert("提交成功");
+		}
+
+		function saveIt2(event){
+			event.preventDefault();
+
+			if(!submitVal(formAll2)){       //submitVal(formCtrl) 表单验证事件
 				alert("请正确填写后提交!");
 				return false;
 			}

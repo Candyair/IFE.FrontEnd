@@ -1,5 +1,5 @@
 ;(function(w,d,undefined){
-	var vAll = [];
+	var vAll = {};
 	var Valid = function(container,config){
 		var that = this;
 		this.container = container;
@@ -151,6 +151,13 @@
 						}
 						break;
 					}
+					case "mobliephone": {
+						var reg = /^(13[0-9]|15[0|1|3|6|7|8|9]|18[8|9])\d{8}$/;   //匹配手机号码
+						if(!reg.test(value)){
+							isPass = false;
+						}
+						break;
+					}
 					case "qq": {
 						var reg = /[1-9][0-9]{4,}/;   //匹配QQ帐号是否合法 
 						if(!reg.test(value)){
@@ -227,21 +234,22 @@
 
 	//插件入口
 	function valConfig(id,config){
+		vAll[id] = [];
 		var container = d.getElementById(id);
 		if(Object.prototype.toString.call(config) === "[object Array]"){
 			for(var i=0;i<config.length;i++){
 				var v = new Valid(container,config[i]);
-				vAll.push(v);
+				vAll[id].push(v);
 				v.init();
 			}
 		}
 		else {
 			var v = new Valid(container,config);
-			vAll.push(v);
+			vAll[id].push(v);
 			v.init();
 		}
 
-		return vAll;
+		return vAll[id];
 	};
 
 	//得到字符串长度
