@@ -1,0 +1,36 @@
+	*{
+		margin: 0 ;
+		padding: 0;
+	}
+	div:not(#Container){
+		width: 30px;
+		height: 30px;
+		outline:0.2px solid;
+		float: left;
+	}
+	#Container{
+		width:300px;
+		height: 300px;
+		margin: 0 auto;
+		top:100px;
+		position: relative;
+	}
+	#block{
+		display: block;
+		width: 30px;
+		height: 30px;
+		background: red;
+	}
+	#block{
+		position: absolute;
+
+	}
+	input[type='text']{
+		font-size: 20px;
+	}
+	#head{
+		position: absolute;
+		width: 100%;
+		height: 10px;
+		background: blue;
+	}

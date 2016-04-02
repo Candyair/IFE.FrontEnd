@@ -2,81 +2,59 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>task-32</title>
-	<link rel="stylesheet" href="Valid.css">
+	<title>FormFactory.js</title>
+	<link rel="stylesheet" href="css/FormFactory.css">
 	<style>
 		form {
 			padding: 30px;
 			margin: 30px;
 			display: inline-block;
-			border:3px #666 solid;
-		}
-		form>input {
-			padding: 10px 80px;
-			color: #FFF;
-			margin: 0;
-			border:none;
-			border-radius: 20px;
-			margin: 20px 0 0 80px;
-			outline: none;
-		}
-		form>input[type=submit] {
-			background-color: #2ECC71;
-		}
-		form>input[type=submit]:hover {
-			background-color: #27AE60;
 		}
 	</style>
 </head>
 <body>
 	<form id="form1" onsubmit="saveIt1(event);">
-		<div id="form1-control"></div>
-		<input type="submit" value="提交"/>
 	</form>
 
 	<form id="form2" onsubmit="saveIt2(event);">
-		<div id="form2-control"></div>
-		<input type="submit" value="提交"/>
 	</form>
-	<script src="Valid.js"></script>
+	<script src="js/FormFactory.js"></script>
 	<script>
-var formAll1 = valConfig("form1-control",[{
-					label: '用户名：',
+var formAll1 = FF.init("form1",[{
+					    label: '*用户名：',
 			        elem: 'input',
 			        type: 'text',
 			        placeholder: "输入用户名..",
+			        focus: "必填",
 			        validator:  {                     // 表单验证规则
 			        	required: true,
-			        	username: true,
-			        	maxHeight: 16,
-			        	minHeight: 4
+			        	maxLength: 16,
+			        	minLength: 4
 			        },    
 			        messages: {						  //验证失败对应提示
 			        	required : "请输入名称",
-			        	minHeight : "不能少于4个字符",
-			        	maxHeight : "不能超过16个字符",
-			        	default: "用户名只能由字母数字下划线组成"         //默认提示 (可省略，默认为输入不合法)
-			        },
-			        diy: {
-			        	username: /^[a-z0-9_-]{4,16}$/  //DIY验证
+			        	minLength : "不能少于4个字符",
+			        	maxLength : "不能超过16个字符",
+			        	default: "输入不合法"         //默认提示 (可省略，默认为输入不合法)
 			        }
 				},{
-					label: '密码：',
+					    label: '*密码：',
 			        elem: 'input',
 			        type: 'password',
 			        placeholder: "输入密码..",
+			        focus: "必填",
 			        validator:  {
 			        	required: true,
-			        	maxHeight: 16,
-			        	minHeight: 6
+			        	maxLength: 16,
+			        	minLength: 6
 			        },
 			        messages: {
 			        	required : "请输入密码",
-			        	minHeight : "不能少于6个字符",
-			        	maxHeight : "不能超过16个字符"
+			        	minLength : "不能少于6个字符",
+			        	maxLength : "不能超过16个字符"
 			        }    // 填写规则提示
 				},{
-					label: "邮箱：",
+					    label: "邮箱：",
 			        elem: 'input',
 			        type: 'text',
 			        placeholder: "输入邮箱..",
@@ -87,7 +65,7 @@ var formAll1 = valConfig("form1-control",[{
 			        	email: "请正确书写邮箱格式"
 			        }
 				},{
-					label: "性别：",
+					    label: "*性别：",
 			        elem: 'input',
 			        type: 'radio',
 			        name: 'sex',
@@ -99,18 +77,18 @@ var formAll1 = valConfig("form1-control",[{
 			        	required : "必选"
 			        }
 				},{
-					label: "爱好：",
+					    label: "爱好：",
 			        elem: 'input',
 			        type: 'checkbox',
 			        name: 'hobby',
 			        selects : ['睡觉','泡妞','打豆豆']
 				},{
-					label: "性取向：",
+					    label: "*性取向：",
 			        elem: 'select',
 			        selects : ['男','女','双性人','非人类'],
 			        name: 'sexualOrientation'
 				},{
-					label: "喜欢我吗?：",
+					    label: "喜欢我吗?：",
 			        elem: 'input',
 			        type: 'text',
 			        name: 'diy',
@@ -127,56 +105,61 @@ var formAll1 = valConfig("form1-control",[{
 			        	count: /^[\u4e00-\u9fa5]{2}$/,
 			        	suki: /^喜欢$/
 			        }
-				}]);
+				}],"","重置");
 
-var formAll2 = valConfig("form2-control",[{
-					label: '账号：',
+var formAll2 = FF.init("form2",[{
+					label: '*Username：',
 			        elem: 'input',
 			        type: 'text',
-			        placeholder: "输入账号..",
+			        focus: "只能由字母开头，由字母数字下划线组成",
+			        placeholder: "账号",
 			        validator:  {                     // 表单验证规则
 			        	required: true,
 			        	account: true,
-			        	maxHeight: 16,
-			        	minHeight: 4
+			        	maxLength: 16,
+			        	minLength: 4
 			        },    
 			        messages: {						  //验证失败对应提示
 			        	required : "请输入名称",
-			        	minHeight : "不能少于4个字符",
-			        	maxHeight : "不能超过16个字符",
+			        	minLength : "不能少于4个字符",
+			        	maxLength : "不能超过16个字符",
 			        	default: "只能由字母开头，由字母数字下划线组成"         //默认提示 (可省略，默认为输入不合法)
 			        }
 				},{
-					label: '密码：',
+					label: '*Password：',
 			        elem: 'input',
 			        type: 'password',
-			        placeholder: "输入密码..",
+			        focus: "请输入大于6个字符,并小于16个字符",
+			        placeholder: "密码",
 			        validator:  {
 			        	required: true,
-			        	maxHeight: 16,
-			        	minHeight: 6
+			        	maxLength: 16,
+			        	minLength: 6
 			        },
 			        messages: {
 			        	required : "请输入密码",
-			        	minHeight : "不能少于6个字符",
-			        	maxHeight : "不能超过16个字符"
+			        	minLength : "不能少于6个字符",
+			        	maxLength : "不能超过16个字符"
 			        }    // 填写规则提示
 				},{
-					label: "邮箱：",
+					label: "*Email：",
 			        elem: 'input',
 			        type: 'text',
-			        placeholder: "输入邮箱..",
+			        focus: "必填",
+			        placeholder: "邮箱",
 			        validator:  {
+			        	required: true,
 			        	email: true
 			        },
 			        messages: {
+			        	required : "请输入邮箱",
 			        	email: "请正确输入邮箱格式"
 			        }
 				},{
 					label: "QQ：",
 			        elem: 'input',
 			        type: 'text',
-			        placeholder: "输入QQ..",
+			        placeholder: "QQ",
 			        validator:  {
 			        	qq: true
 			        },
@@ -184,22 +167,22 @@ var formAll2 = valConfig("form2-control",[{
 			        	qq: "请正确输入QQ格式"
 			        }
 				},{
-					label: "手机：",
+					label: "moblie：",
 			        elem: 'input',
 			        type: 'text',
-			        placeholder: "输入手机号码..",
+			        placeholder: "手机号码",
 			        validator:  {
-			        	mobliephone: true
+			        	moblie: true
 			        },
 			        messages: {
-			        	mobliephone: "请正确输入手机号码"
+			        	moblie: "请正确输入手机号码"
 			        }
-				}]);
+				}],"Submit","reset");
 
 		function saveIt1(event){
 			event.preventDefault();
 
-			if(!submitVal(formAll1)){       //submitVal(formCtrl) 表单验证事件
+			if(!FF.submitVal(formAll1)){       //FF.submitVal(formCtrl) 表单验证事件
 				alert("请正确填写后提交!");
 				return false;
 			}
@@ -210,7 +193,7 @@ var formAll2 = valConfig("form2-control",[{
 		function saveIt2(event){
 			event.preventDefault();
 
-			if(!submitVal(formAll2)){       //submitVal(formCtrl) 表单验证事件
+			if(!FF.submitVal(formAll2)){       //FF.submitVal(formCtrl) 表单验证事件
 				alert("请正确填写后提交!");
 				return false;
 			}
