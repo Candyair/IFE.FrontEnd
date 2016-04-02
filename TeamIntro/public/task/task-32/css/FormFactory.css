@@ -1,0 +1,122 @@
+		div[class^="FormFactory-"],div[class^="FormFactory-"] *{
+			box-sizing: border-box;
+		}
+		.FormFactory-text,.FormFactory-password,.FormFactory-radio,.FormFactory-checkbox,.FormFactory-select {
+			margin:0;
+			position: relative;
+			font-family: "微软雅黑";
+			margin: 10px 0 0 0;
+		}
+		.FormFactory-text input,.FormFactory-password input,.FormFactory-select select {
+			width: 200px;
+			margin: 0;
+			padding: 8px 10px;
+			border-radius: 5px;
+			outline: none;
+			box-shadow: none;
+			border: 2px solid #333;
+			color: #333;
+		}
+		.FormFactory-text label,.FormFactory-password label,.FormFactory-select label {
+			margin: 0;
+			padding: 5px;
+			width:100px;
+			display: inline-block;
+			text-align: right;
+			color: #333;
+			font-weight: bold;
+		}
+		div[class^="FormFactory-"] span {
+			width: 0;
+			height:100%;
+			white-space: pre;
+			font-weight: bold;
+			font-size: 12px;
+			border-radius: 5px;
+			position: absolute;
+			margin-left: 22px;
+		}
+		div[class^="FormFactory-"] span::before {
+			content: '';
+			display: inline-block;
+			width: 0;
+			height: 100%;
+			vertical-align: middle;
+		}
+		.FormFactory-radio,.FormFactory-checkbox {
+			margin:10px 0;
+		}
+		.FormFactory-radio label,.FormFactory-checkbox label {
+			margin: 0;
+			padding: 5px;
+			display: inline-block;
+			text-align: right;
+			color: #333;
+			font-weight: bold;
+		}
+		.FormFactory-radio input,.FormFactory-checkbox input {
+			margin: 0 20px 0 0;
+		}
+		div[class^="FormFactory-"] label:first-child {
+			width:120px;
+		}
+		.FormFactory-submit,.FormFactory-reset {
+			width:100px;
+			height:36px;
+			color: #FFF;
+			margin:20px 35px 0 35px;
+			border:none;
+			border-radius: 20px;
+			outline: none;
+			cursor: pointer;
+		}
+		.FormFactory-submit {
+			background-color: #3498DB;
+		}
+		.FormFactory-submit:hover {
+			background-color: #2980B9;
+		}
+		.FormFactory-reset {
+			background-color: #95A5A6;
+		}
+		.FormFactory-reset:hover {
+			background-color: #7F8C8D;
+		}
+		div[class^="FormFactory-"] input.valid-success {
+			border-color: #27AE60;
+		}
+		div[class^="FormFactory-"] input.valid-error {
+			border-color: #A94442;
+		}
+		div[class^="FormFactory-"] input.valid-focus {
+			border-color: #3498DB;
+		}
+		div[class^="FormFactory-"] input.valid-focus-nocontent {
+			border-color: #3498DB;
+		}
+		div[class^="FormFactory-"] input.valid-success+span::after,div[class^="FormFactory-"] input.valid-error+span::after,div[class^="FormFactory-"] input.valid-focus+span::after {
+			width: 16px;
+			height:16px;
+			position: absolute;
+			top: 50%;
+			left:-19px;
+    		margin-top: -10px;		
+		}
+		div[class^="FormFactory-"] input.valid-success+span::after {
+			content: url(../images/formfactory-right.png);
+		}
+		div[class^="FormFactory-"] input.valid-error+span::after {
+			content: url(../images/formfactory-wrong.png);	
+		}
+		div[class^="FormFactory-"] input.valid-focus+span::after {
+			content: url(../images/formfactory-warning.png);
+		}
+		div[class^="FormFactory-"] input.valid-success+span {
+			color: #27AE60;	
+		}
+		div[class^="FormFactory-"] input.valid-error+span {
+			color: #A94442;	
+		}
+		div[class^="FormFactory-"] input.valid-focus+span {
+			color: #3498DB;	
+		}
