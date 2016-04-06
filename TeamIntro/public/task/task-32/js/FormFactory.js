@@ -252,7 +252,7 @@
 		addSubmit(container,sub);
 
 		if(res){
-			addReset(container,res,vAll[id]);
+			addReset(container,res,container);
 		}
 
 		return vAll[id];
@@ -294,9 +294,9 @@
 	}
 
 	//重置所有验证提示
-	function resetAll(){
-		var error = document.querySelectorAll('.valid-error');
-		var success = document.querySelectorAll('.valid-success');
+	function resetAll(that){
+		var error = that.querySelectorAll('.valid-error');
+		var success = that.querySelectorAll('.valid-success');
 		
 		for(var i=0;i<error.length;i++){
 			error[i].className = '';
