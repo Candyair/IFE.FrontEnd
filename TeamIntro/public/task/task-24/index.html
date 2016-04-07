@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>task24</title>
+	<style type="text/css">
+     .box {
+     	border:1px solid grey;
+     	padding: 10px;
+     	margin: 10px;
+        min-width: 40px;
+        min-height: 30px;
+     	display: inline-block;
+        background-color: white;
+     }
+	</style>
+</head>
+<body>
+    <div id="box" class="box">
+        Super
+    	<div id="box_1" class="box">
+    	    Cat
+    		<div id="box_1_1" class="box">
+    			Apple
+    			<div id="box_1_1_1" class="box">
+    				Peor
+    			</div>
+    			<div id="box_1_1_2" class="box">
+    				Pig
+    			</div>
+    			<div id="box_1_1_3" class="box">
+    				Cata
+    			</div>
+    			<div id="box_1_1_4" class="box">
+    				Soccer
+    			</div>
+    		</div>
+    		<div id="box_1_2" class="box">
+    			Phone
+    		</div>
+    		<div id="box_1_2" class="box">
+    			<div id="box_1_2_1" class="box">
+    				Book
+    			</div>
+    			<div id="box_1_2_2" class="box">
+    				School
+    			</div>
+    		</div>
+    	</div>
+    	<div id="box_2" class="box">
+    		Note
+    		<div id="box_2_1" class="box">
+    			Human
+    			<div id="box_2_1_1" class="box">
+    				Code
+    			</div>
+    			<div id="box_2_1_2" class="box">
+    				Operate
+    			</div>
+                <div id="box_2_1_3" class="box">
+    				Man
+    			</div>
+    		</div>
+    		<div id="box_2_2" class="box">
+    			Program
+    			<div id="box_2_2_1" class="box">
+    				Bement
+    				<div id="box_2_2_1_1" class="box">
+    				Cat
+    				</div>
+    			</div>
+    			<div id="box_2_2_2" class="box">
+    				Gots
+    			</div>
+        	</div>
+    	</div>
+    	<div id="box_3" class="box">
+    		Fish
+    	</div>
+    </div>
+    <br>
+    <br>
+    <input type="text" id="inputSear">
+    <button id="btnDfs">深度优先搜索</button>
+    <button id="btnBfs">广度优先搜索</button>
+    <button id="btnDel">删除</button>
+    <button id="btnAdd">增加</button>
+    <script type="text/javascript">
+    	var oBox=document.getElementById('box');
+    	var oInputSear=document.getElementById('inputSear');
+    	var oBtnDfs=document.getElementById('btnDfs');
+    	var oBtnBfs=document.getElementById('btnBfs');
+        var oBtnDel=document.getElementById('btnDel');
+        var oBtnAdd=document.getElementById('btnAdd');
+    	//var children=oBox.childNodes;
+    	//console.log(children[0].data);
+    	//console.log(children.length,children[8]);
+    	//console.log(oBox.firstChild,"*",oBox.firstChild.nextSibling,'**',oBox.firstChild.nextSibling.nextSibling);
+    	var arr=[],oSelObj;
+    	//去除文本节点和输入的内容的空格
+        //事件处理
+        var EventUtil={
+            addEventListener:function(element,type,handle){
+               if(element.addEventListener){
+                element.addEventListener(type,handle,false);
+               }else if(element.attachEvent){
+                element.attachEvent('on'+type,handle);
+               }else{
+                element['on'+type]=handle;
+               }
+            },
+            removeEventListener:function(element,type,handle){
+                if(element.removeEventListener){
+                    element.removeEventListener(type,handle,false);
+                }else if(element.detachEvent){
+                    element.detachEvent('on'+type,handle);
+                }else{
+                    element['on'+type]=handle;
+                }
+            },
+            getTarget:function(event){
+               return event.getSrcElement||event.target; 
+            },
+            stopPropagation:function(event){
+                if(event.stopPropagation){
+                    event.stopPropagation();
+                }else{
+                    event.cancelBubble=true;
+                }
+            }
+        }//EventUtil
+        function trim(str){
+           return str.replace(/\s+/g,'');
+        }
+       // console.log(trim("d 5 6  "));
+       function reset(){
+        	for(var i=0;i<arr.length;i++){
+            arr[i].parentNode.style.backgroundColor="white";
+       	}
+       	 arr=[];
+       }
+        function render(val){
+           var i=0,len=arr.length,flag=0;//flag为0表示没有找到，为1表示找到了
+           var timer=setInterval(function(){
+             	 if(i==len){
+           	   	 if(arr[i-1].parentNode.style.backgroundColor!="red"){
+           	   	   arr[i-1].parentNode.style.backgroundColor="white";
+           	   	 }
+           	   	 clearInterval(timer);
+           	   	 if(flag==0){
+           	       alert("sorry!");
+                         }
+           	   }else{
+                 arr[i].parentNode.style.backgroundColor="green";
+                 if(val==trim(arr[i].data)){
+                 	flag=1;
+                 	arr[i].parentNode.style.backgroundColor="red";
+                 }
+                 if(i!=0&&arr[i-1].parentNode.style.backgroundColor!="red"){
+                    arr[i-1].parentNode.style.backgroundColor="white";
+                    }
+               }//if-else
+               i++;
+           },500);
+        }
+        //深度优先搜索,将所有的节点添加到arr中去
+        function dfs(curNode){
+           if(curNode==null) return;
+           var children=curNode.childNodes; 
+           for(var i=0;i<children.length;i++){
+                if(children[i].nodeType==3&&trim(children[i].data)!=''){
+                     arr.push(children[i]);
+                }else if(children[i].nodeType==1){
+                     dfs(children[i]);
+                }//if
+           }//for
+        }        
+        //广度优先搜索,同样将所有的节点添加到arr中去
+        function bfs(curNode){
+        	var que=[],deNode;
+        	if(curNode!=null) que.push(curNode);
+        	deNode=que.shift();
+        	while(deNode!=null){
+               if(deNode.nodeType==3&&trim(deNode.data)!=''){
+                    arr.push(deNode);
+               }
+               var children=deNode.childNodes
+               for(var i=0;i<children.length;i++){
+               	   que.push(children[i]);
+               }
+               deNode=que.shift();
+        	}//while       	
+        }//bfs
+        function sel(event){
+           reset();
+           dfs(oBox);
+           var event=event||window.event;
+           var target=EventUtil.getTarget(event);
+           target.style.backgroundColor="blue";   
+           oSelObj=target;       
+        }//sel
+        //var oo=1;
+       function del(){
+            if(oSelObj!=undefined){
+                oSelObj.parentNode.removeChild(oSelObj);
+            }            
+        }//del
+        function add(){ 
+             if(oSelObj!=undefined){
+                var value=trim(oInputSear.value);
+                var oDiv=document.createElement('div');
+                oDiv.innerHTML=value;
+                oDiv.className='box';
+                oSelObj.style.backgroundColor="white";
+                oSelObj.appendChild(oDiv);  
+             }                   
+        }//add
+        oBtnDfs.onclick=function(){
+        	var value=trim(oInputSear.value);
+        	reset();
+        	dfs(oBox);
+        	render(value);
+        }
+        oBtnBfs.onclick=function(){
+        	var value=trim(oInputSear.value);
+        	reset();
+        	bfs(oBox);
+        	render(value);
+        }
+        EventUtil.addEventListener(oBox,'click',sel);
+        EventUtil.addEventListener(oBtnDel,'click',del);
+        EventUtil.addEventListener(oBtnAdd,'click',add);
+    </script>
+</body>
+</html>
