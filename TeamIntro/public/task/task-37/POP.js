@@ -10,7 +10,7 @@
 		//初始化弹窗
 		init: function() {
 			var that = this;
-			this.warp = d.createElement('DIV'),
+			this.wrap = d.createElement('DIV'),
 			this.fade = d.createElement('DIV'),
 			this.model = d.createElement('DIV'),
 			this.title = d.createElement('DIV'),
@@ -19,7 +19,7 @@
 			this.confirmBtn = d.createElement("BUTTON"),
 			this.closeBtn = d.createElement("BUTTON");
 
-			this.warp.className = 'POP-wrap';
+			this.wrap.className = 'POP-wrap';
 			this.fade.className = 'POP-fade';
 			this.model.className = 'POP-model';
 			this.title.className = 'POP-title';
@@ -34,8 +34,8 @@
 			this.model.appendChild(this.footer);
 			this.footer.appendChild(this.closeBtn);
 			this.footer.appendChild(this.confirmBtn);
-			this.warp.appendChild(this.fade);
-			this.warp.appendChild(this.model);
+			this.wrap.appendChild(this.fade);
+			this.wrap.appendChild(this.model);
 			//遮罩层绑定事件
 			this.fade.addEventListener('click', fadeFn = function(){that.close(that,undefined,true)});
 			//键盘绑定事件
@@ -51,7 +51,7 @@
 					that.close(that, zzz);
 				}
 			})
-			d.getElementsByTagName('BODY')[0].appendChild(this.warp);
+			d.getElementsByTagName('BODY')[0].appendChild(this.wrap);
 		},
 		//第二个参数设置
 		option: function() {
@@ -106,7 +106,7 @@
 		},
 		//关闭弹窗 (that为原对象指针, msg为回调参数, flag为是否不执行回调 )
 		close: function(that, msg, flag) {
-			d.getElementsByTagName('BODY')[0].removeChild(that.warp);
+			d.getElementsByTagName('BODY')[0].removeChild(that.wrap);
 
 			//清除绑定事件
 			this.fade.removeEventListener("click", fadeFn , false);
