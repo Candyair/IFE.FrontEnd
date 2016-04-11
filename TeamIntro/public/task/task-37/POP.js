@@ -1,12 +1,13 @@
-;
-(function(w, d, undefined) {
+;(function(w, d, undefined) {
 	var unique,fadeFn,wFn,btn1Fn,btn2Fn;
+
 	var Layer = function(txt, config) {
 		this.txt = txt;
 		this.config = config;
 	}
 
 	Layer.prototype = {
+		//初始化弹窗
 		init: function() {
 			var that = this;
 			this.warp = d.createElement('DIV'),
@@ -35,7 +36,9 @@
 			this.footer.appendChild(this.confirmBtn);
 			this.warp.appendChild(this.fade);
 			this.warp.appendChild(this.model);
+			//遮罩层绑定事件
 			this.fade.addEventListener('click', fadeFn = function(){that.close(that,undefined,true)});
+			//键盘绑定事件
 			w.addEventListener('keydown', wFn = function(event){
 				var code = event.keyCode;
 				if(code === 27){
@@ -50,6 +53,7 @@
 			})
 			d.getElementsByTagName('BODY')[0].appendChild(this.warp);
 		},
+		//第二个参数设置
 		option: function() {
 			if(typeof this.config === 'string'){
 				this.setTheme(this.config);
@@ -70,6 +74,7 @@
 				this.setTheme();
 			}
 		},
+		//alert方法
 		alert: function() {
 			var that = this;
 			this.init();
@@ -78,6 +83,7 @@
 			this.footer.removeChild(this.closeBtn);
 			this.confirmBtn.addEventListener('click', btn2Fn = function(){that.close(that)});
 		},
+		//confirm方法
 		confirm: function() {
 			var that = this;
 			this.init();
@@ -86,6 +92,7 @@
 			this.closeBtn.addEventListener('click', btn1Fn = function(){that.close(that,false)});
 			this.confirmBtn.addEventListener('click', btn2Fn = function(){that.close(that,true)});
 		},
+		//prompt方法
 		prompt: function() {
 			var that = this;
 			this.init();
@@ -94,15 +101,20 @@
 			this.input = d.createElement('INPUT');
 			this.input.type = 'text';
 			this.content.appendChild(this.input);
-			this.closeBtn.addEventListener('click', btn1Fn = function(){that.close(that)});
+			this.closeBtn.addEventListener('click', btn1Fn = function(){that.close(that,undefined,true)});
 			this.confirmBtn.addEventListener('click', btn2Fn = function(){that.close(that,that.input.value)});
 		},
+		//关闭弹窗 (that为原对象指针, msg为回调参数, flag为是否不执行回调 )
 		close: function(that, msg, flag) {
 			d.getElementsByTagName('BODY')[0].removeChild(that.warp);
+
+			//清除绑定事件
 			this.fade.removeEventListener("click", fadeFn , false);
 			w.removeEventListener("keydown", wFn , false);
 			this.closeBtn.removeEventListener("click", btn1Fn , false);
 			this.confirmBtn.removeEventListener("click", btn2Fn , false);
+
+			//是否执行回调
 			if(that.callback && !flag){
 				if(msg !== undefined){
 					that.callback(msg);
@@ -111,11 +123,11 @@
 					that.callback();
 				}
 			}
+			//单例标识关闭
 			unique = undefined;
 			
 		},
-		setContent: function(){
-		},
+		//设置主题
 		setTheme: function(type) {
 			switch (type) {
 				case "success":
@@ -165,8 +177,8 @@
 				layer.prompt();
 			}
 		},
-		single: (function() {
-			return function getInstance(txt, config) {
+		//单例模式
+		single: function(txt, config) {
 				if (unique === undefined) {
 					unique = new Layer(txt, config);
 					return unique;
@@ -175,7 +187,6 @@
 					return false;
 				}				
 			}
-		})()
 	}
 
 	window["POP"] = POP;
