@@ -1,10 +1,9 @@
 ;
 (function(w, d, undefined) {
 	var unique,fadeFn,wFn,btn1Fn,btn2Fn;
-	var Layer = function(txt, config, titleTxt) {
+	var Layer = function(txt, config) {
 		this.txt = txt;
 		this.config = config;
-		this.titleTxt = titleTxt;
 	}
 
 	Layer.prototype = {
@@ -36,20 +35,45 @@
 			this.footer.appendChild(this.confirmBtn);
 			this.warp.appendChild(this.fade);
 			this.warp.appendChild(this.model);
-			this.fade.addEventListener('click', fadeFn = function(){that.close(that)});
+			this.fade.addEventListener('click', fadeFn = function(){that.close(that,undefined,true)});
 			w.addEventListener('keydown', wFn = function(event){
 				var code = event.keyCode;
-				if(code === 27 || code === 13){
+				if(code === 27){
 					event.preventDefault();
-					that.close(that);
+					that.close(that,undefined,true);
+				}
+				else if(code === 13){
+					event.preventDefault();
+					var zzz = that.input ? that.input.value : true;
+					that.close(that, zzz);
 				}
 			})
 			d.getElementsByTagName('BODY')[0].appendChild(this.warp);
 		},
+		option: function() {
+			if(typeof this.config === 'string'){
+				this.setTheme(this.config);
+			}
+			else if(typeof this.config === 'function'){
+				this.setTheme();
+				this.callback = this.config;
+			}
+			else if(typeof this.config === 'object'){
+				var type = this.config.type ? this.config.type : 'default';
+				this.setTheme(type);
+				if(this.config.title){
+					this.title.innerHTML = this.config.title;
+				}
+				this.callback = this.config.callback;
+			}
+			else {
+				this.setTheme();
+			}
+		},
 		alert: function() {
 			var that = this;
 			this.init();
-			this.setTheme(this.config);
+			this.option(this.config);
 			this.content.innerHTML = this.txt;
 			this.footer.removeChild(this.closeBtn);
 			this.confirmBtn.addEventListener('click', btn2Fn = function(){that.close(that)});
@@ -57,7 +81,7 @@
 		confirm: function() {
 			var that = this;
 			this.init();
-			this.setTheme(this.config);
+			this.option(this.config);
 			this.content.innerHTML = this.txt;
 			this.closeBtn.addEventListener('click', btn1Fn = function(){that.close(that,false)});
 			this.confirmBtn.addEventListener('click', btn2Fn = function(){that.close(that,true)});
@@ -65,7 +89,7 @@
 		prompt: function() {
 			var that = this;
 			this.init();
-			this.setTheme(this.config);
+			this.option(this.config);
 			this.title.innerHTML = this.txt;
 			this.input = d.createElement('INPUT');
 			this.input.type = 'text';
@@ -73,16 +97,24 @@
 			this.closeBtn.addEventListener('click', btn1Fn = function(){that.close(that)});
 			this.confirmBtn.addEventListener('click', btn2Fn = function(){that.close(that,that.input.value)});
 		},
-		close: function(that, msg) {
+		close: function(that, msg, flag) {
 			d.getElementsByTagName('BODY')[0].removeChild(that.warp);
 			this.fade.removeEventListener("click", fadeFn , false);
 			w.removeEventListener("keydown", wFn , false);
 			this.closeBtn.removeEventListener("click", btn1Fn , false);
 			this.confirmBtn.removeEventListener("click", btn2Fn , false);
-			unique = undefined;
-			if(msg !== undefined){
-				return msg;
+			if(that.callback && !flag){
+				if(msg !== undefined){
+					that.callback(msg);
+				}
+				else {
+					that.callback();
+				}
 			}
+			unique = undefined;
+			
+		},
+		setContent: function(){
 		},
 		setTheme: function(type) {
 			switch (type) {
@@ -111,35 +143,32 @@
 						break;
 					}
 			}
-			if(this.titleTxt){
-				this.title.innerHTML = this.titleTxt;
-			}
 		}
 	}
 	//  插件入口对象
 	var POP = {
-		alert: function(txt, config, titleTxt) {
-			var layer = this.single(txt, config, titleTxt);
+		alert: function(txt, config) {
+			var layer = this.single(txt, config);
 			if(layer){
 				layer.alert();
 			}
 		},
-		confirm: function(txt, config, titleTxt) {
-			var layer = this.single(txt, config, titleTxt);
+		confirm: function(txt, config) {
+			var layer = this.single(txt, config);
 			if(layer){
 				layer.confirm();
 			}
 		},
-		prompt: function(txt, config, titleTxt) {
-			var layer = this.single(txt, config, titleTxt);
+		prompt: function(txt, config) {
+			var layer = this.single(txt, config);
 			if(layer){
 				layer.prompt();
 			}
 		},
 		single: (function() {
-			return function getInstance(txt, config, titleTxt) {
+			return function getInstance(txt, config) {
 				if (unique === undefined) {
-					unique = new Layer(txt, config, titleTxt);
+					unique = new Layer(txt, config);
 					return unique;
 				}
 				else {

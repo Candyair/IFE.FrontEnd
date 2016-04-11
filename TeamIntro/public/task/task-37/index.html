@@ -30,6 +30,10 @@
 	<label>alert:</label>
 	<button onclick="popAlert5('success','自定义标题2OwO')"> 自定义标题Two~alert </button>
 </div>
+<div class="btn-group">
+	<label>alert:</label>
+	<button onclick="popAlert6()"> 回调函数~alert </button>
+</div>
 
 
 <div class="btn-group">
@@ -55,13 +59,21 @@
 		POP.alert("失败alert",type);
 	}
 	function popAlert5(type,msg){
-		POP.alert("自定义alert",type,msg);
+		POP.alert("自定义alert",{
+			type: type,
+			title: msg
+		});
+	}
+	function popAlert6(){
+		POP.alert("回调函数",function(){alert("yes")});
 	}
 	function popConfirm(){
-		var boolean = POP.confirm("确认关闭吗");
+		var boolean = POP.confirm("确认关闭吗",function(boolean){
+			return alert(boolean);
+		});
 	}
 	function popPrompt(){
-		var number = POP.prompt("输入你的手机号");
+		var number = POP.prompt("输入你的手机号",function(value){alert(value)});
 	}
 </script>
 </body>
