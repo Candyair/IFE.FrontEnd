@@ -17,8 +17,9 @@
 	width: 400px;
 	position: relative;
 	top: 50%;
-	transform: translateY(-50%);
-	margin:auto;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	        transform: translate(-50%,-50%);
 	z-index: 10000;
 	border-radius: 8px;
 	border:1px solid rgba(0, 0, 0, 0.2);
@@ -33,6 +34,11 @@
     word-break: break-all;
     color: #FFF;
     font-weight: bold;
+    cursor: move;
+    -webkit-user-select:none;
+       -moz-user-select:none;
+        -ms-user-select:none;
+            user-select:none;
     border-radius: 8px 8px 0 0;
 }
 .POP-wrap .POP-model .POP-content {

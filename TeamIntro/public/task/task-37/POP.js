@@ -1,9 +1,12 @@
 ;(function(w, d, undefined) {
-	var unique,fadeFn,wFn,btn1Fn,btn2Fn;
+	var unique,fadeFn,wFn,mFn,dragFn,drogFn,btn1Fn,btn2Fn;
 
 	var Layer = function(txt, config) {
 		this.txt = txt;
 		this.config = config;
+		this.dragFlag = false;
+		this.startX = 0;
+		this.startY = 0;
 	}
 
 	Layer.prototype = {
@@ -36,8 +39,21 @@
 			this.footer.appendChild(this.confirmBtn);
 			this.wrap.appendChild(this.fade);
 			this.wrap.appendChild(this.model);
+
+			//窗口可拖拽
+			this.title.addEventListener('mousedown', dragFn = function(event){ 
+				that.dragFlag = true;
+				that.startX = event.pageX;
+				that.startY = event.pageY;
+				that.left = parseInt(w.getComputedStyle(that.model , null)['left']);
+				that.top = parseInt(w.getComputedStyle(that.model , null)['top']);
+			});
+			this.title.addEventListener('mouseup', drogFn = function(){ that.dragFlag = false; });
+			this.wrap.addEventListener('mousemove', mFn = function(event){ that.onDrag(event, that); })
+
 			//遮罩层绑定事件
 			this.fade.addEventListener('click', fadeFn = function(){that.close(that,undefined,true)});
+
 			//键盘绑定事件
 			w.addEventListener('keydown', wFn = function(event){
 				var code = event.keyCode;
@@ -109,10 +125,13 @@
 			d.getElementsByTagName('BODY')[0].removeChild(that.wrap);
 
 			//清除绑定事件
-			this.fade.removeEventListener("click", fadeFn , false);
+			this.fade.removeEventListener("click", fadeFn, false);
+			this.title.removeEventListener('mousedown', dragFn, false);
+			this.title.removeEventListener('mouseup', drogFn, false);
+			this.wrap.removeEventListener('mousemove', mFn, false);
 			w.removeEventListener("keydown", wFn , false);
-			this.closeBtn.removeEventListener("click", btn1Fn , false);
-			this.confirmBtn.removeEventListener("click", btn2Fn , false);
+			this.closeBtn.removeEventListener("click", btn1Fn, false);
+			this.confirmBtn.removeEventListener("click", btn2Fn, false);
 
 			//是否执行回调
 			if(that.callback && !flag){
@@ -154,6 +173,12 @@
 						this.title.innerHTML = '弹出框';
 						break;
 					}
+			}
+		},
+		onDrag: function(event, that) {
+			if(that.dragFlag){
+				that.model.style.left = (event.pageX - that.startX + that.left) + 'px';
+				that.model.style.top = (event.pageY - that.startY + that.top) + 'px';
 			}
 		}
 	}
