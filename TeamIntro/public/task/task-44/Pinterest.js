@@ -52,7 +52,7 @@
 		},
 		//增加图片
 		add: function( src ){
-			var img = $("<img src=" + src + " width=" + this.width + "/>");
+			var img = $("<img src=" + src + " style='width:"+ this.width +"px; margin-top:" + this.gap + "px;' />");
 			var index = this.getMinStreams();
 			img.appendTo(this.streams[index]);
 		},

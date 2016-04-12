@@ -20,30 +20,33 @@
 			top: 20px;
 			left: 10px;
 		}
+		img {
+			outline: 1px solid #FFF;
+		}
 	</style>
 </head>
 <body>
 <button onclick="addImg();">增加一张图片</button>
 <div class="wrap">
-	<img src="images/1.jpg" alt="1">
-	<img src="images/2.jpg" alt="2">
-	<img src="images/3.jpg" alt="3">
-	<img src="images/4.jpg" alt="4">
-	<img src="images/5.jpg" alt="5">
-	<img src="images/6.jpg" alt="6">
+	<img src="http://fakeimg.pl/1000x500/?text=1&font=lobster" />
+	<img src="http://fakeimg.pl/1024x800/?text=2&font=lobster" />
+	<img src="http://fakeimg.pl/1366x768/?text=3&font=lobster" />
+	<img src="http://fakeimg.pl/2400x1600/?text=4&font=lobster" />
+	<img src="http://fakeimg.pl/800x600/?text=5&font=lobster" />
+	<img src="http://fakeimg.pl/1000x500/?text=6&font=lobster" />
 </div>
 <script src="jquery-1.12.0.min.js"></script>
 <script src="Pinterest.js"></script>
 <script>
 $('.wrap').pinterest({
 	line: 5,
-	gap: 5
+	gap: 20
 });
 
 function addImg(){
 	var current_count = $('.wrap img').length;
 	if(current_count < 32){
-		$('.wrap').pinterest('add','images/' + (++current_count) + '.jpg');
+		$('.wrap').pinterest('add','http://fakeimg.pl/' + (Math.ceil(Math.random()*10+5)*100) + 'x' + (Math.ceil(Math.random()*10+5)*100) + '/?text=' + (++current_count) + '&font=lobster');
 	}	
 }
 </script>
