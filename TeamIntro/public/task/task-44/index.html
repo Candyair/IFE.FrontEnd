@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+	<meta charset="UTF-8">
+	<title>Task-44</title>
+	<style>
+		.wrap {
+			width: 1200px;
+			min-height: 600px;
+			background-color: #CCC;
+			margin:10px auto;
+		}
+		button {
+			border: none;
+			background-color: #3498DB;
+			color:#FFF;
+			padding: 8px;
+			position: fixed;
+			cursor: pointer;
+			border-radius: 8px;
+			top: 20px;
+			left: 10px;
+		}
+	</style>
+</head>
+<body>
+<button onclick="addImg();">增加一张图片</button>
+<div class="wrap">
+	<img src="images/1.jpg" alt="1">
+	<img src="images/2.jpg" alt="2">
+	<img src="images/3.jpg" alt="3">
+	<img src="images/4.jpg" alt="4">
+	<img src="images/5.jpg" alt="5">
+	<img src="images/6.jpg" alt="6">
+</div>
+<script src="jquery-1.12.0.min.js"></script>
+<script src="Pinterest.js"></script>
+<script>
+$(function(){
+	$('.wrap').pinterest({
+		line: 5,
+		gap: 5
+	});
+});
+
+function addImg(){
+	var current_count = $('.wrap img').length;
+	if(current_count < 32){
+		$('.wrap').pinterest('add','images/' + (++current_count) + '.jpg');
+	}	
+}
+</script>
+</body>
+</html>
