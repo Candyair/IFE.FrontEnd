@@ -41,9 +41,7 @@
 				that.streams.push($("<div class='pinterest-stream' style='width:"+ that.width +"px; margin-left:" + that.gap + "px; margin-bottom:" + that.gap + "px; display:inline-block; vertical-align: top'></div>"));
 				that.streams[i].appendTo(that.$elem);
 			}
-			that.$imgs.css({
-				"margin-top" : that.gap + 'px'
-			})
+			that.$imgs.css("margin-top", that.gap + 'px')
 			$.each(that.$imgs, function(i, v){
 				that.$imgs.eq(i).width(that.width);
 				var index = that.getMinStreams();
@@ -53,14 +51,16 @@
 		//增加图片
 		add: function( src ){
 			var img = $("<img src=" + src + " style='width:"+ this.width +"px; margin-top:" + this.gap + "px;' />");
+			this.$imgs.push(img[0]);
 			var index = this.getMinStreams();
 			img.appendTo(this.streams[index]);
 		},
 		//移除图片
 		remove: function( index ){
+			index = parseInt(index);
 			if( index === undefined ){ this.$elem.children().remove(); return false; }
-			var i = index < 0 ? index + this.$imgs.length : index;
-			this.$imgs.get(i).remove();
+			var i = index < 0 ? (index + this.$imgs.length) : index;		
+			this.$imgs.eq(i-1).remove();		
 		},
 		//全屏显示图片
 		fullScreen: function(){

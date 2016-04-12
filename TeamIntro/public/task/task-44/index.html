@@ -6,48 +6,71 @@
 	<style>
 		.wrap {
 			width: 1200px;
-			background-color: #CCC;
+			background-color: #eaeaea;
 			margin:10px auto;
+		}
+		.wrap img {
+			outline: 1px solid #666;
 		}
 		button {
 			border: none;
 			background-color: #3498DB;
 			color:#FFF;
 			padding: 8px;
-			position: fixed;
 			cursor: pointer;
 			border-radius: 8px;
+		}
+		button#add {
+			position: fixed;
 			top: 20px;
 			left: 10px;
 		}
-		img {
-			outline: 1px solid #FFF;
+		.change-group {
+			position: fixed;
+			top: 70px;
+		}
+		.change-group input {
+			border: 1px solid #3498DB;
+			background-color: #FFF;
+			color:#3498DB;
+			padding: 8px;
+			cursor: pointer;
+			border-radius: 8px;
 		}
 	</style>
 </head>
 <body>
-<button onclick="addImg();">增加一张图片</button>
+<button onclick="addImg();" id="add">增加一张图片</button>
+<div class="change-group">
+	<input type="text" placeholder="删除图片的序号.." id="num">
+	<button onclick="change()" >删除</button>
+</div>
 <div class="wrap">
-	<img src="http://fakeimg.pl/1000x500/?text=1&font=lobster" />
-	<img src="http://fakeimg.pl/1024x800/?text=2&font=lobster" />
-	<img src="http://fakeimg.pl/1366x768/?text=3&font=lobster" />
-	<img src="http://fakeimg.pl/2400x1600/?text=4&font=lobster" />
-	<img src="http://fakeimg.pl/800x600/?text=5&font=lobster" />
-	<img src="http://fakeimg.pl/1000x500/?text=6&font=lobster" />
+	<img src="http://fakeimg.pl/400x500/?text=1&font=lobster" />
+	<img src="http://fakeimg.pl/800x1200/?text=2&font=lobster" />
+	<img src="http://fakeimg.pl/1366x1024/?text=3&font=lobster" />
+	<img src="http://fakeimg.pl/1200x2400/?text=4&font=lobster" />
+	<img src="http://fakeimg.pl/800x1100/?text=5&font=lobster" />
+	<img src="http://fakeimg.pl/500x800/?text=6&font=lobster" />
+	<img src="http://fakeimg.pl/1200x1400/?text=7&font=lobster" />
+	<img src="http://fakeimg.pl/1000x1800/?text=8&font=lobster" />
 </div>
 <script src="jquery-1.12.0.min.js"></script>
 <script src="Pinterest.js"></script>
 <script>
 $('.wrap').pinterest({
-	line: 5,
-	gap: 20
+	line: 4,
+	gap: 16
 });
+var current_count = $('.wrap img').length;
 
 function addImg(){
-	var current_count = $('.wrap img').length;
-	if(current_count < 32){
-		$('.wrap').pinterest('add','http://fakeimg.pl/' + (Math.ceil(Math.random()*10+5)*100) + 'x' + (Math.ceil(Math.random()*10+5)*100) + '/?text=' + (++current_count) + '&font=lobster');
-	}	
+	$('.wrap').pinterest('add','http://fakeimg.pl/' + (Math.ceil(Math.random()*10+5)*100) + 'x' + (Math.ceil(Math.random()*10+5)*100) + '/?text=' + (++current_count) + '&font=lobster');
+}
+
+function change(){
+	var num = $('#num').val();
+	$('.wrap').pinterest('remove',num);
 }
 </script>
 </body>
