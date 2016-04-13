@@ -22,7 +22,7 @@
 			this.confirmBtn = d.createElement("BUTTON"),
 			this.closeBtn = d.createElement("BUTTON");
 
-			this.wrap.className = 'POP-wrap';
+			this.wrap.className = 'POP-wrap POP-on';
 			this.fade.className = 'POP-fade';
 			this.model.className = 'POP-model';
 			this.title.className = 'POP-title';
@@ -68,6 +68,11 @@
 				}
 			})
 			d.getElementsByTagName('BODY')[0].appendChild(this.wrap);
+
+			//移除POP-on类，出现效果
+			setTimeout(function(){
+				that.wrap.className = 'POP-wrap';	
+			},100)
 		},
 		//第二个参数设置
 		option: function() {
@@ -124,6 +129,9 @@
 		close: function(that, msg, flag) {
 			d.getElementsByTagName('BODY')[0].removeChild(that.wrap);
 
+			//单例标识关闭
+			unique = undefined;
+
 			//清除绑定事件
 			this.fade.removeEventListener("click", fadeFn, false);
 			this.title.removeEventListener('mousedown', dragFn, false);
@@ -141,10 +149,7 @@
 				else {
 					that.callback();
 				}
-			}
-			//单例标识关闭
-			unique = undefined;
-			
+			}	
 		},
 		//设置主题
 		setTheme: function(type) {
