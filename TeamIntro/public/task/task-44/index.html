@@ -89,7 +89,7 @@ var current_count = $('.wrap img').length;
 
 function addImg(){
 	++current_count;
-	if(current_count > 32){
+	if(current_count > 43){
 		$('.wrap').pinterest('add','<img src="http://fakeimg.pl/' + (Math.ceil(Math.random()*10+5)*100) + 'x' + (Math.ceil(Math.random()*10+5)*100) + '/?text=' + current_count + '&font=lobster" data-num=' + current_count + '>');
 	}
 	else {
