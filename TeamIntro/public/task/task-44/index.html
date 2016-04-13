@@ -10,6 +10,7 @@
 			margin:10px auto;
 		}
 		.wrap img {
+			cursor:pointer;
 			outline: 1px solid #666;
 		}
 		button {
@@ -37,41 +38,83 @@
 			cursor: pointer;
 			border-radius: 8px;
 		}
+		#loadingImg {
+			position: absolute;
+			top: 20px;
+			left:50%;
+		}
+		.img-number {
+			position: fixed;
+			display: none;
+			width: 30px;
+			height: 20px;
+			color:#FFF;
+			text-align: center;
+			background-color: rgba(0,0,0,.36);
+		}
 	</style>
 </head>
 <body>
 <button onclick="addImg();" id="add">增加一张图片</button>
 <div class="change-group">
 	<input type="text" placeholder="删除图片的序号.." id="num">
-	<button onclick="change()" >删除</button>
+	<button onclick="DeleteImg()">删除</button>
 </div>
+<img src="iamges/loading.jgp" alt="loading" id="loadingImg">
 <div class="wrap">
-	<img src="http://fakeimg.pl/400x500/?text=1&font=lobster" />
-	<img src="http://fakeimg.pl/800x1200/?text=2&font=lobster" />
-	<img src="http://fakeimg.pl/1366x1024/?text=3&font=lobster" />
-	<img src="http://fakeimg.pl/1200x2400/?text=4&font=lobster" />
-	<img src="http://fakeimg.pl/800x1100/?text=5&font=lobster" />
-	<img src="http://fakeimg.pl/500x800/?text=6&font=lobster" />
-	<img src="http://fakeimg.pl/1200x1400/?text=7&font=lobster" />
-	<img src="http://fakeimg.pl/1000x1800/?text=8&font=lobster" />
+	<img src="images/1.jpg" alt="image" data-num="1">
+	<img src="images/2.jpg" alt="image" data-num="2">
+	<img src="images/3.jpg" alt="image" data-num="3">
+	<img src="images/4.jpg" alt="image" data-num="4">
+	<img src="images/5.jpg" alt="image" data-num="5">
+	<img src="images/6.jpg" alt="image" data-num="6">
+	<img src="images/7.jpg" alt="image" data-num="7">
+	<img src="images/8.jpg" alt="image" data-num="8">
 </div>
+<div class="img-number"></div>
 <script src="js/jquery-1.12.0.min.js"></script>
-<script src="js/Pinterest.js"></script>
+<script src="js/Pinterest.js">123213213</script>
 <script>
-$('.wrap').pinterest({
-	line: 4,
-	gap: 16
-});
+$(window).load(function(){
+	$('#loadingImg').remove();
+	$('.wrap').show();
+	$('.wrap').pinterest({
+		line: 4,
+		gap: 16
+	});
+})
+
 var current_count = $('.wrap img').length;
 
 function addImg(){
-	$('.wrap').pinterest('add','http://fakeimg.pl/' + (Math.ceil(Math.random()*10+5)*100) + 'x' + (Math.ceil(Math.random()*10+5)*100) + '/?text=' + (++current_count) + '&font=lobster');
+	++current_count;
+	if(current_count > 32){
+		$('.wrap').pinterest('add','<img src="http://fakeimg.pl/' + (Math.ceil(Math.random()*10+5)*100) + 'x' + (Math.ceil(Math.random()*10+5)*100) + '/?text=' + current_count + '&font=lobster" data-num=' + current_count + '>');
+	}
+	else {
+		$('.wrap').pinterest('add','<img src="images/' + current_count + '.jpg" data-num=' + current_count + '>');
+	}
 }
 
-function change(){
+function DeleteImg(){
 	var num = $('#num').val();
 	$('.wrap').pinterest('remove',num);
 }
+
+$(document).on('mousemove','.wrap img[data-num]',function(event){
+	var left = event.clientX;
+	var top = event.clientY;
+	$('.img-number').show().text($(this).data('num'))
+	$('.img-number').css({
+		left: parseInt(left) + 5 + 'px',
+		top: parseInt(top) + 5 + 'px'
+	})
+})
+$(document).on('mouseout','.wrap img[data-num]',function(event){
+	$('.img-number').hide();
+})
+
+
 </script>
 </body>
 </html>
