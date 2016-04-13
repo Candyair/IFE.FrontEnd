@@ -12,7 +12,6 @@
 		}
 		.wrap img {
 			cursor:pointer;
-			outline: 1px solid #666;
 		}
 		button {
 			border: none;
@@ -54,6 +53,7 @@
 			background-color: rgba(0,0,0,.36);
 		}
 	</style>
+	<link rel="stylesheet" href="css/Pinterest.css">
 </head>
 <body>
 <button onclick="addImg();" id="add">增加一张图片</button>
@@ -63,18 +63,17 @@
 </div>
 <img src="images/loading.gif" alt="loading" id="loadingImg">
 <div class="wrap">
-	<img src="images/1.jpg" alt="image" data-num="1">
-	<img src="images/2.jpg" alt="image" data-num="2">
-	<img src="images/3.jpg" alt="image" data-num="3">
-	<img src="images/4.jpg" alt="image" data-num="4">
-	<img src="images/5.jpg" alt="image" data-num="5">
-	<img src="images/6.jpg" alt="image" data-num="6">
-	<img src="images/7.jpg" alt="image" data-num="7">
-	<img src="images/8.jpg" alt="image" data-num="8">
+	<img src="images/1.jpg" alt="image" data-title="My Picture·1" data-subtitle="2016/4/13" >
+	<img src="images/2.jpg" alt="image" data-title="My Picture·2" data-subtitle="2016/4/13" >
+	<img src="images/3.jpg" alt="image" data-title="My Picture·3" data-subtitle="2016/4/13" >
+	<img src="images/4.jpg" alt="image" data-title="My Picture·4" data-subtitle="2016/4/13" >
+	<img src="images/5.jpg" alt="image" data-title="My Picture·5" data-subtitle="2016/4/13" >
+	<img src="images/6.jpg" alt="image" data-title="My Picture·6" data-subtitle="2016/4/13" >
+	<img src="images/7.jpg" alt="image" data-title="My Picture·7" data-subtitle="2016/4/13" >
+	<img src="images/8.jpg" alt="image" data-title="My Picture·8" data-subtitle="2016/4/13" >
 </div>
-<div class="img-number"></div>
 <script src="js/jquery-1.12.0.min.js"></script>
-<script src="js/Pinterest.js">123213213</script>
+<script src="js/Pinterest.js"></script>
 <script>
 $(window).load(function(){
 	$('#loadingImg').remove();
@@ -90,10 +89,10 @@ var current_count = $('.wrap img').length;
 function addImg(){
 	++current_count;
 	if(current_count > 43){
-		$('.wrap').pinterest('add','<img src="http://fakeimg.pl/' + (Math.ceil(Math.random()*10+5)*100) + 'x' + (Math.ceil(Math.random()*10+5)*100) + '/?text=' + current_count + '&font=lobster" data-num=' + current_count + '>');
+		alert("图库已经空了Q~Q");
 	}
 	else {
-		$('.wrap').pinterest('add','<img src="images/' + current_count + '.jpg" data-num=' + current_count + '>');
+		$('.wrap').pinterest('add', 'images/' + current_count + '.jpg', "My Picture·" + current_count, '2016/4/13');
 	}
 }
 
@@ -101,21 +100,6 @@ function DeleteImg(){
 	var num = $('#num').val();
 	$('.wrap').pinterest('remove',num);
 }
-
-$(document).on('mousemove','.wrap img[data-num]',function(event){
-	var left = event.clientX;
-	var top = event.clientY;
-	$('.img-number').show().text($(this).data('num'))
-	$('.img-number').css({
-		left: parseInt(left) + 5 + 'px',
-		top: parseInt(top) + 5 + 'px'
-	})
-})
-$(document).on('mouseout','.wrap img[data-num]',function(event){
-	$('.img-number').hide();
-})
-
-
 </script>
 </body>
 </html>

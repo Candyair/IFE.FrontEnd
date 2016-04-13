@@ -1,0 +1,83 @@
+
+.priterest-fade {
+	background-color: #000;
+    height: 100%;
+    opacity: 0.8;
+    width: 100%;
+    z-index: 9999;
+}
+
+.pinterest-stream {
+	display: inline-block;
+    margin-bottom: 16px;
+    margin-left: 16px;
+    vertical-align: top;
+    width: 280px;
+}
+
+.pinterest-img-wrap {
+	font-size: 0;
+}
+
+.pinterest-img-title {
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+    opacity: 0.4;
+    overflow: hidden;
+    text-align: left;
+    text-indent: 20px;
+    margin-top: -50px;
+    text-overflow: ellipsis;
+    white-space: pre;
+    width: 100%;
+}
+.pinterest-img-subtitle {
+	background-color: #000;
+    color: #FFF;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    opacity: 0.4;
+    overflow: hidden;
+    text-align: left;
+    text-indent: 20px;
+    text-overflow: ellipsis;
+    white-space: pre;
+    width: 100%;
+}
+/*----------------全屏显示图片----------------*/
+.priterest-wrap {
+	height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.priterest-wrap .priterest-full-img {
+	cursor: zoom-in;
+	cursor: pointer\9;
+    max-height: 90%;
+    max-width: 90%; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px rgba(255,255,255,.6);
+    margin-top: 50px;
+    opacity: 0;
+    z-index: 10000;
+}
+.priterest-wrap .priterest-shrink-btn {
+	background-color: rgba(0, 0, 0, 0.35);
+    cursor: zoom-out;
+    cursor: pointer\9;
+    display: none;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10001;
+}
