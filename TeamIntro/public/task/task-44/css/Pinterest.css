@@ -9,23 +9,21 @@
 
 .pinterest-stream {
 	display: inline-block;
-    margin-bottom: 16px;
-    margin-left: 16px;
     vertical-align: top;
-    width: 280px;
 }
 
 .pinterest-img-wrap {
 	font-size: 0;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei",sans-serif;
 }
 
 .pinterest-img-title {
     background-color: #000;
-    color: #fff;
+    color: #FFF;
     font-size: 20px;
     height: 30px;
     line-height: 30px;
-    opacity: 0.4;
+    opacity: .5;
     overflow: hidden;
     text-align: left;
     text-indent: 20px;
@@ -40,7 +38,7 @@
     font-size: 14px;
     height: 20px;
     line-height: 20px;
-    opacity: 0.4;
+    opacity: .5;
     overflow: hidden;
     text-align: left;
     text-indent: 20px;
@@ -65,7 +63,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 15px rgba(255,255,255,.6);
+    box-shadow: 0 0 10px 3px rgba(255, 255, 255, .5);
     margin-top: 50px;
     opacity: 0;
     z-index: 10000;
