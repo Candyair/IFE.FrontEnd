@@ -56,9 +56,7 @@
 				that.streams.push($("<div class='pinterest-stream' style='width:" + that.width + "px; margin-left:" + that.gap + "px; margin-bottom:" + that.gap + "px;'></div>"));
 				that.streams[i].appendTo(this.$elem);
 			};
-			that.$imgs.css({
-				"width": that.width + 'px'
-			});
+			that.$imgs.width(that.width);
 			$.each(that.$imgs, function(i, v) {
 				var index = that.getMinStreams();
 				that.$imgs.eq(i).appendTo(that.streams[index]);
@@ -95,9 +93,7 @@
 			if (parameter[2]) {
 				$img.attr('data-subtitle', parameter[2]);
 			}
-			$img.css({
-				"width": this.width + 'px'
-			});
+			$img.width(this.width);
 			this.$imgs.push($img);
 			var index = this.getMinStreams();
 			$img.appendTo(this.streams[index]);
