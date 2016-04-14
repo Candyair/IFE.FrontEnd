@@ -72,6 +72,10 @@
     opacity: 0;
     z-index: 10000;
 }
+.priterest-wrap .priterest-full-img.priterest-big-img {
+    max-width: none;
+    max-height: none;
+}
 .priterest-wrap .priterest-shrink-btn {
 	background-color: rgba(0, 0, 0, 0.35);
     cursor: zoom-out;
