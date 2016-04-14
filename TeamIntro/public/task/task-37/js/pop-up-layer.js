@@ -1,5 +1,5 @@
 ;(function(w, d, undefined) {
-	var unique,fadeFn,wFn,mFn,dragFn,drogFn,btn1Fn,btn2Fn;
+	var unique,fadeFn,wFn,mFn,dragFn,dropFn,btn1Fn,btn2Fn;
 
 	var Layer = function(txt, config) {
 		this.txt = txt;
@@ -48,7 +48,7 @@
 				that.left = parseInt(w.getComputedStyle(that.model , null)['left']);
 				that.top = parseInt(w.getComputedStyle(that.model , null)['top']);
 			});
-			this.title.addEventListener('mouseup', drogFn = function(){ that.dragFlag = false; });
+			this.title.addEventListener('mouseup', dropFn = function(){ that.dragFlag = false; });
 			this.wrap.addEventListener('mousemove', mFn = function(event){ that.onDrag(event, that); })
 
 			//遮罩层绑定事件
@@ -135,7 +135,7 @@
 			//清除绑定事件
 			this.fade.removeEventListener("click", fadeFn, false);
 			this.title.removeEventListener('mousedown', dragFn, false);
-			this.title.removeEventListener('mouseup', drogFn, false);
+			this.title.removeEventListener('mouseup', dropFn, false);
 			this.wrap.removeEventListener('mousemove', mFn, false);
 			w.removeEventListener("keydown", wFn , false);
 			this.closeBtn.removeEventListener("click", btn1Fn, false);
