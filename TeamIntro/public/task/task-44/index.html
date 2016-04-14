@@ -23,11 +23,13 @@
 		}
 		button#add {
 			position: fixed;
+			z-index: 1;
 			top: 20px;
 			left: 10px;
 		}
 		.change-group {
 			position: fixed;
+			z-index: 1;
 			top: 70px;
 		}
 		.change-group input {
@@ -35,7 +37,6 @@
 			background-color: #FFF;
 			color:#3498DB;
 			padding: 8px;
-			cursor: pointer;
 			border-radius: 8px;
 		}
 		#loadingImg {
@@ -75,6 +76,7 @@
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/Pinterest.js"></script>
 <script>
+//加载插件
 $(window).load(function(){
 	$('#loadingImg').remove();
 	$('.wrap').show();
@@ -84,18 +86,31 @@ $(window).load(function(){
 	});
 })
 
+//获取初始图片长度
 var current_count = $('.wrap img').length;
 
+//添加图片
 function addImg(){
 	++current_count;
-	if(current_count > 43){
+	if(current_count > 50){
 		alert("图库已经空了Q~Q");
 	}
 	else {
 		$('.wrap').pinterest('add', 'images/' + current_count + '.jpg', "My Picture·" + current_count, '2016/4/13');
 	}
+	scrollBottom(2);
 }
 
+//滚到底部
+function scrollBottom( speed ){
+	var ScrollTop = $(document).scrollTop();
+	var top = ScrollTop + speed;
+	$(document).scrollTop(top);
+	if(top < ($(document).height() - $(window).height())) {
+		setTimeout(function(){scrollBottom(speed);},0);
+	}
+}
+//删除图片
 function DeleteImg(){
 	var num = $('#num').val();
 	$('.wrap').pinterest('remove',num);
