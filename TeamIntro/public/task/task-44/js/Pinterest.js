@@ -75,14 +75,14 @@
 			var that = this;
 			var title = $(__this).data('title');
 			var subTitle = $(__this).data('subtitle');
+			var $img_wrap = $("<div class='pinterest-img-wrap' style='margin-top:" + that.gap + "px'></div>");
+			$(__this).wrap($img_wrap);
+			if (subTitle) {
+				var $img_subtitle = $("<div class='pinterest-img-subtitle'>" + subTitle + "</div>");
+				$img_subtitle.insertAfter($(__this));
+			}
 			if (title) {
-				var $img_wrap = $("<div class='pinterest-img-wrap' style='margin-top:" + that.gap + "px'></div>");
 				var $img_title = $("<div class='pinterest-img-title'>" + title + "</div>");
-				$(__this).wrap($img_wrap);
-				if (subTitle) {
-					var $img_subtitle = $("<div class='pinterest-img-subtitle'>" + subTitle + "</div>");
-					$img_subtitle.insertAfter($(__this));
-				}
 				$img_title.insertAfter($(__this));
 			}
 		},
@@ -111,7 +111,7 @@
 				return false;
 			}
 			var i = index < 0 ? (index + this.$imgs.length) : index;
-			this.$imgs.eq(i - 1).remove();
+			this.$imgs.eq(i - 1).parent().remove();
 		},
 		//全屏显示图片
 		fullScreen: function() {
@@ -175,11 +175,14 @@
 	//设置cursor抓手属性
 	(function() {
 		var v = navigator.userAgent;
-		var prefix = v.indexOf('AppleWebKit') > -1 ? "-webkit-" : v.indexOf('Gecko') > -1 && v.indexOf('KHTML') == -1 ? "-moz-" : v.indexOf('Presto') ? '' : 'IE';
+		var prefix = v.indexOf('AppleWebKit') > -1 ? "-webkit-" : v.indexOf('Firefox') > -1 ? "-moz-" : ((v.indexOf('Trident') > -1 && v.indexOf('rv:11') > -1) || u_agent.indexOf('MSIE') > -1) ? 'IE' : '';
 
 		return setCursor = function(prop) {
 			if (prefix === 'IE') {
-				return "move";
+				if (prop === 'grabbing') {
+					return "move";
+				}
+				return "pointer";
 			} else {
 				return prefix + prop;
 			}
