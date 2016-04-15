@@ -5,7 +5,6 @@
     width: 100%;
     z-index: 9999;
 }
-
 .pinterest-stream {
     display: inline-block;
     vertical-align: top;
@@ -17,9 +16,12 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, .65);
     border-radius: 5px;
     overflow: hidden;
-    font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
+    transition:all .3s;
 }
-
+.pinterest-img-wrap:hover {
+    box-shadow: 0 0 13px 3px rgba(0, 0, 0, .65);
+}
 .pinterest-img-title {
     background-color: #000;
     color: #FFF;
@@ -28,14 +30,10 @@
     line-height: 30px;
     opacity: .6;
     overflow: hidden;
-    text-align: left;
     text-indent: 20px;
     margin-top: -50px;
     text-overflow: ellipsis;
-    white-space: pre;
-    width: 100%;
 }
-
 .pinterest-img-subtitle {
     background-color: #000;
     color: #FFF;
@@ -44,11 +42,8 @@
     line-height: 20px;
     opacity: .6;
     overflow: hidden;
-    text-align: left;
     text-indent: 20px;
     text-overflow: ellipsis;
-    white-space: pre;
-    width: 100%;
 }
 
 /*----------------全屏显示图片----------------*/
@@ -60,7 +55,6 @@
     width: 100%;
     z-index: 9999;
 }
-
 .priterest-wrap .priterest-full-img {
     cursor: -webkit-zoom-in;
     cursor: zoom-in;
@@ -69,19 +63,17 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    -ms-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     box-shadow: 0 0 10px 3px rgba(255, 255, 255, .5);
     margin-top: 50px;
     opacity: 0;
-    z-index: 10000;
 }
-
 .priterest-wrap .priterest-full-img.priterest-big-img {
     max-width: none;
     max-height: none;
 }
-
 .priterest-wrap .priterest-shrink-btn {
     background-color: rgba(0, 0, 0, 0.35);
     cursor: -webkit-zoom-out;
@@ -91,5 +83,4 @@
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: 10001;
 }

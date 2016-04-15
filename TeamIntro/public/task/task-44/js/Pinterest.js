@@ -21,8 +21,11 @@
 
 		//图片全屏显示
 		this.$elem.on('click', 'img', this.fullScreen);
-		$(d).on('click', '.priterest-full-img', this.fullFigure);
+		//显示完整图片
+		$(d).on('click', '.priterest-full-img', this.fullImg);
+		//完整图片缩小
 		$(d).on('click', '.priterest-shrink-btn', this.shrinkImg);
+		//完整图片拖动
 		$(d).on('mousedown', '.priterest-big-img', this.dragImg);
 		$(d).on('mousemove', '.priterest-big-img', this.moveImg);
 		$(d).on('mouseup', '.priterest-big-img', this.dropImg);
@@ -130,7 +133,7 @@
 			}, 300);
 		},
 		//点击显示完整图片
-		fullFigure: function() {
+		fullImg: function() {
 			if ($(this).css('max-height') !== 'none') {
 				$(this).css("cursor", setCursor('grab')).addClass('priterest-big-img');
 				$('.priterest-shrink-btn').show();
@@ -185,6 +188,7 @@
 		};
 	})();
 
+	//插件入口方法
 	$.fn.pinterest = function(option) {
 		var config = arguments[0] ? arguments[0] : {};
 		var parameter = Array.prototype.slice.call(arguments, 1);

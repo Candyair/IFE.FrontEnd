@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Task-44</title>
 	<style>
+	    /*  ---------  插件外的样式  ----------  */
 		.wrap {
 			width: 1200px;
 			background-color: #eaeaea;
@@ -44,22 +45,13 @@
 			top: 20px;
 			left:50%;
 		}
-		.img-number {
-			position: fixed;
-			display: none;
-			width: 30px;
-			height: 20px;
-			color:#FFF;
-			text-align: center;
-			background-color: rgba(0,0,0,.36);
-		}
 	</style>
 	<link rel="stylesheet" href="css/Pinterest.css">
 </head>
 <body>
 <button onclick="addImg();" id="add">增加一张图片</button>
 <div class="change-group">
-	<input type="text" placeholder="删除图片的序号.." id="num">
+	<input type="text" placeholder="输入删除图片的编号.." id="num">
 	<button onclick="DeleteImg()">删除</button>
 </div>
 <img src="images/loading.gif" alt="loading" id="loadingImg">
