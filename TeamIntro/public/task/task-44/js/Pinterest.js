@@ -8,7 +8,8 @@
 			left: 0,
 			top: 0
 		}
-		//瀑布流实例
+
+	//瀑布流实例
 	var Pinterest = function(elem, config) {
 		this.$elem = elem;
 		this.$imgs = this.$elem.find('img');
@@ -18,17 +19,6 @@
 		this.line = config.line ? config.line : 4;
 		this.gap = config.gap ? config.gap : 15;
 		this.width = config.width ? config.width : this.getWidth();
-
-		//图片全屏显示
-		this.$elem.on('click', 'img', this.fullScreen);
-		//显示完整图片
-		$(d).on('click', '.priterest-full-img', this.fullImg);
-		//完整图片缩小
-		$(d).on('click', '.priterest-shrink-btn', this.shrinkImg);
-		//完整图片拖动
-		$(d).on('mousedown', '.priterest-big-img', this.dragImg);
-		$(d).on('mousemove', '.priterest-big-img', this.moveImg);
-		$(d).on('mouseup', '.priterest-big-img', this.dropImg);
 	}
 
 	Pinterest.prototype = {
@@ -65,10 +55,26 @@
 				that.$imgs.eq(i).appendTo(that.streams[index]);
 			});
 
+			//为实例绑定事件
+			that.onEvent();
+
 			//图片下方显示标题
 			that.$imgs.each(function(i, v) {
 				that.setTitle(v);
 			});
+		},
+		//绑定事件
+		onEvent: function(){
+			//图片全屏显示
+			this.$elem.on('click', 'img', this.fullScreen);
+			//显示完整图片
+			$(d).on('click', '.priterest-full-img', this.fullImg);
+			//完整图片缩小
+			$(d).on('click', '.priterest-shrink-btn', this.shrinkImg);
+			//完整图片拖动
+			$(d).on('mousedown', '.priterest-big-img', this.dragImg);
+			$(d).on('mousemove', '.priterest-big-img', this.moveImg);
+			$(d).on('mouseup', '.priterest-big-img', this.dropImg);
 		},
 		//设置下方标题
 		setTitle: function(v) {
@@ -97,7 +103,7 @@
 				$img.attr('data-subtitle', parameter[2]);
 			}
 			$img.width(this.width);
-			this.$imgs.push($img);
+			this.$imgs.push($img[0]);
 			var index = this.getMinStreams();
 			$img.appendTo(this.streams[index]);
 			this.setTitle($img[0]);
