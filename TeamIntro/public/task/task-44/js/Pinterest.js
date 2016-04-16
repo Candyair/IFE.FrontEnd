@@ -205,7 +205,6 @@
 
 			if (!data) {
 				$this.data('pinterest', (data = new Pinterest($this, config)));
-				return data.init();
 			}
 
 			if (typeof config === 'string') {
