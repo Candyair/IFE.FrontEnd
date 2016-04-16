@@ -58,7 +58,7 @@
 			//为实例绑定事件
 			that.onEvent();
 
-			//图片下方显示标题
+			//图片下方显示标题( 遍历单个绑定 - 方便添加新图时片绑定 )
 			that.$imgs.each(function(i, v) {
 				that.setTitle(v);
 			});
@@ -77,8 +77,8 @@
 			$(d).on('mouseup', '.priterest-big-img', this.dropImg);
 		},
 		//设置下方标题
-		setTitle: function(v) {
-			var __this = v;
+		setTitle: function(img) {
+			var __this = img;
 			var that = this;
 			var title = $(__this).data('title');
 			var subTitle = $(__this).data('subtitle');
@@ -195,7 +195,7 @@
 	})();
 
 	//插件入口方法
-	$.fn.pinterest = function(option) {
+	$.fn.pinterest = function() {
 		var config = arguments[0] ? arguments[0] : {};
 		var parameter = Array.prototype.slice.call(arguments, 1);
 
@@ -205,6 +205,7 @@
 
 			if (!data) {
 				$this.data('pinterest', (data = new Pinterest($this, config)));
+				return data.init();
 			}
 
 			if (typeof config === 'string') {

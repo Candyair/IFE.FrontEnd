@@ -1,3 +1,4 @@
+/******遮罩层样式*******/
 .priterest-fade {
     background-color: #000;
     height: 100%;
@@ -5,12 +6,13 @@
     width: 100%;
     z-index: 9999;
 }
+/******瀑布流列样式*******/
 .pinterest-stream {
     display: inline-block;
     vertical-align: top;
 }
 
-/*----------------瀑布流图片块----------------*/
+/******瀑布流图片块相关样式*******/
 .pinterest-img-wrap {
     font-size: 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, .65);
@@ -19,9 +21,15 @@
     font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
     transition:all .3s;
 }
+/*------瀑布流首张图片距离顶部间隔( 不覆盖的话默认为gap参数值 )------*/
+.pinterest-img-wrap:first-child {
+    margin-top: 15px!important;
+}
+/*------瀑布流图片hover样式------*/
 .pinterest-img-wrap:hover {
     box-shadow: 0 0 13px 3px rgba(0, 0, 0, .65);
 }
+/*------瀑布流大标题------*/
 .pinterest-img-title {
     background-color: #000;
     color: #FFF;
@@ -34,6 +42,7 @@
     margin-top: -50px;
     text-overflow: ellipsis;
 }
+/*------瀑布流小标题------*/
 .pinterest-img-subtitle {
     background-color: #000;
     color: #FFF;
@@ -46,7 +55,7 @@
     text-overflow: ellipsis;
 }
 
-/*----------------全屏显示图片----------------*/
+/*******全屏显示图片时相关样式*******/
 .priterest-wrap {
     height: 100%;
     left: 0;
@@ -55,6 +64,7 @@
     width: 100%;
     z-index: 9999;
 }
+/*------全屏显示图片样式( 未放大 )------*/
 .priterest-wrap .priterest-full-img {
     cursor: -webkit-zoom-in;
     cursor: zoom-in;
@@ -70,10 +80,12 @@
     margin-top: 50px;
     opacity: 0;
 }
+/*------全屏显示图片样式( 放大 )------*/
 .priterest-wrap .priterest-full-img.priterest-big-img {
     max-width: none;
     max-height: none;
 }
+/*------全屏显示时缩小按钮样式------*/
 .priterest-wrap .priterest-shrink-btn {
     background-color: rgba(0, 0, 0, 0.35);
     cursor: -webkit-zoom-out;
