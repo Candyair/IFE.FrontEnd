@@ -83,10 +83,16 @@ $(window).load(function(){
 	//图片预加载
 	function preLoadImg(){
 		var imgs = [];
-		for(var i=9;i<=52;i++){
-			imgs[i]=new Image()
-        	imgs[i].src = 'images/' + i + '.jpg';
-		}
+		var i = 9;
+
+		return function loadImg(){
+			imgs[i]=new Image();
+			imgs[i].onload = loadImg;
+	
+        	if( i <= 52 ){
+        		imgs[i].src = 'images/' + i + '.jpg';
+        	}
+		}();
 	}
 	preLoadImg();
 });
