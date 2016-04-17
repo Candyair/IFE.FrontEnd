@@ -84,10 +84,11 @@ $(window).load(function(){
 	function preLoadImg(){
 		var imgs = [];
 		for(var i=9;i<=52;i++){
-			imgs[i]=new Image();
+			imgs[i]=new Image()
         	imgs[i].src = 'images/' + current_count + '.jpg';
 		}
 	}
+	preLoadImg();
 });
 
 //获取初始图片长度
