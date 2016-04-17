@@ -29,6 +29,8 @@
 			background-color: #2F77B9;
 		}
 		.change-group {
+			position: fixed;
+			z-index: 1;
 			margin-top: 30px;
 		}
 		.change-group input {
@@ -85,7 +87,7 @@ var current_count = $('.wrap img').length;
 //添加图片
 function addImg(){
 	++current_count;
-	if(current_count > 50){
+	if(current_count > 52){
 		alert("图库已经空了Q~Q");
 	}
 	else {

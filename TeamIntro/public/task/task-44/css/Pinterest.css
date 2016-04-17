@@ -66,8 +66,6 @@
 }
 /* ------全屏显示图片样式( 未放大 )------ */
 .priterest-wrap .priterest-full-img {
-    cursor: -webkit-zoom-in;
-    cursor: zoom-in;
     max-height: 90%;
     max-width: 90%;
     position: absolute;
@@ -75,8 +73,8 @@
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 10px 3px rgba(255, 255, 255, .5);
+        transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, .5);
     margin-top: 0;
     opacity: 1;
     transition: margin-top .5s, opacity .3s;
@@ -94,8 +92,6 @@
 /* ------全屏显示时缩小按钮样式------ */
 .priterest-wrap .priterest-shrink-btn {
     background-color: rgba(0, 0, 0, 0.35);
-    cursor: -webkit-zoom-out;
-    cursor: zoom-out;
     display: none;
     height: 70px;
     position: absolute;

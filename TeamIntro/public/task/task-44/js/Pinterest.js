@@ -147,22 +147,28 @@
 			var $wrap = $("<div class='priterest-wrap'></div>");
 			var $fade = $("<div class='priterest-fade'></div>");
 			var $full_img = $("<img src=" + this.src + " class='priterest-full-img priterest-off'/>");
-			var $shrink_btn = $("<a class='priterest-shrink-btn'></a>")
+
+			//遮罩层点击事件
 			$fade.click(function() {
 				$wrap.remove();
 			});
+
 			$wrap.append($fade);
 			$wrap.append($full_img);
-			$wrap.append($shrink_btn);
 			$wrap.appendTo('body');
-
-			//全屏图片出现效果
-			// $full_img.animate({
-			// 	marginTop: 0,
-			// 	opacity: 1
-			// }, 300);
 			
-			// 将全屏图片出现效果交付给CSS样式, 方便插件使用者自定义
+			//当全屏图片小于等于完整图片时, 放大无效
+			if( $full_img[0].naturalWidth <= $full_img.width() ){
+				$full_img.css('cursor', 'default');
+			}
+			else {
+				var $shrink_btn = $("<a class='priterest-shrink-btn'></a>");
+				$shrink_btn.css('cursor', setCursor('zoom-out'));
+				$full_img.css('cursor', setCursor('zoom-in'));
+				$wrap.append($shrink_btn);
+			}
+
+			//将全屏图片出现效果交付给CSS样式, 方便插件使用者自定义
 			setTimeout(function(){
 				$full_img.removeClass('priterest-off');
 			},0);
@@ -171,7 +177,7 @@
 		 * 显示完整图片
 		 */
 		fullImg: function() {
-			if ($(this).css('max-height') !== 'none') {
+			if (!$(this).hasClass('priterest-big-img') && this.width < this.naturalWidth ) {
 				$(this).css("cursor", setCursor('grab')).addClass('priterest-big-img');
 				$('.priterest-shrink-btn').show();
 			}
@@ -182,7 +188,8 @@
 		shrinkImg: function() {
 			$('.priterest-full-img').css({
 				"left": "50%",
-				"top": "50%"
+				"top": "50%",
+				'cursor': setCursor('zoom-in')
 			}).removeClass('priterest-big-img');
 			$(this).hide();
 		},
@@ -217,21 +224,27 @@
 		}
 	};
 	/**
-	 * @return { string } [根据浏览器修改cursor抓手属性]
+	 * @return { string } [ 根据浏览器修改cursor属性 ]
 	 */
 	(function() {
 		var v = navigator.userAgent;
 		var prefix = v.indexOf('AppleWebKit') > -1 ? "-webkit-" : v.indexOf('Firefox') > -1 ? "-moz-" : ((v.indexOf('Trident') > -1 && v.indexOf('rv:11') > -1) || u_agent.indexOf('MSIE') > -1) ? 'IE' : '';
 
 		return setCursor = function(prop) {
-			if (prefix === 'IE') {
-				if (prop === 'grabbing') {
+		 	if( prop === 'grabbing' || prop === 'grab'){
+		 		if (prefix === 'IE') {
 					return "move";
+				} else {
+					return prefix + prop;
 				}
-				return "pointer";
-			} else {
-				return prefix + prop;
-			}
+		 	}
+		 	if( prop === 'zoom-in' || prop === 'zoom-out'){
+		 		if (prefix === 'IE') {
+					return "pointer";
+				} else {
+					return prop;
+				}
+		 	}
 		};
 	})();
 
