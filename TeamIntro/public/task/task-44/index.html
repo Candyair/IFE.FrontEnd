@@ -79,6 +79,15 @@ $(window).load(function(){
 		line: 4,
 		gap: 16
 	});
+
+	//图片预加载
+	function preLoadImg(){
+		var imgs = [];
+		for(var i=9;i<=52;i++){
+			imgs[i]=new Image();
+        	imgs[i].src = 'images/' + current_count + '.jpg';
+		}
+	}
 });
 
 //获取初始图片长度

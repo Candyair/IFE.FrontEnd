@@ -67,6 +67,7 @@
 			$(d).on('mousedown', '.priterest-big-img', this.dragImg);
 			$(d).on('mousemove', '.priterest-big-img', this.moveImg);
 			$(d).on('mouseup', '.priterest-big-img', this.dropImg);
+			$(d).on('mouseout', this.dropImg);
 		},
 		/** 
 		 * 设置图片下方标题
