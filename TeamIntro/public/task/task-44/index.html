@@ -79,23 +79,6 @@ $(window).load(function(){
 		line: 4,
 		gap: 16
 	});
-
-	//图片预加载
-	function preLoadImg(){
-		var imgs = [];
-		var i = 9;
-
-		return function loadImg(){
-			imgs[i]=new Image();
-			imgs[i].onload = loadImg;
-	
-        	if( i <= 52 ){
-        		imgs[i].src = 'images/' + i + '.jpg';
-        	}
-        	i++;
-		}();
-	}
-	preLoadImg();
 });
 
 //获取初始图片长度
@@ -110,7 +93,7 @@ function addImg(){
 	else {
 		$('.wrap').pinterest('add', 'images/' + current_count + '.jpg', "Picture·" + current_count, "2016/4/15");
 	}
-	scrollBottom(2);
+	scrollBottom(3);
 }
 
 //滚到底部
