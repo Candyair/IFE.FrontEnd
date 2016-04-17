@@ -1,6 +1,11 @@
-;
-(function(w, d, $, undefined) {
-	//图片状态
+;(function(w, d, $, undefined) {
+	/**
+	 * 拖拽图片状态
+	 * 
+	 * flag 可拖拽标志
+	 * startX, startY 拖拽起点
+	 * left, top 拖拽位置
+	 */
 	var ImgStatus = {
 			flag: false,
 			startX: 0,
@@ -9,7 +14,7 @@
 			top: 0
 		}
 
-	//瀑布流实例
+	/* ******************* 瀑布流构造函数 ********************* */
 	var Pinterest = function(elem, config) {
 		this.$elem = elem;
 		this.$imgs = this.$elem.find('img');
@@ -22,13 +27,19 @@
 	}
 
 	Pinterest.prototype = {
-		//得到每列宽度和图片宽度
+		/**
+		 * 得到每列瀑布流宽度和图片宽度
+		 * @return {number} [default: 200]
+		 */
 		getWidth: function() {
 			var width = this.$elem.width();
 			var index = this.line + 1;
 			return width ? (width - (this.gap * index)) / this.line : 200;
 		},
-		//得到当前最短的列
+		/**
+		 * 得到当前最短的瀑布流
+		 * @return {number} [瀑布流序号]
+		 */
 		getMinStreams: function() {
 			var that = this;
 			var min = that.streams[0].height();
@@ -42,28 +53,9 @@
 			};
 			return index;
 		},
-		//初始化
-		init: function() {
-			var that = this;
-			for (var i = 0; i < this.line; i++) {
-				that.streams.push($("<div class='pinterest-stream' style='width:" + that.width + "px; margin-left:" + that.gap + "px; margin-bottom:" + that.gap + "px;'></div>"));
-				that.streams[i].appendTo(this.$elem);
-			};
-			that.$imgs.width(that.width);
-			$.each(that.$imgs, function(i, v) {
-				var index = that.getMinStreams();
-				that.$imgs.eq(i).appendTo(that.streams[index]);
-			});
-
-			//为实例绑定事件
-			that.onEvent();
-
-			//图片下方显示标题( 遍历单个绑定 - 方便添加新图时片绑定 )
-			that.$imgs.each(function(i, v) {
-				that.setTitle(v);
-			});
-		},
-		//绑定事件
+		/**
+		 * 插件绑定事件
+		 */
 		onEvent: function(){
 			//图片全屏显示
 			this.$elem.on('click', 'img', this.fullScreen);
@@ -76,7 +68,10 @@
 			$(d).on('mousemove', '.priterest-big-img', this.moveImg);
 			$(d).on('mouseup', '.priterest-big-img', this.dropImg);
 		},
-		//设置下方标题
+		/** 
+		 * 设置图片下方标题
+		 * @param { dom } img
+		 */
 		setTitle: function(img) {
 			var __this = img;
 			var that = this;
@@ -93,7 +88,31 @@
 				$img_title.insertAfter($(__this));
 			}
 		},
-		//增加图片
+		/* ******************* 瀑布流初始化 ********************* */
+		init: function() {
+			var that = this;
+			for (var i = 0; i < this.line; i++) {
+				that.streams.push($("<div class='pinterest-stream' style='width:" + that.width + "px; margin-left:" + that.gap + "px; margin-bottom:" + that.gap + "px;'></div>"));
+				that.streams[i].appendTo(this.$elem);
+			};
+			that.$imgs.width(that.width);
+			$.each(that.$imgs, function(i, v) {
+				var index = that.getMinStreams(); //得到当前最短的瀑布流
+				that.$imgs.eq(i).appendTo(that.streams[index]);
+			});
+
+			//为实例绑定事件
+			that.onEvent();
+
+			//图片下方显示标题( 遍历单个绑定 - 方便添加新图时片绑定 )
+			that.$imgs.each(function(i, v) {
+				that.setTitle(v);
+			});
+		},
+		/**
+		 * 为瀑布流添加图片
+		 * @param { Array[ src, {title}, {subtitle} ] } parameter     [ src: 图片路径 | title: 主标题 | subtitle: 副标题 ]
+		 */
 		add: function(parameter) {
 			var $img = $("<img src=" + parameter[0] + " />");
 			if (parameter[1]) {
@@ -108,7 +127,10 @@
 			$img.appendTo(this.streams[index]);
 			this.setTitle($img[0]);
 		},
-		//移除图片
+		/**
+		 * 移除图片
+		 * @param { int } index 图片序号
+		 */
 		remove: function(index) {
 			index = parseInt(index);
 			if (index === undefined) {
@@ -118,11 +140,13 @@
 			var i = index < 0 ? (index + this.$imgs.length) : index;
 			this.$imgs.eq(i - 1).parent().remove();
 		},
-		//全屏显示图片
+		/** 
+		 * 全屏显示图片
+		 */
 		fullScreen: function() {
 			var $wrap = $("<div class='priterest-wrap'></div>");
 			var $fade = $("<div class='priterest-fade'></div>");
-			var $full_img = $("<img src=" + this.src + " class='priterest-full-img'/>");
+			var $full_img = $("<img src=" + this.src + " class='priterest-full-img priterest-off'/>");
 			var $shrink_btn = $("<a class='priterest-shrink-btn'></a>")
 			$fade.click(function() {
 				$wrap.remove();
@@ -133,19 +157,28 @@
 			$wrap.appendTo('body');
 
 			//全屏图片出现效果
-			$full_img.animate({
-				marginTop: 0,
-				opacity: 1
-			}, 300);
+			// $full_img.animate({
+			// 	marginTop: 0,
+			// 	opacity: 1
+			// }, 300);
+			
+			// 将全屏图片出现效果交付给CSS样式, 方便插件使用者自定义
+			setTimeout(function(){
+				$full_img.removeClass('priterest-off');
+			},0);
 		},
-		//点击显示完整图片
+		/**
+		 * 显示完整图片
+		 */
 		fullImg: function() {
 			if ($(this).css('max-height') !== 'none') {
 				$(this).css("cursor", setCursor('grab')).addClass('priterest-big-img');
 				$('.priterest-shrink-btn').show();
 			}
 		},
-		//点击缩小图片
+		/**
+		 * 缩小完整图片
+		 */
 		shrinkImg: function() {
 			$('.priterest-full-img').css({
 				"left": "50%",
@@ -153,31 +186,39 @@
 			}).removeClass('priterest-big-img');
 			$(this).hide();
 		},
-		//拖拽图片
+		/**
+		 * 设置图片初始状态
+		 */
 		dragImg: function(event) {
 			event.preventDefault();
 			$(this).css("cursor", setCursor('grabbing'));
-			//设置图片初始状态
+
 			ImgStatus.flag = true;
 			ImgStatus.startX = event.pageX;
 			ImgStatus.startY = event.pageY;
 			ImgStatus.left = parseInt(w.getComputedStyle(this, null)['left']);
 			ImgStatus.top = parseInt(w.getComputedStyle(this, null)['top']);
 		},
-		//移动视口显示的图片
+		/**
+		 * 拖拽图片位置改变
+		 */
 		moveImg: function(event) {
 			if (ImgStatus.flag) {
 				this.style.left = (event.pageX - ImgStatus.startX + ImgStatus.left) + 'px';
 				this.style.top = (event.pageY - ImgStatus.startY + ImgStatus.top) + 'px';
 			}
 		},
-		//放下图片
+		/**
+		 * 拖拽结束
+		 */
 		dropImg: function() {
 			ImgStatus.flag = false;
 			$(this).css('cursor', setCursor('grab'));
 		}
 	};
-	//设置cursor抓手属性
+	/**
+	 * @return { string } [根据浏览器修改cursor抓手属性]
+	 */
 	(function() {
 		var v = navigator.userAgent;
 		var prefix = v.indexOf('AppleWebKit') > -1 ? "-webkit-" : v.indexOf('Firefox') > -1 ? "-moz-" : ((v.indexOf('Trident') > -1 && v.indexOf('rv:11') > -1) || u_agent.indexOf('MSIE') > -1) ? 'IE' : '';
@@ -194,10 +235,15 @@
 		};
 	})();
 
-	//插件入口方法
-	$.fn.pinterest = function() {
-		var config = arguments[0] ? arguments[0] : {};
-		var parameter = Array.prototype.slice.call(arguments, 1);
+	/**
+	 * 瀑布流插件入口
+	 * @param { object[ {line}, {gap}, {width} ] } option      [ line: 瀑布流列数 | gap: 瀑布流间距 | width: 瀑布流宽度 ]
+	 * 	      { string } option  [ "add", "remove" ]           [ "add": 第二个参数为图片路径(必须), 第三个参数为主标题, 第四个参数为副标题]
+	 * 	                                                       [ "remove": 第二个参数为删除图片的序号( 为空时清空图片 ) ]
+	 */
+	$.fn.pinterest = function(option) {
+		var config = option ? option : {};
+		var arg = arguments;
 
 		return this.each(function() {
 			var $this = $(this),
@@ -208,6 +254,7 @@
 			}
 
 			if (typeof config === 'string') {
+				var parameter = Array.prototype.slice.call(arg, 1);
 				switch (config) {
 					case 'add':
 						{
