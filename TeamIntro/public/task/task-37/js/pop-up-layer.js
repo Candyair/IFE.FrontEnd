@@ -1,5 +1,5 @@
 ;(function(w, d, undefined) {
-	var unique,fadeFn,wFn,mFn,dragFn,dropFn,btn1Fn,btn2Fn;
+	var unique,fadeFn,wFn,mFn,dragFn,drogFn,btn1Fn,btn2Fn;
 
 	var Layer = function(txt, config) {
 		this.txt = txt;
@@ -41,14 +41,14 @@
 			this.wrap.appendChild(this.model);
 
 			//窗口可拖拽
-			this.title.addEventListener('mousedown', dragFn = function(event){ 
+			this.title.addEventListener('mousedown', dragFn = function(event){
 				that.dragFlag = true;
 				that.startX = event.pageX;
 				that.startY = event.pageY;
 				that.left = parseInt(w.getComputedStyle(that.model , null)['left']);
 				that.top = parseInt(w.getComputedStyle(that.model , null)['top']);
 			});
-			this.title.addEventListener('mouseup', dropFn = function(){ that.dragFlag = false; });
+			this.title.addEventListener('mouseup', drogFn = function(){ that.dragFlag = false; });
 			this.wrap.addEventListener('mousemove', mFn = function(event){ that.onDrag(event, that); })
 
 			//遮罩层绑定事件
@@ -71,7 +71,7 @@
 
 			//移除POP-on类，出现效果
 			setTimeout(function(){
-				that.wrap.className = 'POP-wrap';	
+				that.wrap.className = 'POP-wrap';
 			},100)
 		},
 		//第二个参数设置
@@ -135,7 +135,7 @@
 			//清除绑定事件
 			this.fade.removeEventListener("click", fadeFn, false);
 			this.title.removeEventListener('mousedown', dragFn, false);
-			this.title.removeEventListener('mouseup', dropFn, false);
+			this.title.removeEventListener('mouseup', drogFn, false);
 			this.wrap.removeEventListener('mousemove', mFn, false);
 			w.removeEventListener("keydown", wFn , false);
 			this.closeBtn.removeEventListener("click", btn1Fn, false);
@@ -149,32 +149,31 @@
 				else {
 					that.callback();
 				}
-			}	
+			}
 		},
 		//设置主题
 		setTheme: function(type) {
 			switch (type) {
 				case "success":
 					{
-						this.model.style.backgroundColor = "#5CB85C";
+						this.model.setAttribute('class','POP-model POP-success');
 						this.title.innerHTML = 'Success!';
 						break;
 					}
 				case "error":
 					{
-						this.model.style.backgroundColor = "#E74C3C";
+						this.model.setAttribute('class','POP-model POP-error');
 						this.title.innerHTML = 'Error!';
 						break;
 					}
 				case "warning":
 					{
-						this.model.style.backgroundColor = "#F1C40F";
+						this.model.setAttribute('class','POP-model POP-warning');
 						this.title.innerHTML = 'Warning!';
 						break;
 					}
-				default: 
+				default:
 					{
-						this.model.style.backgroundColor = "#999";
 						this.title.innerHTML = '弹出框';
 						break;
 					}
@@ -215,7 +214,7 @@
 				}
 				else {
 					return false;
-				}				
+				}
 			}
 	}
 
