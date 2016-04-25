@@ -22,14 +22,15 @@
 			renderTable:function(){
 				var me =this;
 				me.rows = me.getRows();
+				console.log(me.rows);
 				document.write("<table class='UI-table'>");
 				document.write(head);
 				for (var i = 0; i < me.rows; i++) {
 					document.write("<tr>");
 					for ( j = 0; j < 7; j++) {
-						index = 7 * i + j;
-						date_str = index - me.getFirstDay() + 1 ;
-						(date_str<=0 || date_str>m_days[me.month])?date_str="":date_str=index -me.getFirstDay()+1;
+						index = 7 * i + j; 
+						date_str = index - me.getFirstDay() +1;
+						(date_str<=0 || date_str>m_days[me.month-1])?date_str="":date_str=index -me.getFirstDay()+1;
 						date_str == me.day?document.write("<td class='active UI-td'>"+date_str+"</td>"):document.write("<td class='UI-td'>"+date_str+"</td>")
 					};
 					document.write("</tr>")
@@ -51,19 +52,14 @@
 			getRows:function(){
 				var me = this ; 
 				nowDay = new Date(me.year,me.month-1,1);
-				var firstDay = nowDay.getDay();   
+				var firstDay = nowDay.getDay();
 				var _m_days = Calendar.prototype.get_m_days();
-				return Math.ceil((_m_days[me.month]+firstDay)/7);
+				return Math.ceil((_m_days[me.month-1]+firstDay)/7);
 			},
 			getFirstDay:function(){
 				var me = this ;
-				console.log(me.year+"------"+me.month);
-
 				var fDay = new Date(me.year,me.month-1,1);
-				
-				console.log(fDay);
-				 var firstDay = fDay.getDay();
-				 console.log(firstDay);
+				var firstDay = fDay.getDay();
 				return firstDay;
 
 			},
