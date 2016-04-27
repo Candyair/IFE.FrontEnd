@@ -30,11 +30,6 @@ export default class Calendar extends Component {
 		}
 	}
 	/*
-	 * 切换动画
-	 */
-	componentWillUpdate(){
-	}
-	/*
 	 * 每次更新获取选中日期和默认日期
 	 */
 	componentDidUpdate(){
@@ -82,7 +77,7 @@ export default class Calendar extends Component {
 		$tbody.addClass('Calendat-fadein');
 		setTimeout(() => {
 			$tbody.removeClass('Calendat-fadein');
-		},500)
+		},400)
 	}
 	/*
 	 * 给定日期得到对应DOM节点 ( 如无则false )
@@ -212,7 +207,7 @@ export default class Calendar extends Component {
 		$tbody.addClass('Calendat-slide' + slideType);
 		setTimeout(() => {
 			$tbody.removeClass('Calendat-slide' + slideType);
-		},500)
+		},400)
 	}
 	/*
 	 * 打开年历
@@ -278,7 +273,7 @@ export default class Calendar extends Component {
 		$tbody.addClass('Calendat-fadeout');
 		setTimeout(() => {
 			$tbody.removeClass('Calendat-fadeout');
-		},500)
+		},400)
 	}
 	render() {
 		var tbody;

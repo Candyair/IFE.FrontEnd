@@ -13,9 +13,7 @@
 		background-color: #FFF;
 		color: #1F1F1F;
 	}
-
 }
-
 .Calendar-Wrap {
 	width: auto;
 	margin-top: 5px;
@@ -31,11 +29,9 @@
 		height: 30px;
 		cursor: default;
 
-		.Calendar-Year:hover,
-		.Calendar-Month:hover {
+		.Calendar-Year:hover, .Calendar-Month:hover {
 			color: #FFF;
 		}
-
 		.Switch-Month-Btn {
 			float: right;
 			width: 22px;
@@ -48,15 +44,11 @@
 			&:last-child {
 				background: url('img/up.png') no-repeat center;
 			}
-
 			&:hover {
 				opacity: 1;
 			}
-
 		}
-
 	}
-
 	.Calendar-Body {
 		margin-top: 15px;
 		width: 320px;
@@ -70,10 +62,10 @@
 			opacity: 1;
 
 			&.Calendat-fadeout {
-				animation: fadeout .5s;
+				animation: fadeout .4s;
 			}
 			&.Calendat-fadein {
-				animation: fadein .5s;
+				animation: fadein .4s;
 			}
 			&.Calendat-slidedown {
 				animation: slidedown .4s;
@@ -82,9 +74,7 @@
 				animation: slideup .4s;
 			}
 		}
-
-		th,
-		td {
+		th, td {
 			width: auto;
 			text-align: center;
 			-webkit-user-select: none;
@@ -97,19 +87,15 @@
 				color: #FFF;
 				font-size: 120%;
 			}
-
 			&.Year_List {
 				width: 20%;
 				color: #FFF;
 				font-size: 110%;
 			}
-
 		}
-
 		th {
 			color: #CCC;
 		}
-
 		td {
 			color: #6F6F6F;
 			border: 2px solid #1F1F1F;
@@ -117,82 +103,106 @@
 			&.Now_Month {
 				color: #FFF;
 			}
-
 			&.To_Date {
 				color: #FFF;
 				background-color: #0078D7;
 			}
-
 			&.Active_Date {
 				border-color: #5DADE2;
+
 				&:hover {
 					border: #8CB5CF solid 2px;
 				}
 			}
-
 			&:hover {
 				border: #888 solid 2px;
 			}
-
 		}
 	}
-
 }
-
-@keyframes fadeout{
-
-	0%{transform:scale(1);opacity:1;}
-
-	49%{transform:scale(.5);opacity:0;}
-
-	50%{transform:scale(1.5);opacity:.2;}
-
-	100%{transform:scale(1);opacity:1;}
-
+@keyframes fadeout {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	50% {
+		transform: scale(.8);
+		opacity: 0;
+	}
+	55% {
+		transform: scale(1.2);
+		opacity: 0;
+	}
+	60% {
+		transform: scale(1.5);
+		opacity: .8;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
 }
-
-
-@keyframes fadein{
-
-	0%{transform:scale(1);opacity:1;}
-
-	29%{transform:scale(1.5);opacity:.2;}
-
-	30%{transform:scale(0);opacity:0;}
-
-	100%{transform:scale(1);opacity:1;}
-
+@keyframes fadein {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	50% {
+		transform: scale(1.2);
+		opacity: 0;
+	}
+	55% {
+		transform: scale(.6);
+		opacity: 0;
+	}
+	60% {
+		transform: scale(.6);
+		opacity: .8;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
 }
-
-
-@keyframes slidedown{
-
-	0%{transform:translateY(0);opacity:1;}
-
-	20%{opacity:0;}
-
-	50%{transform:translateY(100%);opacity:0;}
-
-	51%{transform:translateY(-100%);opacity:0;}
-
-	80%{opacity:0;}
-
-	100%{transform:translateY(0);opacity:1;}
-
+@keyframes slidedown {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	20% {
+		opacity: 0;
+	}
+	70% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	71% {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
 }
-
-@keyframes slideup{
-
-	0%{transform:translateY(0);opacity:1;}
-
-	20%{opacity:0;}
-
-	50%{transform:translateY(-100%);opacity:0;}
-
-	51%{transform:translateY(100%);opacity:0;}
-
-	80%{opacity:0;}
-
-	100%{transform:translateY(0);opacity:1;}
-
+@keyframes slideup {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	20% {
+		opacity: 0;
+	}
+	70% {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+	71% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
 }
