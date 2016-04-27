@@ -5,7 +5,7 @@
 	_day = date.getDate();
 	table_blank = true;
 	var head = "<tr><td>Su</td><td>Mo</td><td>Tu</td><td>We</td><td>Th</td><td>Fr</td><td>Sa</td></tr>"
-	
+
 	var Calendar = (function(){
 		function Calendar(element,options){
 			this.settings = $.extend(true,$.fn.Calendar.defaults,options||{});
@@ -17,7 +17,7 @@
 				var me = this;
 				me.year = me.settings.year;
 				me.month = me.settings.month;
-				me.day = me.settings.day;	
+				me.day = me.settings.day;
 			},
 			renderTable:function(){
 				var me =this;
@@ -28,7 +28,7 @@
 				for (var i = 0; i < me.rows; i++) {
 					document.write("<tr>");
 					for ( j = 0; j < 7; j++) {
-						index = 7 * i + j; 
+						index = 7 * i + j;
 						date_str = index - me.getFirstDay() +1;
 						(date_str<=0 || date_str>m_days[me.month-1])?date_str="":date_str=index -me.getFirstDay()+1;
 						date_str == me.day?document.write("<td class='active UI-td'>"+date_str+"</td>"):document.write("<td class='UI-td'>"+date_str+"</td>")
@@ -48,9 +48,9 @@
 					m_days=new Array(31,28+Calendar.prototype.is_leap.apply(),31,30,31,30,31,31,30,31,30,31);
 					return m_days;
 				})()
-			},	
+			},
 			getRows:function(){
-				var me = this ; 
+				var me = this ;
 				nowDay = new Date(me.year,me.month-1,1);
 				var firstDay = nowDay.getDay();
 				var _m_days = Calendar.prototype.get_m_days();
@@ -83,12 +83,12 @@
 	$.fn.Calendar.defaults = {
 		"year":_year,
 		"month":_month,
-		"day":_day,	
+		"day":_day,
 		"format":{
 			one:"XX/XX/XX"
 		},
 		"isLunar":true,
-		"isNationalDay":true,		
+		"isNationalDay":true,
 	}
 
 
