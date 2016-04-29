@@ -65,14 +65,14 @@ export default class Calendar extends Component {
 			return false;
 		}
 		//日历点击
-		if(dateyear > 0 && datemonth > 0 && dateday > 0){
+		if(dateyear > 0 && datemonth > -1 && dateday > 0){
 			if(this.props.callback){
 				this.props.callback(new Date(dateyear, datemonth, dateday));
 			}
 			this.props.onSelectDate({year:dateyear,month:datemonth,day:dateday});
 		}
 		//月历点击
-		else if(dateyear > 0 && datemonth > 0 && !dateday){
+		else if(dateyear > 0 && datemonth > -1 && !dateday){
 			this.setState({
 				type: 'day',
 				month: datemonth
@@ -141,7 +141,7 @@ export default class Calendar extends Component {
 			day = (prevMonth - (first - cur - 1));
 			if(this.state.month === 0){
 				year = this.state.year - 1;
-				month = 12;
+				month = 11;
 			}
 			else {
 				month--;
@@ -151,7 +151,7 @@ export default class Calendar extends Component {
 		else if(cur >= (first + curMonth)){
 			if(this.state.month === 11){
 				year = this.state.year + 1;
-				month = 1;
+				month = 0;
 			}
 			else {
 				month++;

@@ -10,8 +10,8 @@ const initialState = {
 	    year: new Date().getFullYear(),
         month: new Date().getMonth(),
         day: new Date().getDate(),
-	    limit: [new Date(2004,4,3), new Date(2016,4,15)],  //月份 0~11
-	    callback: function(date){console.log(date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate())},
+	    limit: [new Date(2004,3,3), new Date(2016,4,15)],  //月份 0~11
+	    callback: function(date){console.log("回调函数:" + date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate())},
 	    switch: true
 	}
 };
