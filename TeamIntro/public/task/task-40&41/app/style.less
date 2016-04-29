@@ -1,7 +1,7 @@
 .Calendar {
-	margin: 50px;
+	margin: 0 auto;
 	display: inline-block;
-	width: auto;
+	width: 350px;
 	font-family: "Microsoft YaHei";
 
 	.Calendar-Switch {
@@ -15,6 +15,7 @@
 	}
 }
 .Calendar-Wrap {
+	display: block;
 	width: auto;
 	margin-top: 5px;
 	background-color: #1F1F1F;
@@ -51,10 +52,10 @@
 	}
 	.Calendar-Body {
 		margin-top: 15px;
-		width: 320px;
-		height: 250px;
 		cursor: default;
 		overflow: hidden;
+		width: 100%;
+		height: 250px;
 
 		tbody {
 			position: relative;
@@ -77,21 +78,11 @@
 		th, td {
 			width: auto;
 			text-align: center;
+			box-sizing: border-box;
 			-webkit-user-select: none;
 			-moz-user-select: none;
 			-ms-user-select: none;
 			user-select: none;
-
-			&.Month_List {
-				width: 25%;
-				color: #FFF;
-				font-size: 120%;
-			}
-			&.Year_List {
-				width: 20%;
-				color: #FFF;
-				font-size: 110%;
-			}
 		}
 		th {
 			color: #CCC;
@@ -114,6 +105,21 @@
 					border: #8CB5CF solid 2px;
 				}
 			}
+			&.Month_List {
+				width: 25%;
+				color: #FFF;
+				font-size: 120%;
+			}
+			&.Year_List {
+				width: 20%;
+				color: #FFF;
+				font-size: 110%;
+			}
+			&.No_Date {
+				background-color: #333;
+				font-weight: lighter;
+				opacity: .5;
+			}
 			&:hover {
 				border: #888 solid 2px;
 			}
@@ -130,12 +136,12 @@
 		opacity: 0;
 	}
 	55% {
-		transform: scale(1.2);
+		transform: scale(1.5);
 		opacity: 0;
 	}
 	60% {
 		transform: scale(1.5);
-		opacity: .8;
+		opacity: .5;
 	}
 	100% {
 		transform: scale(1);

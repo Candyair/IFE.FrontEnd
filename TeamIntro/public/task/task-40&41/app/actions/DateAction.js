@@ -9,6 +9,9 @@ const DateActions = {
 	},
 	setDate(date){
 		return {type: ActionTypes.SET_DATE , date}
+	},
+	setLimitDate(limit){
+		return {type: ActionTypes.SET_LIMIT_DATE, limit}
 	}
 }
 
